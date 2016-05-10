@@ -6,7 +6,6 @@ public class EnemyType1 : MonoBehaviour
 #region Agent info
 
     private Vector3 startLoc, targetLoc;
-    private Rigidbody rb;
     private Transform tf;
     public GameObject[] players;
     public float maxRange;
@@ -21,7 +20,6 @@ public class EnemyType1 : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        rb = GetComponent<Rigidbody>();
         tf = GetComponent<Transform>();
         movementState = ControlState.STAND;
         tf.forward = Vector3.zero;
@@ -39,19 +37,18 @@ public class EnemyType1 : MonoBehaviour
     void MovementBehavior()
     {
        // if (players.Length == 0)
-        players = GameObject.FindGameObjectsWithTag("Player");
-        Debug.Log(players.Length);
+        players = GameObject.FindGameObjectsWithTag("Player"); //get the active players
         float minDist = float.MaxValue;
         int target = -1;
         for (int i = 0; i < players.Length; ++i)
         {
-            float tmpDist1 = Vector3.Distance(startLoc, players[i].transform.position);
-            float tmpDist2 = Vector3.Distance(tf.position, players[i].transform.position);
-            if (tmpDist1 < maxRange)
+            float startRad = Vector3.Distance(startLoc, players[i].transform.position);
+            float tmpDist = Vector3.Distance(tf.position, players[i].transform.position);
+            if (startRad < maxRange) //if within distance of radius
             {
-                if (tmpDist2 < minDist)
+                if (tmpDist < minDist) //if the new player position is closer, set minimum distance to tmpDist && set target to i
                 {
-                    minDist = tmpDist2;
+                    minDist = tmpDist;
                     target = i;
                 }
             }
@@ -75,7 +72,6 @@ public class EnemyType1 : MonoBehaviour
 
     void Stand(int id)
     {
-        
         if (Vector3.Distance(tf.position, startLoc) > 1.0f)
             movementState = ControlState.RETURN;
         if (id >= 0)
