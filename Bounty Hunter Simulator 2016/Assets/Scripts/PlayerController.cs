@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        tf.forward = new Vector3(horizFace, 0.0f, vertFace);
+        if(Mathf.Abs(horizFace) > Mathf.Epsilon || Mathf.Abs(vertFace) > Mathf.Epsilon)
+            tf.forward = new Vector3(horizFace, 0.0f, vertFace);
         rb.velocity = new Vector3(horizMove, 0.0f, vertMove) * speed;
     }
 
