@@ -9,10 +9,8 @@ public class EnemyType1 : MonoBehaviour
     private Rigidbody rb;
     private Transform tf;
     public GameObject[] players;
-    public NavMeshAgent nav;
     public float maxRange;
     public float moveSpeed;
-    private float minDist;
 
 #endregion
 
@@ -25,20 +23,14 @@ public class EnemyType1 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         tf = GetComponent<Transform>();
-        nav = GetComponent<NavMeshAgent>();
         movementState = ControlState.STAND;
         tf.forward = Vector3.zero;
-        startLoc = tf.position;
-        minDist = float.MaxValue;
-
-        if (players == null)
-            players = GameObject.FindGameObjectsWithTag("Player");
+        startLoc = tf.position;   
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        //TODO: make logic to see which player is closer, chase closer player
         if (players != null)
         {
             MovementBehavior();
@@ -46,52 +38,65 @@ public class EnemyType1 : MonoBehaviour
     }
     void MovementBehavior()
     {
-        switch(movementState)
+       // if (players.Length == 0)
+        players = GameObject.FindGameObjectsWithTag("Player");
+        Debug.Log(players.Length);
+        float minDist = float.MaxValue;
+        int target = -1;
+        for (int i = 0; i < players.Length; ++i)
+        {
+            float tmpDist1 = Vector3.Distance(startLoc, players[i].transform.position);
+            float tmpDist2 = Vector3.Distance(tf.position, players[i].transform.position);
+            if (tmpDist1 < maxRange)
+            {
+                if (tmpDist2 < minDist)
+                {
+                    minDist = tmpDist2;
+                    target = i;
+                }
+            }
+        }
+
+        switch (movementState)
         {
             case ControlState.STAND:
-                Stand();               
+                Stand(target);               
                 break;
 
             case ControlState.WALK:
-                Walk();
+                Walk(target);
                 break;
 
             case ControlState.RETURN:
-                Return();
+                Return(target);
                 break;
         }
     }
 
-    void Stand()
+    void Stand(int id)
     {
-        for (int i = 0; i < players.Length; ++i)
-        {
-            float dist = Vector3.Distance(startLoc, players[i].transform.position);
-            if (dist < maxRange)
-            {
-                if(dist < minDist)
-                {
-                    minDist = dist;
-                }
-            }
-            if (Vector3.Distance(tf.position, startLoc) > 1.0f)
-                movementState = ControlState.RETURN;
-        }
+        
+        if (Vector3.Distance(tf.position, startLoc) > 1.0f)
+            movementState = ControlState.RETURN;
+        if (id >= 0)
+            movementState = ControlState.WALK;
     }
 
 
-    void Walk()
+    void Walk(int id)
     {
-        //nav.destination = player.transform.position;
-        tf.LookAt(players[0].transform);
-        tf.position += tf.forward * moveSpeed * Time.deltaTime;
-        if (Vector3.Distance(startLoc, players[0].transform.position) > maxRange)
+        if(id >= 0)
+        {
+            tf.LookAt(players[id].transform);
+            tf.position += tf.forward * moveSpeed * Time.deltaTime;
+        }
+        else if (id < 0)
         {
             movementState = ControlState.STAND;
         }
     }
 
-    void Return()
+    void Return(int id)
     {
         //nav.destination = startLoc;
         tf.LookAt(startLoc);
@@ -100,7 +105,7 @@ public class EnemyType1 : MonoBehaviour
         {
             movementState = ControlState.STAND;
         }
-        if (Vector3.Distance(startLoc, players[0].transform.position) < maxRange)
+        if (id >= 0)
         {
             movementState = ControlState.WALK;
         }
