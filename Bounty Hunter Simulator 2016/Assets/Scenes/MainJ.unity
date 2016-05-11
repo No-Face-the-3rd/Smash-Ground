@@ -249,7 +249,7 @@ GameObject:
   - 114: {fileID: 1069135562}
   m_Layer: 8
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -994,6 +994,29 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!1 &2097227201 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 3f9f7dae3e2f7e7479f7195e38db07b6, type: 3}
+  m_PrefabInternal: {fileID: 1845105257}
+--- !u!114 &2097227202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2097227201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4a2e8a23e8ec646a9fa92ff230a92f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryDelay: 1
+  secondaryDelay: 2
+  dodgeDelay: 1
+  globalDelay: 0.5
+  dodgeSpd: 15
+  dodgeTime: 0.25
+  primaryPref: {fileID: 109972, guid: d476199a6b880224ba8eab7742036055, type: 2}
+  secondaryPref: {fileID: 109972, guid: d476199a6b880224ba8eab7742036055, type: 2}
 --- !u!1 &2135641877
 GameObject:
   m_ObjectHideFlags: 0
