@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
         cs = ((GameObject)Instantiate(orig, csTarg, Quaternion.Euler(0.0f, 180.0f, 0.0f))).GetComponent<Camera>();
         cs.name = "Player " + playerNum + " Camera";
         cs.tag = "CharSelectCam";
-        cs.backgroundColor = Color.black;
+        cs.backgroundColor = Color.gray;
         cs.depth = playerNum;
         cs.cullingMask = 1 << (11 + playerNum);
         cs.orthographic = false;
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 csPos = cs.GetComponent<Transform>().position;
         float dist = Vector3.Distance(csPos, csTarg);
-        cs.GetComponent<Transform>().Rotate(new Vector3(-vertMove , horizMove , 0.0f) * panSpeed);
+        cs.GetComponent<Transform>().Rotate(new Vector3(vertMove , -horizMove , 0.0f) * panSpeed);
         cs.GetComponent<Transform>().position = csTarg + -(dist * cs.GetComponent<Transform>().forward);
         cs.GetComponent<Transform>().rotation = Quaternion.Euler(new Vector3(cs.GetComponent<Transform>().rotation.eulerAngles.x, cs.GetComponent<Transform>().rotation.eulerAngles.y, 0.0f));
 
