@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyType2 : MonoBehaviour
+public class EnemyMelee2 : MonoBehaviour
 {
     #region Agent info
-    private Vector3 startLoc, WanderLoc;
+    private Vector3 startLoc, wanderLoc;
     private Transform tf;
     public GameObject[] players;
     public float maxRange;
     public float moveSpeed;
     public float wandTimer;
+    private float originalTimer;
     #endregion
 
     //Movement finite state machine
@@ -23,6 +24,8 @@ public class EnemyType2 : MonoBehaviour
         movementState = MoveState.WANDER;
         tf.forward = Vector3.zero;
         startLoc = tf.position;
+        wanderLoc = startLoc;
+        originalTimer = wandTimer;
     }
 
     void Update()
@@ -33,7 +36,7 @@ public class EnemyType2 : MonoBehaviour
     void MovementBehavior()
     {
         float minDist = float.MaxValue;
-        int target = 0;
+        int target = -1;
         players = GameObject.FindGameObjectsWithTag("Player");
 
         for(int i = 0; i < players.Length; ++i)
@@ -41,7 +44,14 @@ public class EnemyType2 : MonoBehaviour
             float startRad = Vector3.Distance(startLoc, players[i].transform.position);
             float tmpDist = Vector3.Distance(tf.position, players[i].transform.position);
 
-   //         if()
+            if(startRad < maxRange)
+            {
+                if(tmpDist < minDist)
+                {
+                    minDist = tmpDist;
+                    target = i;
+                }
+            }
         }
 
         switch(movementState)
@@ -58,6 +68,16 @@ public class EnemyType2 : MonoBehaviour
 
     void Wander(int id)
     {
+        wandTimer -= Time.deltaTime;
+        tf.LookAt(wanderLoc);
+        tf.position += tf.forward * moveSpeed * Time.deltaTime;
+        if(Vector3.Distance(wanderLoc, tf.position) < .25f || wandTimer <= 0)
+        {
+            wandTimer = originalTimer;
+            startLoc = wanderLoc;
+            wanderLoc.x = startLoc.x + (Random.insideUnitCircle.x * 5);
+            wanderLoc.z = startLoc.z + (Random.insideUnitCircle.y * 5);
+        }
         if (id >= 0)
             movementState = MoveState.PURSUE;
     }

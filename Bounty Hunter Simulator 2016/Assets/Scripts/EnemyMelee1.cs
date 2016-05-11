@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyType1 : MonoBehaviour
+public class EnemyMelee1 : MonoBehaviour
 {
 #region Agent info
 

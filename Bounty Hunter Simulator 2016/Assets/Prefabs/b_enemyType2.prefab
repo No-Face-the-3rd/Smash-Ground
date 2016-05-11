@@ -29,6 +29,7 @@ GameObject:
   - 135: {fileID: 13576610}
   - 54: {fileID: 5476826}
   - 135: {fileID: 13599976}
+  - 114: {fileID: 11484894}
   m_Layer: 0
   m_Name: b_enemyType2
   m_TagString: Enemy
@@ -84,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -50, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 424032}
@@ -184,6 +185,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11484894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1978ecb837cc347ad9521d29a5d81b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: []
+  maxRange: 10
+  moveSpeed: 5
+  wandTimer: 3
 --- !u!135 &13576610
 SphereCollider:
   m_ObjectHideFlags: 1
