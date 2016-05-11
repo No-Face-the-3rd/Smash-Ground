@@ -1,109 +1,79 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyType1 : MonoBehaviour
+public class EnemyType2 : MonoBehaviour
 {
-#region Agent info
-
-    private Vector3 startLoc, targetLoc;
+    #region Agent info
+    private Vector3 startLoc, WanderLoc;
     private Transform tf;
     public GameObject[] players;
     public float maxRange;
     public float moveSpeed;
+    public float wandTimer;
+    #endregion
 
-#endregion
-
-    //movement finite state machine
-    enum ControlState {STAND, WALK, RETURN };
-    private ControlState movementState;
+    //Movement finite state machine
+    enum MoveState {WANDER, PURSUE};
+    private MoveState movementState;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         tf = GetComponent<Transform>();
-        movementState = ControlState.STAND;
+        movementState = MoveState.WANDER;
         tf.forward = Vector3.zero;
-        startLoc = tf.position;   
+        startLoc = tf.position;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    void Update()
     {
         MovementBehavior();
     }
+
     void MovementBehavior()
     {
-       // if (players.Length == 0)
-        players = GameObject.FindGameObjectsWithTag("Player"); //get the active players
         float minDist = float.MaxValue;
-        int target = -1;
-        for (int i = 0; i < players.Length; ++i)
+        int target = 0;
+        players = GameObject.FindGameObjectsWithTag("Player");
+
+        for(int i = 0; i < players.Length; ++i)
         {
             float startRad = Vector3.Distance(startLoc, players[i].transform.position);
             float tmpDist = Vector3.Distance(tf.position, players[i].transform.position);
-            if (startRad < maxRange) //if within distance of radius
-            {
-                if (tmpDist < minDist) //if the new player position is closer, set minimum distance to tmpDist && set target to i
-                {
-                    minDist = tmpDist;
-                    target = i;
-                }
-            }
+
+   //         if()
         }
 
-        switch (movementState)
+        switch(movementState)
         {
-            case ControlState.STAND:
-                Stand(target);               
+            case MoveState.WANDER:
+                Wander(target);
                 break;
 
-            case ControlState.WALK:
-                Walk(target);
-                break;
-
-            case ControlState.RETURN:
-                Return(target);
+            case MoveState.PURSUE:
+                Pursue(target);
                 break;
         }
     }
 
-    void Stand(int id)
+    void Wander(int id)
     {
-        if (Vector3.Distance(tf.position, startLoc) > 1.0f)
-            movementState = ControlState.RETURN;
         if (id >= 0)
-            movementState = ControlState.WALK;
+            movementState = MoveState.PURSUE;
     }
 
-
-    void Walk(int id)
+    void Pursue(int id)
     {
-        if(id >= 0)
+        if (id >= 0)
         {
             tf.LookAt(players[id].transform);
             tf.position += tf.forward * moveSpeed * Time.deltaTime;
         }
         else if (id < 0)
         {
-            movementState = ControlState.STAND;
+            movementState = MoveState.WANDER;
         }
     }
-
-    void Return(int id)
-    {
-        //nav.destination = startLoc;
-        tf.LookAt(startLoc);
-        tf.position += tf.forward * moveSpeed * Time.deltaTime;
-        if (Vector3.Distance(startLoc, tf.position) < 0.25f)
-        {
-            movementState = ControlState.STAND;
-        }
-        if (id >= 0)
-        {
-            movementState = ControlState.WALK;
-        }
-    }
-
 }
 
 /*
