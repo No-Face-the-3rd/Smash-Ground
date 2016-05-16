@@ -54,12 +54,12 @@ public class character : MonoBehaviour
 
     public virtual void doPrimary()
     {
-        Instantiate(primaryPref, tf.position + tf.forward * 0.5f + new Vector3(0.0f, 3.5f, 0.0f), Quaternion.Euler(tf.forward));
+        Instantiate(primaryPref, tf.position + tf.forward * 0.5f + new Vector3(0.0f, 0.5f, 0.0f), Quaternion.Euler(tf.forward));
     }
 
     public virtual void doSecondary()
     {
-        Instantiate(secondaryPref, tf.position + tf.forward * 0.5f + new Vector3(0.0f, 3.5f, 0.0f), Quaternion.Euler(tf.forward));
+        Instantiate(secondaryPref, tf.position + tf.forward * 0.5f + new Vector3(0.0f, 0.5f, 0.0f), Quaternion.Euler(tf.forward));
     }
 
     public virtual void doDodge()
