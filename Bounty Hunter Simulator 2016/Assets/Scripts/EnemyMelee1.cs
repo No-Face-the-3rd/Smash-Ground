@@ -41,7 +41,7 @@ public class EnemyMelee1 : MonoBehaviour
         {
             float startRad = Vector3.Distance(startLoc, players[i].transform.position);
             float tmpDist = Vector3.Distance(tf.position, players[i].transform.position);
-            if (startRad < maxRange) //if within distance of radius
+            if (startRad < maxRange) //if within distance of radius, range too large
             {
                 if (tmpDist < minDist) //if the new player position is closer, set minimum distance to tmpDist && set target to i
                 {
