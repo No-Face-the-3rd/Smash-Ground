@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3376254}
   - 65: {fileID: 6546342}
   - 23: {fileID: 2335346}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: currentDirection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ GameObject:
   - 4: {fileID: 436134}
   - 33: {fileID: 3308226}
   - 23: {fileID: 2352394}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: enemyModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - 54: {fileID: 5430448}
   - 135: {fileID: 13507990}
   - 114: {fileID: 11497764}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: b_enemyType1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -237,6 +237,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: moveSpeed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

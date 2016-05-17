@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class character : MonoBehaviour
 {
+    public int health;
+    public float speed;
     public float primaryDelay, secondaryDelay, dodgeDelay, globalDelay, dodgeSpd, dodgeTime;
     private float nextPrimary, nextSecondary, nextDodge;
     public GameObject primaryPref, secondaryPref;
@@ -24,22 +27,27 @@ public class character : MonoBehaviour
         if (Mathf.Abs(primary) > 0.0f && Time.time > nextPrimary)
         {
             nextPrimary = Time.time + primaryDelay;
-            nextSecondary = Time.time + globalDelay;
-            nextDodge = Time.time + globalDelay;
+            if(!(nextSecondary > Time.time + globalDelay))
+                nextSecondary = Time.time + globalDelay;
+            if(!(nextDodge > Time.time + globalDelay))
+                nextDodge = Time.time + globalDelay;
             doPrimary();
         }
         if (Mathf.Abs(secondary) > 0.0f && Time.time > nextSecondary)
         {
-            nextPrimary = Time.time + globalDelay;
+            if(!(nextPrimary > Time.time + globalDelay))
+                nextPrimary = Time.time + globalDelay;
             nextSecondary = Time.time + secondaryDelay;
-            nextDodge = Time.time + globalDelay;
+            if(!(nextDodge > Time.time + globalDelay))
+                nextDodge = Time.time + globalDelay;
             doSecondary();
         }
         if (Mathf.Abs(dodge) > 0.0f && Time.time > nextDodge)
         {
-            if(!(nextPrimary > Time.time + globalDelay + dodgeTime))
-                nextPrimary = Time.time + dodgeTime + globalDelay;
-            nextSecondary = Time.time + dodgeTime + globalDelay;
+            if(!(nextPrimary > Time.time + dodgeTime))
+                nextPrimary = Time.time + dodgeTime;
+            if(!(nextSecondary > Time.time + dodgeTime))
+                nextSecondary = Time.time + dodgeTime;
             nextDodge = Time.time + dodgeTime + dodgeDelay;
             dodging = true;
         }
@@ -54,12 +62,14 @@ public class character : MonoBehaviour
 
     public virtual void doPrimary()
     {
-        Instantiate(primaryPref, tf.position + tf.forward * 0.5f + new Vector3(0.0f, 3.5f, 0.0f), Quaternion.Euler(tf.forward));
+        GameObject tmp = (GameObject)Instantiate(primaryPref, tf.position + tf.forward * 0.5f + new Vector3(0.0f, 0.5f, 0.0f), Quaternion.LookRotation(primaryPref.transform.forward));
+        tmp.layer = 9;
     }
 
     public virtual void doSecondary()
     {
-        Instantiate(secondaryPref, tf.position + tf.forward * 0.5f + new Vector3(0.0f, 3.5f, 0.0f), Quaternion.Euler(tf.forward));
+        GameObject tmp = (GameObject)Instantiate(secondaryPref, tf.position + tf.forward * 0.5f + new Vector3(0.0f, 0.5f, 0.0f), Quaternion.LookRotation(secondaryPref.transform.forward));
+        tmp.layer = 9;
     }
 
     public virtual void doDodge()
@@ -69,6 +79,13 @@ public class character : MonoBehaviour
         Vector3 newVel = ((dodgeDir * dodgeSpd) + prb.velocity);
         prb.velocity = newVel;
         ptf.gameObject.layer = 15;
+    }
+
+    public virtual void getDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+            Destroy(gameObject);
     }
 }
 
@@ -87,6 +104,8 @@ public class PlayerController : MonoBehaviour
     private Transform tf;
     private Vector3 csTarg;
     public Camera cs;
+
+    public List<GameObject> prefabs;
 
     private character child;
 
@@ -119,7 +138,10 @@ public class PlayerController : MonoBehaviour
             child.processInput(primaryIn, secondaryIn, dodgeIn);
         }
         else
+        {
             moveCam();
+            selectCharacter();
+        }
     }
 
     public void setNum(int id)
@@ -140,7 +162,7 @@ public class PlayerController : MonoBehaviour
         cs.cullingMask = 1 << (11 + playerNum);
         cs.orthographic = false;
 
-        cs.pixelRect = new Rect((0.01f + (float)(playerNum - 1) * 0.78f) * cs.pixelRect.width, 0.7f * cs.pixelRect.height, 0.2f * cs.pixelRect.width, 0.26f * cs.pixelRect.height);
+        cs.pixelRect = new Rect((0.013f + (float)(playerNum - 1) * 0.7815f) * cs.pixelRect.width, 0.785f * cs.pixelRect.height, 0.1925f * cs.pixelRect.width, 0.195f * cs.pixelRect.height);
         ((AudioListener)cs.GetComponent(typeof(AudioListener))).enabled = false;
         ((GUILayer)cs.GetComponent(typeof(GUILayer))).enabled = false;
 
@@ -171,6 +193,12 @@ public class PlayerController : MonoBehaviour
         if (Mathf.Abs(horizFace) > Mathf.Epsilon || Mathf.Abs(vertFace) > Mathf.Epsilon)
             tf.forward = new Vector3(horizFace, 0.0f, vertFace);
 
-        rb.velocity = Vector3.Normalize(new Vector3(horizMove, 0.0f, vertMove)) * speed;
+        rb.velocity = Vector3.Normalize(new Vector3(horizMove, -0.0f, vertMove)) * (GetComponent<PlayerController>().speed + child.GetComponent<character>().speed);
+        rb.velocity = new Vector3(rb.velocity.x, Physics.gravity.y * 10.0f * Time.deltaTime, rb.velocity.z);
+    }
+
+    void selectCharacter()
+    {
+
     }
 }
