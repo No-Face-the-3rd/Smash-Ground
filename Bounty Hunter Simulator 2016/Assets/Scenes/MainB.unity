@@ -483,7 +483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &863610364
 Transform:
   m_ObjectHideFlags: 0
@@ -740,7 +740,7 @@ Prefab:
       propertyPath: m_Name
       value: EnemyAI
       objectReference: {fileID: 0}
-    - target: {fileID: 11449838, guid: 2822e2b0f66ff4a488257b4c099da5fd, type: 2}
+    - target: {fileID: 0}
       propertyPath: maxRange
       value: 5
       objectReference: {fileID: 0}
@@ -748,7 +748,12 @@ Prefab:
       propertyPath: m_Radius
       value: 0.1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 0}
+      propertyPath: fireDelay
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 2822e2b0f66ff4a488257b4c099da5fd, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1791062811
@@ -851,7 +856,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1851446449}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15, y: 0, z: 9.05}
+  m_LocalPosition: {x: -0.15, y: 0, z: 14.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1441604610}
@@ -1015,3 +1020,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &2029978332 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 128326, guid: 2822e2b0f66ff4a488257b4c099da5fd, type: 2}
+  m_PrefabInternal: {fileID: 1729504787}
+--- !u!114 &2029978334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2029978332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a53b3fa93b391f4da04e587477ad64f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  wandTimer: 3
+--- !u!114 &2029978338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2029978332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cda34fecda9e364ab222dc73eb538a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: []
+  maxRange: 5
+  moveSpeed: 5
+--- !u!114 &2029978339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2029978332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6822642fffe05514f8f19f1acd2ab03f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPre: {fileID: 161600, guid: 5dbd59ed5c406804881328d4a52eca38, type: 2}
+  bulletYOffset: {x: 0, y: 1, z: 0}
+  bulletSpawnOffset: 0.5
+  maxRange: 5
+  fireDelay: 2
