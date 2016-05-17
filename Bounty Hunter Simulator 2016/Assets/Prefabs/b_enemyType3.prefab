@@ -12,7 +12,7 @@ GameObject:
   - 54: {fileID: 5410264}
   - 135: {fileID: 13584694}
   - 114: {fileID: 11449838}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: b_enemyType3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ GameObject:
   - 4: {fileID: 422646}
   - 33: {fileID: 3367370}
   - 23: {fileID: 2358072}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: enemyModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - 33: {fileID: 3379690}
   - 65: {fileID: 6596550}
   - 23: {fileID: 2364390}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: currentDirection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,6 +197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPre: {fileID: 161600, guid: 5dbd59ed5c406804881328d4a52eca38, type: 2}
+  maxRange: 3
+  moveSpeed: 5
 --- !u!135 &13509432
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -232,6 +234,18 @@ Prefab:
       propertyPath: bulletPre
       value: 
       objectReference: {fileID: 161600, guid: 5dbd59ed5c406804881328d4a52eca38, type: 2}
+    - target: {fileID: 0}
+      propertyPath: maxRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 128326}

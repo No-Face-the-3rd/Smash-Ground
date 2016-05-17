@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3329680}
   - 65: {fileID: 6564484}
   - 23: {fileID: 2393932}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: currentDirection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ GameObject:
   - 54: {fileID: 5476826}
   - 135: {fileID: 13599976}
   - 114: {fileID: 11484894}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: b_enemyType2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ GameObject:
   - 4: {fileID: 474966}
   - 33: {fileID: 3386940}
   - 23: {fileID: 2325354}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: enemyModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: []
-  maxRange: 10
+  maxRange: 3
   moveSpeed: 5
   wandTimer: 3
 --- !u!135 &13576610
@@ -230,7 +230,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: maxRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 171866}
