@@ -3,6 +3,8 @@ using System.Collections;
 
 public class character : MonoBehaviour
 {
+    public int health;
+    public float speed;
     public float primaryDelay, secondaryDelay, dodgeDelay, globalDelay, dodgeSpd, dodgeTime;
     private float nextPrimary, nextSecondary, nextDodge;
     public GameObject primaryPref, secondaryPref;
@@ -54,12 +56,14 @@ public class character : MonoBehaviour
 
     public virtual void doPrimary()
     {
-        Instantiate(primaryPref, tf.position + tf.forward * 0.5f + new Vector3(0.0f, 0.5f, 0.0f), Quaternion.Euler(tf.forward));
+        GameObject tmp = (GameObject)Instantiate(primaryPref, tf.position + tf.forward * 0.5f + new Vector3(0.0f, 0.5f, 0.0f), Quaternion.Euler(tf.forward));
+        tmp.layer = 9;
     }
 
     public virtual void doSecondary()
     {
-        Instantiate(secondaryPref, tf.position + tf.forward * 0.5f + new Vector3(0.0f, 0.5f, 0.0f), Quaternion.Euler(tf.forward));
+        GameObject tmp = (GameObject)Instantiate(secondaryPref, tf.position + tf.forward * 0.5f + new Vector3(0.0f, 0.5f, 0.0f), Quaternion.Euler(tf.forward));
+        tmp.layer = 9;
     }
 
     public virtual void doDodge()
@@ -69,6 +73,13 @@ public class character : MonoBehaviour
         Vector3 newVel = ((dodgeDir * dodgeSpd) + prb.velocity);
         prb.velocity = newVel;
         ptf.gameObject.layer = 15;
+    }
+
+    public virtual void doDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+            Destroy(gameObject);
     }
 }
 
@@ -140,7 +151,7 @@ public class PlayerController : MonoBehaviour
         cs.cullingMask = 1 << (11 + playerNum);
         cs.orthographic = false;
 
-        cs.pixelRect = new Rect((0.01f + (float)(playerNum - 1) * 0.78f) * cs.pixelRect.width, 0.7f * cs.pixelRect.height, 0.2f * cs.pixelRect.width, 0.26f * cs.pixelRect.height);
+        cs.pixelRect = new Rect((0.013f + (float)(playerNum - 1) * 0.7815f) * cs.pixelRect.width, 0.785f * cs.pixelRect.height, 0.1925f * cs.pixelRect.width, 0.195f * cs.pixelRect.height);
         ((AudioListener)cs.GetComponent(typeof(AudioListener))).enabled = false;
         ((GUILayer)cs.GetComponent(typeof(GUILayer))).enabled = false;
 
@@ -171,6 +182,6 @@ public class PlayerController : MonoBehaviour
         if (Mathf.Abs(horizFace) > Mathf.Epsilon || Mathf.Abs(vertFace) > Mathf.Epsilon)
             tf.forward = new Vector3(horizFace, 0.0f, vertFace);
 
-        rb.velocity = Vector3.Normalize(new Vector3(horizMove, 0.0f, vertMove)) * speed;
+        rb.velocity = Vector3.Normalize(new Vector3(horizMove, 0.0f, vertMove)) * (GetComponent<PlayerController>().speed + child.GetComponent<character>().speed);
     }
 }
