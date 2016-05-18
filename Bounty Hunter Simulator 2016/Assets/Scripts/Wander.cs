@@ -6,6 +6,7 @@ public class Wander : MonoBehaviour
     #region Agent info
     private Vector3 startLoc, wanderLoc;
     private Transform tf;
+    private Rigidbody rb;
     public float moveSpeed;
     public float wandTimer;
     private float originalTimer;
@@ -15,6 +16,7 @@ public class Wander : MonoBehaviour
     void Start ()
     {
         tf = GetComponent<Transform>();
+        rb = GetComponent<Rigidbody>();
         originalTimer = wandTimer;
         wanderLoc = startLoc = tf.position;
 	}
@@ -24,7 +26,8 @@ public class Wander : MonoBehaviour
     {
         wandTimer -= Time.deltaTime;
         tf.LookAt(wanderLoc);
-        tf.position += tf.forward * moveSpeed * Time.deltaTime;
+        tf.forward = new Vector3(tf.forward.x, 0, tf.forward.z);
+        rb.velocity = new Vector3(tf.forward.x * moveSpeed, 0.0f, tf.forward.z * moveSpeed);
         if (Vector3.Distance(wanderLoc, tf.position) < .25f || wandTimer <= 0)
         {
             wandTimer = originalTimer;

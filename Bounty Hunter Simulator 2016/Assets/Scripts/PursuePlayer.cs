@@ -5,6 +5,7 @@ public class PursuePlayer : MonoBehaviour
 {
     private Vector3 targetDirection;
     private Transform tf;
+    private Rigidbody rb;
     public GameObject[] players;
     public float maxRange;
     public float moveSpeed;
@@ -13,6 +14,7 @@ public class PursuePlayer : MonoBehaviour
     void Start ()
     {
         tf = GetComponent<Transform>();
+        rb = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
@@ -25,7 +27,7 @@ public class PursuePlayer : MonoBehaviour
         {
             float startRad = Vector3.Distance(tf.position, players[i].transform.position);
             float tmpDist = Vector3.Distance(tf.position, players[i].transform.position);
-            if (startRad < maxRange) //if within distance of radius, range too large
+            if (startRad < maxRange) //if within distance of radius
             {
                 if (tmpDist < minDist) //if the new player position is closer, set minimum distance to tmpDist && set target to i
                 {
@@ -56,11 +58,9 @@ public class PursuePlayer : MonoBehaviour
 
     void Pursue(int _target)
     {
-        if (_target >= 0)
-        {
-            tf.LookAt(players[_target].transform);
-            tf.position += tf.forward * moveSpeed * Time.deltaTime;
-        }
+        tf.LookAt(players[_target].transform);
+        tf.forward = new Vector3(tf.forward.x, 0, tf.forward.z);
+        rb.velocity = new Vector3(tf.forward.x * moveSpeed, 0.0f, tf.forward.z * moveSpeed);
     }
 }
 
