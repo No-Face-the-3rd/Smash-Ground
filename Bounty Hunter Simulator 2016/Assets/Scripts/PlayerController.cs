@@ -10,6 +10,8 @@ public class character : MonoBehaviour
     private float nextPrimary, nextSecondary, nextDodge;
     public GameObject primaryPref, secondaryPref;
     public Vector3 camTarget;
+
+
     private Transform ptf, tf;
     private Rigidbody prb;
     private bool dodging;
@@ -19,45 +21,49 @@ public class character : MonoBehaviour
         nextPrimary = nextSecondary = nextDodge = 0.0f;
         tf = GetComponent<Transform>();
         ptf = tf.parent;
-        prb = ptf.GetComponent<Rigidbody>();
+        if(ptf != null)
+            prb = ptf.GetComponent<Rigidbody>();
         dodging = false;
         dodgeDir = new Vector3(0.0f,1.0f,0.0f);
     }
     public virtual void processInput(float primary, float secondary, float dodge)
     {
-        if (Mathf.Abs(primary) > 0.0f && Time.time > nextPrimary)
+        if (ptf != null)
         {
-            nextPrimary = Time.time + primaryDelay;
-            if(!(nextSecondary > Time.time + globalDelay))
-                nextSecondary = Time.time + globalDelay;
-            if(!(nextDodge > Time.time + globalDelay))
-                nextDodge = Time.time + globalDelay;
-            doPrimary();
-        }
-        if (Mathf.Abs(secondary) > 0.0f && Time.time > nextSecondary)
-        {
-            if(!(nextPrimary > Time.time + globalDelay))
-                nextPrimary = Time.time + globalDelay;
-            nextSecondary = Time.time + secondaryDelay;
-            if(!(nextDodge > Time.time + globalDelay))
-                nextDodge = Time.time + globalDelay;
-            doSecondary();
-        }
-        if (Mathf.Abs(dodge) > 0.0f && Time.time > nextDodge)
-        {
-            if(!(nextPrimary > Time.time + dodgeTime))
-                nextPrimary = Time.time + dodgeTime;
-            if(!(nextSecondary > Time.time + dodgeTime))
-                nextSecondary = Time.time + dodgeTime;
-            nextDodge = Time.time + dodgeTime + dodgeDelay;
-            dodging = true;
-        }
-        if (dodging && nextDodge - dodgeDelay - Time.time > 0.0f)
-            doDodge();
-        else
-        {
-            ptf.gameObject.layer = 8;
-            dodgeDir = new Vector3(0.0f, 1.0f, 0.0f);
+            if (Mathf.Abs(primary) > 0.0f && Time.time > nextPrimary)
+            {
+                nextPrimary = Time.time + primaryDelay;
+                if (!(nextSecondary > Time.time + globalDelay))
+                    nextSecondary = Time.time + globalDelay;
+                if (!(nextDodge > Time.time + globalDelay))
+                    nextDodge = Time.time + globalDelay;
+                doPrimary();
+            }
+            if (Mathf.Abs(secondary) > 0.0f && Time.time > nextSecondary)
+            {
+                if (!(nextPrimary > Time.time + globalDelay))
+                    nextPrimary = Time.time + globalDelay;
+                nextSecondary = Time.time + secondaryDelay;
+                if (!(nextDodge > Time.time + globalDelay))
+                    nextDodge = Time.time + globalDelay;
+                doSecondary();
+            }
+            if (Mathf.Abs(dodge) > 0.0f && Time.time > nextDodge)
+            {
+                if (!(nextPrimary > Time.time + dodgeTime))
+                    nextPrimary = Time.time + dodgeTime;
+                if (!(nextSecondary > Time.time + dodgeTime))
+                    nextSecondary = Time.time + dodgeTime;
+                nextDodge = Time.time + dodgeTime + dodgeDelay;
+                dodging = true;
+            }
+            if (dodging && nextDodge - dodgeDelay - Time.time > 0.0f)
+                doDodge();
+            else
+            {
+                ptf.gameObject.layer = 8;
+                dodgeDir = new Vector3(0.0f, 1.0f, 0.0f);
+            }
         }
     }
 
@@ -105,23 +111,39 @@ public class PlayerController : MonoBehaviour
     private Transform tf;
     private Vector3 csTarg;
     public Camera cs;
+    private float camDist;
 
     public List<GameObject> prefabs;
-    private List<GameObject> nextRoom, curRoom;
-    private int curInd;
+    private List<int> nextRoom, curRoom;
+    private int curInd, prevInd;
+    private GameObject curChar, nextChar;
+
+    private bool charSelUsed, charSwitching;
+    private int charSel,charSwitchTime;
 
     private character child;
 
     void Start()
     {
+        charSelUsed = false;
+        curInd = 0;
+        curChar = (GameObject)Instantiate(prefabs[curInd], Vector3.zero, Quaternion.LookRotation(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f)));
+        curChar.layer = 11 + playerNum;
 
         rb = GetComponent<Rigidbody>();
         tf = GetComponent<Transform>();
-        setNum(playerNum);
-        child = tf.GetChild(0).GetComponent<character>();
 
-        curRoom.Add(prefabs[0]);
-        curRoom.Add(prefabs[1]);
+        camDist = 0.0f;
+        setNum(playerNum);
+        if(tf.childCount > 0)
+            child = tf.GetChild(0).GetComponent<character>();
+
+        curRoom = new List<int>();
+        nextRoom = new List<int>();
+
+        curRoom.Add(0);
+        curRoom.Add(1);
+        charSwitchTime = 0;
 //            if (playerNum == 0)
 //                playerNum = 1;
     }
@@ -135,6 +157,22 @@ public class PlayerController : MonoBehaviour
         primaryIn = Input.GetAxis("primaryAttack_P" + playerNum);
         secondaryIn = Input.GetAxis("secondaryAttack_P" + playerNum);
         dodgeIn = Input.GetAxis("dodge_P" + playerNum);
+        charSel = (int)Input.GetAxisRaw("charSel_P" + playerNum);
+        if (charSel != 0)
+        {
+            if(!charSelUsed)
+            {
+                charSelUsed = true;
+            }
+            else
+            {
+                charSel = 0;
+            }
+        }
+        else
+        {
+            charSelUsed = false;
+        }
     }
 
     void FixedUpdate()
@@ -147,8 +185,22 @@ public class PlayerController : MonoBehaviour
         else
         {
             moveCam();
-            selectCharacter();
+            if (charSwitching)
+            {
+                switchChar();
+                charSwitchTime++;
+            }
+            else
+                selectCharacter();
+            if (charSwitchTime > 30)
+            {
+                charSwitching = false;
+                Destroy(curChar);
+                curChar = nextChar;
+                charSwitchTime = 0;
+            }
         }
+
     }
 
     public void setNum(int id)
@@ -159,9 +211,9 @@ public class PlayerController : MonoBehaviour
 
     void createCam()
     {
-        csTarg = new Vector3(0.0f, 3.5f, 4.0f);
+        csTarg = curChar.GetComponent<character>().camTarget;
         GameObject orig = GameObject.FindGameObjectWithTag("MainCamera");
-        cs = ((GameObject)Instantiate(orig, csTarg, Quaternion.Euler(0.0f, 180.0f, 0.0f))).GetComponent<Camera>();
+        cs = ((GameObject)Instantiate(orig, csTarg + new Vector3(0.0f,0.0f,4.0f), Quaternion.Euler(0.0f, 180.0f, 0.0f))).GetComponent<Camera>();
         cs.name = "Player " + playerNum + " Camera";
         cs.tag = "CharSelectCam";
         cs.backgroundColor = Color.gray;
@@ -174,16 +226,18 @@ public class PlayerController : MonoBehaviour
         ((GUILayer)cs.GetComponent(typeof(GUILayer))).enabled = false;
 
         cs.fieldOfView = 20.0f;
-        csTarg = new Vector3(0.0f, 3.5f, 0.0f);
 
     }
 
     void moveCam()
     {
-        Vector3 csPos = cs.GetComponent<Transform>().position;
-        float dist = Vector3.Distance(csPos, csTarg);
+        if (Mathf.Abs(camDist) <= Mathf.Epsilon)
+        {
+            Vector3 csPos = cs.GetComponent<Transform>().position;
+            camDist = Vector3.Distance(csPos, csTarg);
+        }
         cs.GetComponent<Transform>().Rotate(new Vector3(vertMove , -horizMove , 0.0f) * panSpeed);
-        cs.GetComponent<Transform>().position = csTarg + -(dist * cs.GetComponent<Transform>().forward);
+        cs.GetComponent<Transform>().position = csTarg + -(camDist * cs.GetComponent<Transform>().forward);
         cs.GetComponent<Transform>().rotation = Quaternion.Euler(new Vector3(cs.GetComponent<Transform>().rotation.eulerAngles.x, cs.GetComponent<Transform>().rotation.eulerAngles.y, 0.0f));
 
     }
@@ -193,9 +247,8 @@ public class PlayerController : MonoBehaviour
         if (cs.GetComponent<Transform>().rotation != Quaternion.Euler(new Vector3(0.0f, 180.0f, 0.0f)))
         {
             Vector3 csPos = cs.GetComponent<Transform>().position;
-            float dist = Vector3.Distance(csPos, csTarg);
             cs.GetComponent<Transform>().rotation = Quaternion.Euler(new Vector3(0.0f, 180.0f, 0.0f));
-            cs.GetComponent<Transform>().position = csTarg + -(dist * cs.GetComponent<Transform>().forward);
+            cs.GetComponent<Transform>().position = csTarg + -(camDist * cs.GetComponent<Transform>().forward);
         }
         if (Mathf.Abs(horizFace) > Mathf.Epsilon || Mathf.Abs(vertFace) > Mathf.Epsilon)
             tf.forward = new Vector3(horizFace, 0.0f, vertFace);
@@ -206,6 +259,37 @@ public class PlayerController : MonoBehaviour
 
     void selectCharacter()
     {
+        prevInd = curInd;
+        if(curInd > 0 && charSel != 0)
+        {
+            curInd = (curInd + charSel) % curRoom.Count;
+        }
+        else
+        {
+            if (charSel > 0)
+                curInd = 1;
+            else if(charSel < 0)
+                curInd = curRoom.Count - 1;
+        }
 
+        if(prevInd != curInd)
+        {
+            charSwitching = true;
+            if (cs.GetComponent<Transform>().rotation != Quaternion.Euler(new Vector3(0.0f, 180.0f, 0.0f)))
+            {
+                cs.GetComponent<Transform>().rotation = Quaternion.Euler(new Vector3(0.0f, 180.0f, 0.0f));
+                cs.GetComponent<Transform>().position = csTarg + -(camDist * cs.GetComponent<Transform>().forward);
+            }
+            nextChar = (GameObject)Instantiate(prefabs[curInd], new Vector3(-6.2f, 0.0f, 0.0f), Quaternion.LookRotation(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f)));
+            nextChar.layer = 11 + playerNum;
+        }
+    }
+
+    void switchChar()
+    {
+        curChar.transform.position = curChar.transform.position + new Vector3(0.2f, 0.0f, 0.0f);
+        nextChar.transform.position = nextChar.transform.position + new Vector3(0.2f, 0.0f, 0.0f);
+        Vector3 tmp = Vector3.zero;
+        csTarg = Vector3.SmoothDamp(csTarg, nextChar.GetComponent<character>().camTarget, ref tmp, 0.08f);
     }
 }

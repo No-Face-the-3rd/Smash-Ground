@@ -239,6 +239,10 @@ Prefab:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 3f9f7dae3e2f7e7479f7195e38db07b6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f9f7dae3e2f7e7479f7195e38db07b6, type: 3}
   m_IsPrefabParent: 0
@@ -378,7 +382,7 @@ MonoBehaviour:
   panSpeed: 3
   cs: {fileID: 0}
   prefabs:
-  - {fileID: 2097227201}
+  - {fileID: 172610, guid: 6f9d74b94cdec5f46855e3dff9ce3787, type: 2}
   - {fileID: 2097227201}
 --- !u!1 &1111640400
 GameObject:
@@ -1081,7 +1085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  speed: 0
+  speed: 3
   primaryDelay: 1
   secondaryDelay: 2
   dodgeDelay: 1
@@ -1090,7 +1094,7 @@ MonoBehaviour:
   dodgeTime: 0.25
   primaryPref: {fileID: 0}
   secondaryPref: {fileID: 0}
-  camTarget: {x: 0, y: 0, z: 0}
+  camTarget: {x: 0, y: 3.5, z: 0}
 --- !u!1 &2135641877
 GameObject:
   m_ObjectHideFlags: 0
