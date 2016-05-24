@@ -113,13 +113,14 @@ public class PlayerController : MonoBehaviour
     public Camera cs;
     private float camDist;
 
-    public List<GameObject> prefabs;
+    public GameObject charDB;
     private List<int> nextRoom, curRoom;
     private int curInd, prevInd;
     private GameObject curChar, nextChar;
 
     private bool charSelUsed, charSwitching;
     private int charSel,charSwitchTime;
+    private bool charChoose;
 
     private character child;
 
@@ -127,8 +128,20 @@ public class PlayerController : MonoBehaviour
     {
         charSelUsed = false;
         curInd = 0;
-        curChar = (GameObject)Instantiate(prefabs[curInd], Vector3.zero, Quaternion.LookRotation(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f)));
+        charChoose = false;
+        curRoom = new List<int>();
+        nextRoom = new List<int>();
+
+        curRoom.Add(0);
+        curRoom.Add(1);
+        curRoom.Add(0);
+        curRoom.Add(0);
+        curChar = (GameObject)Instantiate(charDB.GetComponent<CharacterDB>().charDB[curRoom[curInd]], Vector3.zero, Quaternion.LookRotation(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f)));
         curChar.layer = 11 + playerNum;
+        for (int i = 0; i < curChar.transform.childCount; i++)
+        {
+            curChar.transform.GetChild(i).gameObject.layer = 11 + playerNum;
+        }
 
         rb = GetComponent<Rigidbody>();
         tf = GetComponent<Transform>();
@@ -138,11 +151,6 @@ public class PlayerController : MonoBehaviour
         if(tf.childCount > 0)
             child = tf.GetChild(0).GetComponent<character>();
 
-        curRoom = new List<int>();
-        nextRoom = new List<int>();
-
-        curRoom.Add(0);
-        curRoom.Add(1);
         charSwitchTime = 0;
 //            if (playerNum == 0)
 //                playerNum = 1;
@@ -171,6 +179,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            if(!charSwitching)
+               charChoose = Input.GetButtonDown("Accept_P" + playerNum);
             charSelUsed = false;
         }
     }
@@ -189,6 +199,7 @@ public class PlayerController : MonoBehaviour
             {
                 switchChar();
                 charSwitchTime++;
+                charChoose = false;
             }
             else
                 selectCharacter();
@@ -220,6 +231,8 @@ public class PlayerController : MonoBehaviour
         cs.depth = playerNum;
         cs.cullingMask = 1 << (11 + playerNum);
         cs.orthographic = false;
+
+        Destroy(cs.GetComponent<MainCameraController>());
 
         cs.pixelRect = new Rect((0.013f + (float)(playerNum - 1) * 0.7815f) * cs.pixelRect.width, 0.785f * cs.pixelRect.height, 0.1925f * cs.pixelRect.width, 0.195f * cs.pixelRect.height);
         ((AudioListener)cs.GetComponent(typeof(AudioListener))).enabled = false;
@@ -253,14 +266,14 @@ public class PlayerController : MonoBehaviour
         if (Mathf.Abs(horizFace) > Mathf.Epsilon || Mathf.Abs(vertFace) > Mathf.Epsilon)
             tf.forward = new Vector3(horizFace, 0.0f, vertFace);
 
-        rb.velocity = Vector3.Normalize(new Vector3(horizMove, -0.0f, vertMove)) * (GetComponent<PlayerController>().speed + child.GetComponent<character>().speed);
+        rb.velocity = Vector3.Normalize(new Vector3(horizMove, -0.0f, vertMove)) * (GetComponent<PlayerController>().speed + child.speed);
         rb.velocity = new Vector3(rb.velocity.x, Physics.gravity.y * 10.0f * Time.deltaTime, rb.velocity.z);
     }
 
     void selectCharacter()
     {
         prevInd = curInd;
-        if(curInd > 0 && charSel != 0)
+        if (curInd > 0 && charSel != 0)
         {
             curInd = (curInd + charSel) % curRoom.Count;
         }
@@ -268,11 +281,11 @@ public class PlayerController : MonoBehaviour
         {
             if (charSel > 0)
                 curInd = 1;
-            else if(charSel < 0)
+            else if (charSel < 0)
                 curInd = curRoom.Count - 1;
         }
 
-        if(prevInd != curInd)
+        if (prevInd != curInd)
         {
             charSwitching = true;
             if (cs.GetComponent<Transform>().rotation != Quaternion.Euler(new Vector3(0.0f, 180.0f, 0.0f)))
@@ -280,9 +293,15 @@ public class PlayerController : MonoBehaviour
                 cs.GetComponent<Transform>().rotation = Quaternion.Euler(new Vector3(0.0f, 180.0f, 0.0f));
                 cs.GetComponent<Transform>().position = csTarg + -(camDist * cs.GetComponent<Transform>().forward);
             }
-            nextChar = (GameObject)Instantiate(prefabs[curInd], new Vector3(-6.2f, 0.0f, 0.0f), Quaternion.LookRotation(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f)));
+            nextChar = (GameObject)Instantiate(charDB.GetComponent<CharacterDB>().charDB[curRoom[curInd]], new Vector3(-6.2f, 0.0f, 0.0f), Quaternion.LookRotation(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f)));
             nextChar.layer = 11 + playerNum;
+            for(int i = 0;i < nextChar.transform.childCount;i++)
+            {
+                nextChar.transform.GetChild(i).gameObject.layer = 11 + playerNum;
+            }
         }
+        if (charChoose)
+            createChar();
     }
 
     void switchChar()
@@ -291,5 +310,16 @@ public class PlayerController : MonoBehaviour
         nextChar.transform.position = nextChar.transform.position + new Vector3(0.2f, 0.0f, 0.0f);
         Vector3 tmp = Vector3.zero;
         csTarg = Vector3.SmoothDamp(csTarg, nextChar.GetComponent<character>().camTarget, ref tmp, 0.08f);
+    }
+
+    void createChar()
+    {
+        GameObject tmp = (GameObject)Instantiate(charDB.GetComponent<CharacterDB>().charDB[curRoom[curInd]], transform.position, transform.rotation);
+        tmp.transform.SetParent(transform);
+        child = tmp.GetComponent<character>();
+        curRoom.RemoveAt(curInd);
+        if (curInd > 0)
+            curInd--;
+
     }
 }
