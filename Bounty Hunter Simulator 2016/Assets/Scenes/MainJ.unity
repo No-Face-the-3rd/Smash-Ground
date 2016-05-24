@@ -377,6 +377,9 @@ MonoBehaviour:
   speed: 5
   panSpeed: 3
   cs: {fileID: 0}
+  prefabs:
+  - {fileID: 2097227201}
+  - {fileID: 2097227201}
 --- !u!1 &1111640400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,6 +1090,7 @@ MonoBehaviour:
   dodgeTime: 0.25
   primaryPref: {fileID: 0}
   secondaryPref: {fileID: 0}
+  camTarget: {x: 0, y: 0, z: 0}
 --- !u!1 &2135641877
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class character : MonoBehaviour
     public float primaryDelay, secondaryDelay, dodgeDelay, globalDelay, dodgeSpd, dodgeTime;
     private float nextPrimary, nextSecondary, nextDodge;
     public GameObject primaryPref, secondaryPref;
+    public Vector3 camTarget;
     private Transform ptf, tf;
     private Rigidbody prb;
     private bool dodging;
@@ -106,15 +107,21 @@ public class PlayerController : MonoBehaviour
     public Camera cs;
 
     public List<GameObject> prefabs;
+    private List<GameObject> nextRoom, curRoom;
+    private int curInd;
 
     private character child;
 
     void Start()
     {
+
         rb = GetComponent<Rigidbody>();
         tf = GetComponent<Transform>();
         setNum(playerNum);
         child = tf.GetChild(0).GetComponent<character>();
+
+        curRoom.Add(prefabs[0]);
+        curRoom.Add(prefabs[1]);
 //            if (playerNum == 0)
 //                playerNum = 1;
     }
