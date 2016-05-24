@@ -485,9 +485,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a53b3fa93b391f4da04e587477ad64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  wandTimer: 1
---- !u!114 &807370640
+  wandTimer: 2
+--- !u!114 &807370639
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -495,13 +494,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 807370637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61e314dcb8808db4ca6ff0755dfe3592, type: 3}
+  m_Script: {fileID: 11500000, guid: a650f5f8fb65ebf43bf05f5221946286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRange: 10
+  targetLoc: {x: 0, y: 0, z: 0}
   moveSpeed: 5
-  playerFieldOfViewAngle: 35
-  test: {fileID: 132590, guid: a9884bed5291cd141bdf3675c44e39d4, type: 2}
 --- !u!54 &807370641
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -751,6 +748,7 @@ Prefab:
     - {fileID: 5471420, guid: bf1b486b251ce2740b4db50e3b755af3, type: 2}
     - {fileID: 11455444, guid: bf1b486b251ce2740b4db50e3b755af3, type: 2}
     - {fileID: 11472332, guid: bf1b486b251ce2740b4db50e3b755af3, type: 2}
+    - {fileID: 11488428, guid: bf1b486b251ce2740b4db50e3b755af3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: bf1b486b251ce2740b4db50e3b755af3, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1648434562 stripped

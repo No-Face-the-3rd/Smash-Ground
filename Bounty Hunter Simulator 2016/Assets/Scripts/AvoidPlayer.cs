@@ -1,22 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof(driveToTarget))]
 public class AvoidPlayer : MonoBehaviour
 {
     private GameObject[] players;
     private Transform tf;
-    private Rigidbody rb;
-    public float maxRange;
-    public float moveSpeed;
+    public float maxRadiusForAvoid;
     public float playerFieldOfViewAngle;
     private Vector3 playerDirection;
-
-    public GameObject test;
+    private driveToTarget travelLoc;
 
 	// Use this for initialization
 	void Start ()
     {
-        rb = GetComponent<Rigidbody>();
+        travelLoc = GetComponent<driveToTarget>();
         tf = GetComponent<Transform>();
 	}
 	
@@ -30,7 +28,7 @@ public class AvoidPlayer : MonoBehaviour
         {
             float startRad = Vector3.Distance(tf.position, players[i].transform.position);
             float tmpDist = Vector3.Distance(tf.position, players[i].transform.position);
-            if (startRad < maxRange) //if within distance of radius, range too large
+            if (startRad < maxRadiusForAvoid) //if within distance of radius, range too large
             {
                 if (tmpDist < minDist) //if the new player position is closer, set minimum distance to tmpDist && set target to i
                 {
@@ -54,13 +52,16 @@ public class AvoidPlayer : MonoBehaviour
 
         if(angle < playerFieldOfViewAngle * 0.5f)
         {
-            GameObject tmp = (GameObject)Instantiate(test, tf.position + tf.forward * 0.5f + new Vector3(0.0f,1,0.0f),
-                    Quaternion.LookRotation(tf.forward));
-            tmp.layer = 11;
+            if(Vector3.Distance(travelLoc.targetLoc, tf.position) < 0.80f)
+            {
+                travelLoc.targetLoc.x = transform.position.x + (Random.insideUnitCircle.x * 5);
+                travelLoc.targetLoc.z = transform.position.z + (Random.insideUnitCircle.y * 5);
+            }
         }
     }
 }
 
+//DONE
 //vector3.angle
 //pass in two vectors, vector to the player && player forward 
 // if this angle is < half the FOV angle then the enemy is within the field of view
