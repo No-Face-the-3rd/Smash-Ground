@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Char1 : character {
+public class CharUnchanged : character
+{
 
-    
-	
+
 
 }
