@@ -498,7 +498,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLoc: {x: 0, y: 0, z: 0}
-  moveSpeed: 5
+  moveSpeed: 2
+--- !u!114 &807370640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 807370637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6822642fffe05514f8f19f1acd2ab03f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPre: {fileID: 132590, guid: a9884bed5291cd141bdf3675c44e39d4, type: 2}
+  bulletYOffset: {x: 0, y: 1, z: 0}
+  bulletSpawnOffset: 1
+  maxRange: 10
+  fireDelay: 2
 --- !u!54 &807370641
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -514,6 +530,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &807370642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 807370637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cda34fecda9e364ab222dc73eb538a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movePursueRadiusWithSelf: 1
+  players: []
+  maxRadiusForPursue: 5
+  attackRange: 0.1
 --- !u!1 &863610363
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &863610364
 Transform:
   m_ObjectHideFlags: 0
@@ -673,6 +704,7 @@ MonoBehaviour:
   dodgeTime: 0
   primaryPref: {fileID: 0}
   secondaryPref: {fileID: 0}
+  camTarget: {x: 0, y: 0, z: 0}
 --- !u!1001 &1573120737
 Prefab:
   m_ObjectHideFlags: 0
