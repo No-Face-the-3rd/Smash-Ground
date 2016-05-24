@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TVscript : MonoBehaviour {
-
-
+public class TVscript : MonoBehaviour
+{
+   
     private int colorChange;
     private Material material;
 

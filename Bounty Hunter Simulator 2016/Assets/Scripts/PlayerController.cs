@@ -109,6 +109,7 @@ public class PlayerController : MonoBehaviour
     private float primaryIn, secondaryIn, dodgeIn;
     private Rigidbody rb;
     private Transform tf;
+    [SerializeField]
     private Vector3 csTarg;
     public Camera cs;
     private float camDist;
@@ -134,7 +135,7 @@ public class PlayerController : MonoBehaviour
 
         curRoom.Add(0);
         curRoom.Add(1);
-        curRoom.Add(0);
+        curRoom.Add(2);
         curRoom.Add(0);
         curChar = (GameObject)Instantiate(charDB.GetComponent<CharacterDB>().charDB[curRoom[curInd]], Vector3.zero, Quaternion.LookRotation(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f)));
         curChar.layer = 11 + playerNum;
