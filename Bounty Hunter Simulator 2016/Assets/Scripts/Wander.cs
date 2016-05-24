@@ -1,36 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof (driveToTarget))]
 public class Wander : MonoBehaviour
 {
     #region Agent info
-    private Vector3 startLoc, wanderLoc;
-    private Transform tf;
-    public float moveSpeed;
+    private Vector3 startLoc;
+    private driveToTarget wanderLoc;
     public float wandTimer;
     private float originalTimer;
     #endregion
-
-    // Use this for initialization
     void Start ()
     {
-        tf = GetComponent<Transform>();
         originalTimer = wandTimer;
-        wanderLoc = startLoc = tf.position;
+        wanderLoc = GetComponent<driveToTarget>();
+        startLoc = wanderLoc.targetLoc;
 	}
-	
-	// Update is called once per frame
 	void Update ()
     {
         wandTimer -= Time.deltaTime;
-        tf.LookAt(wanderLoc);
-        tf.position += tf.forward * moveSpeed * Time.deltaTime;
-        if (Vector3.Distance(wanderLoc, tf.position) < .25f || wandTimer <= 0)
+        if (/*Vector3.Distance(wanderLoc.targetLoc, transform.position) < 0.80f ||*/ wandTimer <= 0)
         {
             wandTimer = originalTimer;
-            startLoc = wanderLoc;
-            wanderLoc.x = startLoc.x + (Random.insideUnitCircle.x * 5);
-            wanderLoc.z = startLoc.z + (Random.insideUnitCircle.y * 5);
+            startLoc = wanderLoc.targetLoc;
+            wanderLoc.targetLoc.x = startLoc.x + (Random.insideUnitCircle.x * 5);
+            wanderLoc.targetLoc.z = startLoc.z + (Random.insideUnitCircle.y * 5);
         }
     }
 }
+
+//DONE

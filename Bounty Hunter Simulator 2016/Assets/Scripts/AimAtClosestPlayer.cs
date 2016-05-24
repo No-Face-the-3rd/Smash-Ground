@@ -58,17 +58,15 @@ public class AimAtClosestPlayer : MonoBehaviour
 
     void Aim(int _target)
     {
-        if (_target >= 0)
+        tf.LookAt(players[_target].transform.position);
+        tf.forward = new Vector3(tf.forward.x, 0, tf.forward.z);
+        fireDelay -= Time.deltaTime;
+        if (fireDelay <= 0)
         {
-            tf.LookAt(players[_target].transform.position);
-            fireDelay -= Time.deltaTime;
-            if (fireDelay <= 0)
-            {
-                fireDelay = originalTimer;
-                GameObject tmp = (GameObject)Instantiate(bulletPre, tf.position + tf.forward * bulletSpawnOffset + bulletYOffset, 
+            fireDelay = originalTimer;
+            GameObject tmp = (GameObject)Instantiate(bulletPre, tf.position + tf.forward * bulletSpawnOffset + bulletYOffset,
                     Quaternion.LookRotation(tf.forward));
-                tmp.layer = 11;
-            }
+            tmp.layer = 11;
         }
     }
 }
