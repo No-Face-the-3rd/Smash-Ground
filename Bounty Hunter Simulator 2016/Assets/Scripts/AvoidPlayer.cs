@@ -8,7 +8,7 @@ public class AvoidPlayer : MonoBehaviour
     private Transform tf;
     public float maxRadiusForAvoid;
     public float playerFieldOfViewAngle;
-    private Vector3 playerDirection;
+    private Vector3 playerDirection, directionToPlayer;
     private driveToTarget travelLoc;
 
 	// Use this for initialization
@@ -26,9 +26,9 @@ public class AvoidPlayer : MonoBehaviour
         int target = -1;
         for (int i = 0; i < players.Length; ++i)
         {
-            float startRad = Vector3.Distance(tf.position, players[i].transform.position);
-            float tmpDist = Vector3.Distance(tf.position, players[i].transform.position);
-            if (startRad < maxRadiusForAvoid) //if within distance of radius, range too large
+            directionToPlayer = players[i].transform.position - transform.position;
+            float tmpDist = directionToPlayer.magnitude;
+            if (tmpDist < maxRadiusForAvoid) //if within distance of radius, range too large
             {
                 if (tmpDist < minDist) //if the new player position is closer, set minimum distance to tmpDist && set target to i
                 {

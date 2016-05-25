@@ -7,7 +7,7 @@ public class PursuePlayer : MonoBehaviour
     //;
     private Vector3 startLoc, directionToPlayer, checkLoc;
     public bool movePursueRadiusWithSelf;
-    public GameObject[] players;
+    public PlayerLocator playerLocator;
     public float maxRadiusForPursue;
     public float attackRange;
     private driveToTarget pursueLoc;
@@ -20,6 +20,7 @@ public class PursuePlayer : MonoBehaviour
             checkLoc = transform.position;
         }
         pursueLoc = GetComponent<driveToTarget>();
+        playerLocator = FindObjectOfType<PlayerLocator>(); //get the active players
 	}
 	
 	// Update is called once per frame
@@ -29,12 +30,12 @@ public class PursuePlayer : MonoBehaviour
         {
             checkLoc = transform.position;
         }
-        players = GameObject.FindGameObjectsWithTag("Player"); //get the active players
+
         float minDist = float.MaxValue;
         int target = -1;
-        for (int i = 0; i < players.Length; ++i)
+        for (int i = 0; i < playerLocator.players.Length; ++i)
         {
-            directionToPlayer = players[i].transform.position - checkLoc;
+            directionToPlayer = playerLocator.players[i].transform.position - checkLoc;
             float tmpDist = directionToPlayer.magnitude;
             if (tmpDist < maxRadiusForPursue) //if within distance of radius
             {
@@ -67,7 +68,7 @@ public class PursuePlayer : MonoBehaviour
 
     void Pursue(int _target)
     {
-        pursueLoc.targetLoc = players[_target].transform.position + directionToPlayer.normalized * attackRange;
+        pursueLoc.targetLoc = playerLocator.players[_target].transform.position + directionToPlayer.normalized * attackRange;
     }
 }
 
