@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Rigidbody))]
 public class driveToTarget : MonoBehaviour {
 
     public Vector3 targetLoc;
     public float moveSpeed;
     private Rigidbody rb;
-
-    // Use this for initialization
     void Start ()
     {
         rb = GetComponent<Rigidbody>();
@@ -16,11 +15,9 @@ public class driveToTarget : MonoBehaviour {
             targetLoc = transform.position;
         }
 	}
-	
-	// Update is called once per frame
 	void Update ()
     {
-        if (Vector3.Distance(targetLoc, transform.position) > 0.50f)
+        if (Vector3.Distance(targetLoc, transform.position) > 0.80f)
         {
             transform.LookAt(targetLoc);
             transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z);

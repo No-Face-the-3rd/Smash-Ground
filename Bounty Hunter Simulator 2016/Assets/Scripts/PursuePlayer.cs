@@ -4,15 +4,17 @@ using System.Collections;
 [RequireComponent(typeof(driveToTarget))]
 public class PursuePlayer : MonoBehaviour
 {
-    //;
-    private Vector3 startLoc, directionToPlayer, checkLoc;
+    #region Agent Info
+
+    private Vector3 directionToPlayer, checkLoc;
     public bool movePursueRadiusWithSelf;
     public PlayerLocator playerLocator;
-    public float maxRadiusForPursue;
+    public float maxRadiusPursue;
     public float attackRange;
     private driveToTarget pursueLoc;
 
-    // Use this for initialization
+    #endregion
+
     void Start ()
     {
         if(!movePursueRadiusWithSelf)
@@ -22,8 +24,6 @@ public class PursuePlayer : MonoBehaviour
         pursueLoc = GetComponent<driveToTarget>();
         playerLocator = FindObjectOfType<PlayerLocator>(); //get the active players
 	}
-	
-	// Update is called once per frame
 	void Update ()
     {
         if(movePursueRadiusWithSelf)
@@ -37,7 +37,7 @@ public class PursuePlayer : MonoBehaviour
         {
             directionToPlayer = playerLocator.players[i].transform.position - checkLoc;
             float tmpDist = directionToPlayer.magnitude;
-            if (tmpDist < maxRadiusForPursue) //if within distance of radius
+            if (tmpDist < maxRadiusPursue) //if within distance of radius
             {
                 if (tmpDist < minDist) //if the new player position is closer, set minimum distance to tmpDist && set target to i
                 {
@@ -65,7 +65,6 @@ public class PursuePlayer : MonoBehaviour
                 wandBehavior.enabled = true;
         }
     }
-
     void Pursue(int _target)
     {
         pursueLoc.targetLoc = playerLocator.players[_target].transform.position + directionToPlayer.normalized * attackRange;
