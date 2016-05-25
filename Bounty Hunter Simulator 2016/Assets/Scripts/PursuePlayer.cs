@@ -1,31 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(driveToTarget))]
 public class PursuePlayer : MonoBehaviour
 {
-    private Vector3 targetDirection;
-    private Transform tf;
+    //;
+    private Vector3 startLoc, directionToPlayer, checkLoc;
+    public bool movePursueRadiusWithSelf;
     public GameObject[] players;
-    public float maxRange;
-    public float moveSpeed;
+    public float maxRadiusForPursue;
+    public float attackRange;
+    private driveToTarget pursueLoc;
 
     // Use this for initialization
     void Start ()
     {
-        tf = GetComponent<Transform>();
+        if(!movePursueRadiusWithSelf)
+        {
+            checkLoc = transform.position;
+        }
+        pursueLoc = GetComponent<driveToTarget>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if(movePursueRadiusWithSelf)
+        {
+            checkLoc = transform.position;
+        }
         players = GameObject.FindGameObjectsWithTag("Player"); //get the active players
         float minDist = float.MaxValue;
         int target = -1;
         for (int i = 0; i < players.Length; ++i)
         {
-            float startRad = Vector3.Distance(tf.position, players[i].transform.position);
-            float tmpDist = Vector3.Distance(tf.position, players[i].transform.position);
-            if (startRad < maxRange) //if within distance of radius, range too large
+            directionToPlayer = players[i].transform.position - checkLoc;
+            float tmpDist = directionToPlayer.magnitude;
+            if (tmpDist < maxRadiusForPursue) //if within distance of radius
             {
                 if (tmpDist < minDist) //if the new player position is closer, set minimum distance to tmpDist && set target to i
                 {
@@ -56,14 +67,11 @@ public class PursuePlayer : MonoBehaviour
 
     void Pursue(int _target)
     {
-        if (_target >= 0)
-        {
-            tf.LookAt(players[_target].transform);
-            tf.position += tf.forward * moveSpeed * Time.deltaTime;
-        }
+        pursueLoc.targetLoc = players[_target].transform.position + directionToPlayer.normalized * attackRange;
     }
 }
 
+//DONE
 /*
     public class EnemyMelee2 : MonoBehaviour
 {
