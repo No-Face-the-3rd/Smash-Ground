@@ -69,14 +69,16 @@ public class character : MonoBehaviour
 
     public virtual void doPrimary()
     {
-        GameObject tmp = (GameObject)Instantiate(primaryPref, tf.position + tf.forward * 0.5f + new Vector3(0.0f, 0.5f, 0.0f), Quaternion.LookRotation(primaryPref.transform.forward));
+        GameObject tmp = (GameObject)Instantiate(primaryPref, tf.position + tf.forward * primaryPref.GetComponent<Bullet>().spawnOffsetLength + primaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward));
         tmp.layer = 9;
+        tmp.GetComponent<Bullet>().owner = transform.parent.GetComponent<PlayerController>().playerNum;
     }
 
     public virtual void doSecondary()
     {
-        GameObject tmp = (GameObject)Instantiate(secondaryPref, tf.position + tf.forward * 0.5f + new Vector3(0.0f, 0.5f, 0.0f), Quaternion.LookRotation(secondaryPref.transform.forward));
+        GameObject tmp = (GameObject)Instantiate(secondaryPref, tf.position + tf.forward * secondaryPref.GetComponent<Bullet>().spawnOffsetLength + secondaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward));
         tmp.layer = 9;
+        tmp.GetComponent<Bullet>().owner = transform.parent.GetComponent<PlayerController>().playerNum;
     }
 
     public virtual void doDodge()
@@ -109,7 +111,6 @@ public class PlayerController : MonoBehaviour
     private float primaryIn, secondaryIn, dodgeIn;
     private Rigidbody rb;
     private Transform tf;
-    [SerializeField]
     private Vector3 csTarg;
     public Camera cs;
     private float camDist;
@@ -127,6 +128,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        charDB = FindObjectOfType<CharacterDB>().gameObject;
         charSelUsed = false;
         curInd = 0;
         charChoose = false;
@@ -136,12 +138,16 @@ public class PlayerController : MonoBehaviour
         curRoom.Add(0);
         curRoom.Add(1);
         curRoom.Add(2);
-        curRoom.Add(0);
+        curRoom.Add(3);
         curChar = (GameObject)Instantiate(charDB.GetComponent<CharacterDB>().charDB[curRoom[curInd]], Vector3.zero, Quaternion.LookRotation(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f)));
         curChar.layer = 11 + playerNum;
         for (int i = 0; i < curChar.transform.childCount; i++)
         {
             curChar.transform.GetChild(i).gameObject.layer = 11 + playerNum;
+            for (int j = 0; j < curChar.transform.GetChild(i).childCount; j++)
+            {
+                curChar.transform.GetChild(i).GetChild(j).gameObject.layer = 11 + playerNum;
+            }
         }
 
         rb = GetComponent<Rigidbody>();
@@ -266,9 +272,9 @@ public class PlayerController : MonoBehaviour
         }
         if (Mathf.Abs(horizFace) > Mathf.Epsilon || Mathf.Abs(vertFace) > Mathf.Epsilon)
             tf.forward = new Vector3(horizFace, 0.0f, vertFace);
-
+        float tmp = rb.velocity.y;
         rb.velocity = Vector3.Normalize(new Vector3(horizMove, -0.0f, vertMove)) * (GetComponent<PlayerController>().speed + child.speed);
-        rb.velocity = new Vector3(rb.velocity.x, Physics.gravity.y * 10.0f * Time.deltaTime, rb.velocity.z);
+        rb.velocity = new Vector3(rb.velocity.x, tmp, rb.velocity.z);
     }
 
     void selectCharacter()
@@ -299,6 +305,10 @@ public class PlayerController : MonoBehaviour
             for(int i = 0;i < nextChar.transform.childCount;i++)
             {
                 nextChar.transform.GetChild(i).gameObject.layer = 11 + playerNum;
+                for (int j = 0; j < nextChar.transform.GetChild(i).childCount; j++)
+                {
+                    nextChar.transform.GetChild(i).GetChild(j).gameObject.layer = 11 + playerNum;
+                }
             }
         }
         if (charChoose)
