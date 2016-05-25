@@ -139,6 +139,7 @@ public class PlayerController : MonoBehaviour
         curRoom.Add(1);
         curRoom.Add(2);
         curRoom.Add(3);
+        curRoom.Add(4);
         curChar = (GameObject)Instantiate(charDB.GetComponent<CharacterDB>().charDB[curRoom[curInd]], Vector3.zero, Quaternion.LookRotation(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f)));
         curChar.layer = 11 + playerNum;
         for (int i = 0; i < curChar.transform.childCount; i++)

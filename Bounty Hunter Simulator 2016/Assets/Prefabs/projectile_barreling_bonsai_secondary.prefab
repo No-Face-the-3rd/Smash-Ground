@@ -28,8 +28,9 @@ GameObject:
   - 4: {fileID: 487212}
   - 54: {fileID: 5478278}
   - 114: {fileID: 11458024}
+  - 135: {fileID: 13534244}
   m_Layer: 0
-  m_Name: Pinecone(Caltrop)
+  m_Name: projectile_barreling_bonsai_secondary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,12 +139,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: 0
   damage: 1
+  numTargets: 1
   speed: 0
   upForce: 0
   lifetime: 5
   spawnOffsetHeight: {x: 0, y: 0.25, z: 0}
-  spawnOffsetLength: -1.5
+  spawnOffsetLength: -1
   rotateRate: {x: 0, y: 15, z: 15}
+--- !u!135 &13534244
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163530}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.35
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -169,7 +183,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spawnOffsetLength
-      value: -1.5
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: rotateRate.y
@@ -178,6 +192,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: rotateRate.z
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: numTargets
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
