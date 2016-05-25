@@ -109,7 +109,6 @@ public class PlayerController : MonoBehaviour
     private float primaryIn, secondaryIn, dodgeIn;
     private Rigidbody rb;
     private Transform tf;
-    [SerializeField]
     private Vector3 csTarg;
     public Camera cs;
     private float camDist;
@@ -127,6 +126,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        charDB = FindObjectOfType<CharacterDB>().gameObject;
         charSelUsed = false;
         curInd = 0;
         charChoose = false;
@@ -136,12 +136,16 @@ public class PlayerController : MonoBehaviour
         curRoom.Add(0);
         curRoom.Add(1);
         curRoom.Add(2);
-        curRoom.Add(0);
+        curRoom.Add(3);
         curChar = (GameObject)Instantiate(charDB.GetComponent<CharacterDB>().charDB[curRoom[curInd]], Vector3.zero, Quaternion.LookRotation(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f)));
         curChar.layer = 11 + playerNum;
         for (int i = 0; i < curChar.transform.childCount; i++)
         {
             curChar.transform.GetChild(i).gameObject.layer = 11 + playerNum;
+            for (int j = 0; j < curChar.transform.GetChild(i).childCount; j++)
+            {
+                curChar.transform.GetChild(i).GetChild(j).gameObject.layer = 11 + playerNum;
+            }
         }
 
         rb = GetComponent<Rigidbody>();
@@ -299,6 +303,10 @@ public class PlayerController : MonoBehaviour
             for(int i = 0;i < nextChar.transform.childCount;i++)
             {
                 nextChar.transform.GetChild(i).gameObject.layer = 11 + playerNum;
+                for (int j = 0; j < nextChar.transform.GetChild(i).childCount; j++)
+                {
+                    nextChar.transform.GetChild(i).GetChild(j).gameObject.layer = 11 + playerNum;
+                }
             }
         }
         if (charChoose)
