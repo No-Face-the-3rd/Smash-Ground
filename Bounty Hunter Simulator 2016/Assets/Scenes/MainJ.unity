@@ -866,6 +866,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1622,7 +1623,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 494214, guid: aa2e676262b889946ace3e78e873a33c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 494214, guid: aa2e676262b889946ace3e78e873a33c, type: 2}
       propertyPath: m_LocalPosition.z

@@ -48,5 +48,10 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
+        numTargets--;
+    }
 
 }

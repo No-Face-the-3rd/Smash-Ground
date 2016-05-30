@@ -42,6 +42,7 @@ GameObject:
   - 4: {fileID: 443004}
   - 95: {fileID: 9522554}
   - 114: {fileID: 11416582}
+  - 135: {fileID: 13507294}
   m_Layer: 0
   m_Name: char_archer_alan
   m_TagString: Untagged
@@ -243,6 +244,20 @@ MonoBehaviour:
   primaryPref: {fileID: 145350, guid: 766a7848770577b4b8bcabae29e6b7b8, type: 2}
   secondaryPref: {fileID: 151884, guid: d2e07dedf745c1549b5372a9c1aed914, type: 2}
   camTarget: {x: 0, y: 3, z: 0}
+  arrayIndex: 4
+  owner: 0
+--- !u!135 &13507294
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111356}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

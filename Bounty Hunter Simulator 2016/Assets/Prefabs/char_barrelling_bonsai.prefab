@@ -12,6 +12,7 @@ GameObject:
   - 199: {fileID: 19968722}
   - 198: {fileID: 19879706}
   - 114: {fileID: 11448970}
+  - 135: {fileID: 13570992}
   m_Layer: 0
   m_Name: char_barrelling_bonsai
   m_TagString: Untagged
@@ -207,6 +208,20 @@ MonoBehaviour:
   primaryPref: {fileID: 187692, guid: fc5d473be7e4c4c4290efc90bf0eb216, type: 2}
   secondaryPref: {fileID: 163530, guid: 8b03f85433d0fb148b6c16574e2017b3, type: 2}
   camTarget: {x: 0, y: 3.5, z: 0}
+  arrayIndex: 0
+  owner: 0
+--- !u!135 &13570992
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126986}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &19879706
 ParticleSystem:
   m_ObjectHideFlags: 1
