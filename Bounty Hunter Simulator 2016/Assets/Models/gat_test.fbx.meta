@@ -1,0 +1,399 @@
+fileFormatVersion: 2
+guid: 123ad4623cc74ec46805f6d1f7a51da5
+timeCreated: 1464130630
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: gat_bot
+    100002: gat_cog
+    100004: gat_l_foot
+    100006: gat_l_hip
+    100008: gat_l_knee
+    100010: gat_l_toe
+    100012: gat_pelvis
+    100014: gat_r_foot
+    100016: gat_r_hip
+    100018: gat_r_knee
+    100020: gat_r_toe
+    100022: gat_spine1
+    100024: gat_spine2
+    100026: //RootNode
+    100028: skel_grp
+    400000: gat_bot
+    400002: gat_cog
+    400004: gat_l_foot
+    400006: gat_l_hip
+    400008: gat_l_knee
+    400010: gat_l_toe
+    400012: gat_pelvis
+    400014: gat_r_foot
+    400016: gat_r_hip
+    400018: gat_r_knee
+    400020: gat_r_toe
+    400022: gat_spine1
+    400024: gat_spine2
+    400026: //RootNode
+    400028: skel_grp
+    4300000: gat_bot
+    7400000: walking
+    7400002: idle
+    7400004: shooting
+    7400006: walk_shooting
+    7400008: death
+    9500000: //RootNode
+    13700000: gat_bot
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: gat_bot
+        weight: 1
+      - path: skel_grp
+        weight: 1
+      - path: skel_grp/gat_cog
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip/gat_l_knee
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip/gat_l_knee/gat_l_foot
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip/gat_l_knee/gat_l_foot/gat_l_toe
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip/gat_r_knee
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip/gat_r_knee/gat_r_foot
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip/gat_r_knee/gat_r_foot/gat_r_toe
+        weight: 1
+      - path: skel_grp/gat_cog/gat_spine1
+        weight: 1
+      - path: skel_grp/gat_cog/gat_spine1/gat_spine2
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: walking
+      takeName: Take 001
+      firstFrame: 20
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: gat_bot
+        weight: 1
+      - path: skel_grp
+        weight: 1
+      - path: skel_grp/gat_cog
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip/gat_l_knee
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip/gat_l_knee/gat_l_foot
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip/gat_l_knee/gat_l_foot/gat_l_toe
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip/gat_r_knee
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip/gat_r_knee/gat_r_foot
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip/gat_r_knee/gat_r_foot/gat_r_toe
+        weight: 1
+      - path: skel_grp/gat_cog/gat_spine1
+        weight: 1
+      - path: skel_grp/gat_cog/gat_spine1/gat_spine2
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: shooting
+      takeName: Take 001
+      firstFrame: 46
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: gat_bot
+        weight: 1
+      - path: skel_grp
+        weight: 1
+      - path: skel_grp/gat_cog
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip/gat_l_knee
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip/gat_l_knee/gat_l_foot
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip/gat_l_knee/gat_l_foot/gat_l_toe
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip/gat_r_knee
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip/gat_r_knee/gat_r_foot
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip/gat_r_knee/gat_r_foot/gat_r_toe
+        weight: 1
+      - path: skel_grp/gat_cog/gat_spine1
+        weight: 1
+      - path: skel_grp/gat_cog/gat_spine1/gat_spine2
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: walk_shooting
+      takeName: Take 001
+      firstFrame: 62
+      lastFrame: 82
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: gat_bot
+        weight: 1
+      - path: skel_grp
+        weight: 1
+      - path: skel_grp/gat_cog
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip/gat_l_knee
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip/gat_l_knee/gat_l_foot
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip/gat_l_knee/gat_l_foot/gat_l_toe
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip/gat_r_knee
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip/gat_r_knee/gat_r_foot
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip/gat_r_knee/gat_r_foot/gat_r_toe
+        weight: 1
+      - path: skel_grp/gat_cog/gat_spine1
+        weight: 1
+      - path: skel_grp/gat_cog/gat_spine1/gat_spine2
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: death
+      takeName: Take 001
+      firstFrame: 90
+      lastFrame: 111
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: gat_bot
+        weight: 1
+      - path: skel_grp
+        weight: 1
+      - path: skel_grp/gat_cog
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip/gat_l_knee
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip/gat_l_knee/gat_l_foot
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_l_hip/gat_l_knee/gat_l_foot/gat_l_toe
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip/gat_r_knee
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip/gat_r_knee/gat_r_foot
+        weight: 1
+      - path: skel_grp/gat_cog/gat_pelvis/gat_r_hip/gat_r_knee/gat_r_foot/gat_r_toe
+        weight: 1
+      - path: skel_grp/gat_cog/gat_spine1
+        weight: 1
+      - path: skel_grp/gat_cog/gat_spine1/gat_spine2
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
