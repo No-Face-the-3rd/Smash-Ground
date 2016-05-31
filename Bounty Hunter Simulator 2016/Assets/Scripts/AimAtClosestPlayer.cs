@@ -6,24 +6,28 @@ public class AimAtClosestPlayer : MonoBehaviour
     #region Agent Info
 
     private Transform tf;
-    private GameObject[] players;
-    public GameObject bulletPre;
-    public Vector3 bulletYOffset;
-    public float bulletSpawnOffset;
-    public float maxRange;
+    public PlayerLocator playerLocator;
+    public GameObject attackPre;
+    public Vector3 attackYOffset;
+    public float attackSpawnOffset;
+    public float maxRadiusForAim;
     public float fireDelay;
     private float originalTimer;
+    public float attackRange; // little bigger than actual attack distance
+    private Vector3 directionToPlayer;
 
     #endregion
 
-    // Use this for initialization
     void Start ()
     {
         tf = GetComponent<Transform>();
         originalTimer = fireDelay;
+        playerLocator = GameObject.FindObjectOfType<PlayerLocator>();
+
+        //attackSpawnOffset = attackPre.GetComponent<Bullet>().spawnOffsetLength;
+        //attackYOffset = attackPre.GetComponent<Bullet>().spawnOffsetHeight;
     }
-	
-	// Update is called once per frame
+
 	void Update ()
     {
         ShootBehavior();
@@ -32,15 +36,14 @@ public class AimAtClosestPlayer : MonoBehaviour
     void ShootBehavior()
     {
         float minDist = float.MaxValue;
-        players = GameObject.FindGameObjectsWithTag("Player"); // get active players
         int target = -1;
 
-        for (int i = 0; i < players.Length; ++i)
+        for (int i = 0; i < playerLocator.players.Length; ++i)
         {
-            float startRad = Vector3.Distance(tf.position, players[i].transform.position);
-            float tmpDist = Vector3.Distance(tf.position, players[i].transform.position);
+            directionToPlayer = (playerLocator.players[i].transform.position - tf.position);
+            float tmpDist = directionToPlayer.magnitude;
 
-            if (startRad < maxRange)
+            if (tmpDist < maxRadiusForAim)
             {
                 if (tmpDist < minDist)
                 {
@@ -58,15 +61,16 @@ public class AimAtClosestPlayer : MonoBehaviour
 
     void Aim(int _target)
     {
-        tf.LookAt(players[_target].transform.position);
+        tf.LookAt(playerLocator.players[_target].transform.position);
         tf.forward = new Vector3(tf.forward.x, 0, tf.forward.z);
         fireDelay -= Time.deltaTime;
-        if (fireDelay <= 0)
+        if (fireDelay <= 0 && directionToPlayer.magnitude <= attackRange)
         {
             fireDelay = originalTimer;
-            GameObject tmp = (GameObject)Instantiate(bulletPre, tf.position + tf.forward * bulletSpawnOffset + bulletYOffset,
+            GameObject tmp = (GameObject)Instantiate(attackPre, tf.position + tf.forward * attackSpawnOffset + attackYOffset,
                     Quaternion.LookRotation(tf.forward));
             tmp.layer = 11;
+  //          tmp.GetComponent<Bullet>().owner = -1;
         }
     }
 }
