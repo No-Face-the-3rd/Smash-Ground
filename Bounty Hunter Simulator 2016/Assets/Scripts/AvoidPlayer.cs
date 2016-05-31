@@ -4,31 +4,31 @@ using System.Collections;
 [RequireComponent (typeof(driveToTarget))]
 public class AvoidPlayer : MonoBehaviour
 {
-    private GameObject[] players;
+    #region Agent Info
+
+    public PlayerLocator playerLocator;
     private Transform tf;
-    public float maxRadiusForAvoid;
+    public float maxRadiusAvoid;
     public float playerFieldOfViewAngle;
-    private Vector3 playerDirection;
+    private Vector3 playerDirection, directionToPlayer;
     private driveToTarget travelLoc;
 
-	// Use this for initialization
-	void Start ()
+    #endregion
+    void Start ()
     {
         travelLoc = GetComponent<driveToTarget>();
         tf = GetComponent<Transform>();
-	}
-	
-	// Update is called once per frame
+        playerLocator = GameObject.FindObjectOfType<PlayerLocator>();
+    }
 	void Update ()
     {
-        players = GameObject.FindGameObjectsWithTag("Player"); //get the active players
         float minDist = float.MaxValue;
         int target = -1;
-        for (int i = 0; i < players.Length; ++i)
+        for (int i = 0; i < playerLocator.players.Length; ++i)
         {
-            float startRad = Vector3.Distance(tf.position, players[i].transform.position);
-            float tmpDist = Vector3.Distance(tf.position, players[i].transform.position);
-            if (startRad < maxRadiusForAvoid) //if within distance of radius, range too large
+            directionToPlayer = playerLocator.players[i].transform.position - transform.position;
+            float tmpDist = directionToPlayer.magnitude;
+            if (tmpDist < maxRadiusAvoid) //if within distance of radius, range too large
             {
                 if (tmpDist < minDist) //if the new player position is closer, set minimum distance to tmpDist && set target to i
                 {
@@ -44,11 +44,10 @@ public class AvoidPlayer : MonoBehaviour
         }
         
 	}
-
     void AvoidPlayerDirection(int _target)
     {
-        playerDirection = (tf.position - players[_target].transform.position);
-        float angle = Vector3.Angle(playerDirection, players[_target].transform.forward);
+        playerDirection = (tf.position - playerLocator.players[_target].transform.position);
+        float angle = Vector3.Angle(playerDirection, playerLocator.players[_target].transform.forward);
 
         if(angle < playerFieldOfViewAngle * 0.5f)
         {
