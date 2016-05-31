@@ -2,10 +2,12 @@
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Collider))]
 public class Bullet : MonoBehaviour
 {
     public int owner;
     public int damage;
+    public int numTargets;
     public float speed;
     public float upForce;
     public float lifetime;
@@ -39,5 +41,17 @@ public class Bullet : MonoBehaviour
         rb.velocity = Vector3.Normalize(new Vector3(transform.forward.x, 0.0f, transform.forward.z)) * speed;
         rb.velocity = new Vector3(rb.velocity.x, tmp, rb.velocity.z);
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + rotateRate);
+
+        if(numTargets <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
+        numTargets--;
+    }
+
 }

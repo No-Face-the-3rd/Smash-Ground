@@ -1,15 +1,25 @@
 fileFormatVersion: 2
-guid: f5891b4470b4ff844872bcf3bf0ee860
-timeCreated: 1464199718
+guid: 7fcf690586fa2f6409c4e3b121d2af56
+timeCreated: 1464204300
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: pCylinder33
+    100004: pCylinder34
+    100006: pCylinder35
+    100008: transform20
+    100010: transform21
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: projectile_arrow
+    400002: pCylinder33
+    400004: pCylinder34
+    400006: pCylinder35
+    400008: transform20
+    400010: transform21
+    2300000: pCylinder35
+    3300000: pCylinder35
+    4300000: pCylinder35
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -35,7 +45,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.0025
+    globalScale: 35
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

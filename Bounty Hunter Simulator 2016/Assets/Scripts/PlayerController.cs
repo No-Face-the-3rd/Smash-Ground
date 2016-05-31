@@ -16,6 +16,8 @@ public class character : MonoBehaviour
     private Rigidbody prb;
     private bool dodging;
     private Vector3 dodgeDir;
+    public int arrayIndex;
+    public int owner;
     void Start()
     {
         nextPrimary = nextSecondary = nextDodge = 0.0f;
@@ -25,6 +27,23 @@ public class character : MonoBehaviour
             prb = ptf.GetComponent<Rigidbody>();
         dodging = false;
         dodgeDir = new Vector3(0.0f,1.0f,0.0f);
+
+    }
+    void Update()
+    {
+        if (health <= 0)
+        {
+            if (transform.parent != null)
+            {
+                transform.parent = null;
+                transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                GetComponent<Collider>().enabled = true;
+                Vector3 tmp = Vector3.zero;
+                transform.rotation = Quaternion.Euler(Vector3.zero);
+                transform.gameObject.layer = 16;
+            }
+
+        }
     }
     public virtual void processInput(float primary, float secondary, float dodge)
     {
@@ -93,8 +112,6 @@ public class character : MonoBehaviour
     public virtual void getDamage(int damage)
     {
         health -= damage;
-        if (health <= 0)
-            Destroy(gameObject);
     }
 }
 
@@ -116,6 +133,7 @@ public class PlayerController : MonoBehaviour
     private float camDist;
 
     public GameObject charDB;
+    [SerializeField]
     private List<int> nextRoom, curRoom;
     private int curInd, prevInd;
     private GameObject curChar, nextChar;
@@ -139,6 +157,7 @@ public class PlayerController : MonoBehaviour
         curRoom.Add(1);
         curRoom.Add(2);
         curRoom.Add(3);
+        curRoom.Add(4);
         curChar = (GameObject)Instantiate(charDB.GetComponent<CharacterDB>().charDB[curRoom[curInd]], Vector3.zero, Quaternion.LookRotation(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f)));
         curChar.layer = 11 + playerNum;
         for (int i = 0; i < curChar.transform.childCount; i++)
@@ -165,6 +184,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (tf.childCount == 0)
+            child = null;
         horizMove = Input.GetAxis("moveHoriz_P" + playerNum);
         horizFace = Input.GetAxis("faceHoriz_P" + playerNum);
         vertMove = Input.GetAxis("moveVert_P" + playerNum);
@@ -294,13 +315,21 @@ public class PlayerController : MonoBehaviour
 
         if (prevInd != curInd)
         {
+            cycleChar(curInd);
+        }
+        if (charChoose)
+            createChar();
+    }
+
+    void cycleChar(int targetIndex)
+    {
             charSwitching = true;
             if (cs.GetComponent<Transform>().rotation != Quaternion.Euler(new Vector3(0.0f, 180.0f, 0.0f)))
             {
                 cs.GetComponent<Transform>().rotation = Quaternion.Euler(new Vector3(0.0f, 180.0f, 0.0f));
                 cs.GetComponent<Transform>().position = csTarg + -(camDist * cs.GetComponent<Transform>().forward);
             }
-            nextChar = (GameObject)Instantiate(charDB.GetComponent<CharacterDB>().charDB[curRoom[curInd]], new Vector3(-6.2f, 0.0f, 0.0f), Quaternion.LookRotation(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f)));
+            nextChar = (GameObject)Instantiate(charDB.GetComponent<CharacterDB>().charDB[curRoom[targetIndex]], new Vector3(-6.2f, 0.0f, 0.0f), Quaternion.LookRotation(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f)));
             nextChar.layer = 11 + playerNum;
             for(int i = 0;i < nextChar.transform.childCount;i++)
             {
@@ -310,9 +339,7 @@ public class PlayerController : MonoBehaviour
                     nextChar.transform.GetChild(i).GetChild(j).gameObject.layer = 11 + playerNum;
                 }
             }
-        }
-        if (charChoose)
-            createChar();
+
     }
 
     void switchChar()
@@ -327,10 +354,46 @@ public class PlayerController : MonoBehaviour
     {
         GameObject tmp = (GameObject)Instantiate(charDB.GetComponent<CharacterDB>().charDB[curRoom[curInd]], transform.position, transform.rotation);
         tmp.transform.SetParent(transform);
+        tmp.GetComponent<character>().owner = playerNum;
         child = tmp.GetComponent<character>();
         curRoom.RemoveAt(curInd);
         if (curInd > 0)
             curInd--;
+        GetComponent<Collider>().enabled = true;
+        rb.useGravity = true;
+    }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == 16)
+        {
+            nextRoom.Add(collision.gameObject.GetComponent<character>().arrayIndex);
+            Destroy(collision.gameObject);
+        }
+        if(collision.gameObject.layer == 11)
+        {
+            child.getDamage(collision.gameObject.GetComponent<Bullet>().damage);
+            if (child.health <= 0)
+            {
+                GetComponent<Collider>().enabled = false;
+                rb.useGravity = false;
+                rb.velocity = Vector3.zero;
+                curInd = 0;
+                cycleChar(curInd);
+            }
+        }
+    }
+
+    void nextRoomCharacterPrep()
+    {
+        for (int i = 0; i < curRoom.Count; i++)
+        {
+            nextRoom.Add(curRoom[i]);
+        }
+        nextRoom.Sort();
+        curInd = 0;
+        curRoom = nextRoom;
+        cycleChar(curInd);
+        nextRoom = new List<int>();
     }
 }
