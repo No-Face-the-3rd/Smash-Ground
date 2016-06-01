@@ -7,18 +7,17 @@ public class character : MonoBehaviour
     public int health;
     public float speed;
     public float primaryDelay, secondaryDelay, dodgeDelay, globalDelay, dodgeSpd, dodgeTime;
-    private float nextPrimary, nextSecondary, nextDodge;
+    protected float nextPrimary, nextSecondary, nextDodge;
     public GameObject primaryPref, secondaryPref;
     public Vector3 camTarget;
 
 
-    private Transform ptf, tf;
-    private Rigidbody prb;
+    protected Transform ptf, tf;
+    protected Rigidbody prb;
     private bool dodging;
     private Vector3 dodgeDir;
     public int arrayIndex;
     public int owner;
-    public float spreadAngle;
     void Start()
     {
         nextPrimary = nextSecondary = nextDodge = 0.0f;
@@ -100,8 +99,8 @@ public class character : MonoBehaviour
         tmp.GetComponent<Bullet>().owner = transform.parent.GetComponent<PlayerController>().playerNum;
         if(transform.parent.GetComponent<PlayerController>().powerup == PlayerController.powerUps.SPREAD)
         {
-            GameObject tmp2 = (GameObject)Instantiate(primaryPref, tf.position + tf.forward * primaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f,spreadAngle,0.0f) * transform.parent.rotation) * primaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f,spreadAngle,0.0f));
-            GameObject tmp3 = (GameObject)Instantiate(primaryPref, tf.position + tf.forward * primaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f, -spreadAngle, 0.0f) * transform.parent.rotation) * primaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f, -spreadAngle, 0.0f));
+            GameObject tmp2 = (GameObject)Instantiate(primaryPref, tf.position + tf.forward * primaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f,primaryPref.GetComponent<Bullet>().spreadAngle,0.0f) * transform.parent.rotation) * primaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f, primaryPref.GetComponent<Bullet>().spreadAngle,0.0f));
+            GameObject tmp3 = (GameObject)Instantiate(primaryPref, tf.position + tf.forward * primaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f, -primaryPref.GetComponent<Bullet>().spreadAngle, 0.0f) * transform.parent.rotation) * primaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f, -primaryPref.GetComponent<Bullet>().spreadAngle, 0.0f));
             tmp2.layer = tmp3.layer = 9;
             tmp2.GetComponent<Bullet>().owner = tmp3.GetComponent<Bullet>().owner = transform.parent.GetComponent<PlayerController>().playerNum;
         }
@@ -114,8 +113,8 @@ public class character : MonoBehaviour
         tmp.GetComponent<Bullet>().owner = transform.parent.GetComponent<PlayerController>().playerNum;
         if (transform.parent.GetComponent<PlayerController>().powerup == PlayerController.powerUps.SPREAD)
         {
-            GameObject tmp2 = (GameObject)Instantiate(secondaryPref, tf.position + tf.forward * secondaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f, spreadAngle, 0.0f) * transform.parent.rotation) * secondaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f, spreadAngle, 0.0f));
-            GameObject tmp3 = (GameObject)Instantiate(secondaryPref, tf.position + tf.forward * secondaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f, -spreadAngle, 0.0f) * transform.parent.rotation) * secondaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f, -spreadAngle, 0.0f));
+            GameObject tmp2 = (GameObject)Instantiate(secondaryPref, tf.position + tf.forward * secondaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f, secondaryPref.GetComponent<Bullet>().spreadAngle, 0.0f) * transform.parent.rotation) * secondaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f, secondaryPref.GetComponent<Bullet>().spreadAngle, 0.0f));
+            GameObject tmp3 = (GameObject)Instantiate(secondaryPref, tf.position + tf.forward * secondaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f, -secondaryPref.GetComponent<Bullet>().spreadAngle, 0.0f) * transform.parent.rotation) * secondaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f, -secondaryPref.GetComponent<Bullet>().spreadAngle, 0.0f));
             tmp2.layer = tmp3.layer = 9;
             tmp2.GetComponent<Bullet>().owner = tmp3.GetComponent<Bullet>().owner = transform.parent.GetComponent<PlayerController>().playerNum;
         }

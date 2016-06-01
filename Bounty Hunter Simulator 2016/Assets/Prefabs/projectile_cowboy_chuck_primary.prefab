@@ -1,77 +1,77 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &153528
+--- !u!1 &165778
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 414830}
-  - 33: {fileID: 3384968}
-  - 23: {fileID: 2339862}
-  - 95: {fileID: 9555328}
+  - 4: {fileID: 437444}
+  - 33: {fileID: 3383604}
+  - 23: {fileID: 2333848}
   m_Layer: 0
-  m_Name: projectile_pinecone
+  m_Name: projectile_bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &163530
+--- !u!1 &168930
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 487212}
-  - 54: {fileID: 5478278}
-  - 114: {fileID: 11458024}
-  - 135: {fileID: 13534244}
+  - 4: {fileID: 443330}
+  - 95: {fileID: 9597620}
+  - 135: {fileID: 13501626}
+  - 54: {fileID: 5429948}
+  - 114: {fileID: 11474034}
   m_Layer: 0
-  m_Name: projectile_barreling_bonsai_secondary
+  m_Name: projectile_cowboy_chuck_primary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &414830
+--- !u!4 &437444
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153528}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: -0.45}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 487212}
-  m_RootOrder: 0
---- !u!4 &487212
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163530}
+  m_GameObject: {fileID: 165778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 443330}
+  m_RootOrder: 0
+--- !u!4 &443330
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168930}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.056706913, y: -0.02, z: 1.4458103}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 414830}
+  - {fileID: 437444}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2339862
+--- !u!23 &2333848
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153528}
+  m_GameObject: {fileID: 165778}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0325b36b50568bd47b11373fb5d0e760, type: 2}
+  - {fileID: 2100000, guid: 04c31f29d1d9d504a9b52d64023aa1ac, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -87,37 +87,37 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3384968
+--- !u!33 &3383604
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153528}
-  m_Mesh: {fileID: 4300002, guid: 039cd7cec41c8844ba688cf2dd4f3dac, type: 3}
---- !u!54 &5478278
+  m_GameObject: {fileID: 165778}
+  m_Mesh: {fileID: 4300000, guid: 5fa0c604e67eedc4da1e575db4539f51, type: 3}
+--- !u!54 &5429948
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163530}
+  m_GameObject: {fileID: 168930}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: Infinity
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!95 &9555328
+--- !u!95 &9597620
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153528}
+  m_GameObject: {fileID: 168930}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 039cd7cec41c8844ba688cf2dd4f3dac, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 5fa0c604e67eedc4da1e575db4539f51, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -126,12 +126,12 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11458024
+--- !u!114 &11474034
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163530}
+  m_GameObject: {fileID: 168930}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4b6f050a48c66e49814f3e2dadbeb7b, type: 3}
@@ -140,19 +140,19 @@ MonoBehaviour:
   owner: 0
   damage: 1
   numTargets: 1
-  speed: 0
+  speed: 5
   upForce: 0
-  lifetime: 5
-  spawnOffsetHeight: {x: 0, y: 0.25, z: 0}
-  spawnOffsetLength: -1
-  rotateRate: {x: 0, y: 15, z: 15}
-  spreadAngle: 125
---- !u!135 &13534244
+  lifetime: 2
+  spawnOffsetHeight: {x: 0, y: 3, z: 0}
+  spawnOffsetLength: 0.25
+  rotateRate: {x: 0, y: 0, z: 10}
+  spreadAngle: 30
+--- !u!135 &13501626
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 163530}
+  m_GameObject: {fileID: 168930}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -165,44 +165,8 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: damage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: lifetime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: spawnOffset.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: spawnOffsetHeight.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: spawnOffsetLength
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: rotateRate.y
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: rotateRate.z
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: numTargets
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: spreadAngle
-      value: 125
-      objectReference: {fileID: 0}
+    m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 163530}
+  m_RootGameObject: {fileID: 168930}
   m_IsPrefabParent: 1

@@ -103,8 +103,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 423590}
   - 95: {fileID: 9573434}
-  - 114: {fileID: 11498846}
   - 135: {fileID: 13531666}
+  - 114: {fileID: 11416992}
   m_Layer: 0
   m_Name: char_cowboy_chuck
   m_TagString: Untagged
@@ -586,7 +586,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11498846
+--- !u!114 &11416992
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -594,23 +594,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 140176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be4a2e8a23e8ec646a9fa92ff230a92f, type: 3}
+  m_Script: {fileID: 11500000, guid: 017ef5a590c2e8a439dbcb293727cfc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
   speed: 2
   primaryDelay: 0.75
-  secondaryDelay: 0.22
+  secondaryDelay: 1.2
   dodgeDelay: 0.65
-  globalDelay: 0.12
+  globalDelay: 0.25
   dodgeSpd: 30
   dodgeTime: 0.1
-  primaryPref: {fileID: 0}
-  secondaryPref: {fileID: 0}
-  camTarget: {x: 0, y: 3.5, z: 0}
+  primaryPref: {fileID: 168930, guid: 8a1e7f23c4e663a4fa862259f63ed017, type: 2}
+  secondaryPref: {fileID: 127426, guid: da0592b818319ae4894d5e2f9b76f6ee, type: 2}
+  camTarget: {x: 0, y: 3, z: 0}
   arrayIndex: 3
   owner: 0
-  spreadAngle: 20
 --- !u!135 &13531666
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -642,6 +641,50 @@ Prefab:
       propertyPath: spreadAngle
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: primaryDelay
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: secondaryDelay
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dodgeDelay
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: globalDelay
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dodgeSpd
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dodgeTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: camTarget.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: primaryPref
+      value: 
+      objectReference: {fileID: 168930, guid: 8a1e7f23c4e663a4fa862259f63ed017, type: 2}
+    - target: {fileID: 0}
+      propertyPath: secondaryPref
+      value: 
+      objectReference: {fileID: 127426, guid: da0592b818319ae4894d5e2f9b76f6ee, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 140176}

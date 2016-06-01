@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: UI
+  m_Name: UI Left
   m_Shader: {fileID: 10761, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _SUNDISK_HIGH_QUALITY
   m_LightmapFlags: 5
   m_CustomRenderQueue: 3000
   stringTagMap: {}
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 3a9d23253c9e8e44ab9182fb8b573291, type: 3}
+          m_Texture: {fileID: 2800000, guid: e87c0caf812183f499b9a43a53945b45, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -32,6 +32,13 @@ Material:
       data:
         first:
           name: _DetailNormalMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Tex
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -85,6 +92,76 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MainBump
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailBump
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Mask
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _FrontTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BackTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _LeftTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _RightTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _UpTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DownTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -98,6 +175,30 @@ Material:
         first:
           name: _Cutoff
         second: 0.5
+      data:
+        first:
+          name: _Shininess
+        second: 0.2
+      data:
+        first:
+          name: PixelSnap
+        second: 0
+      data:
+        first:
+          name: _Exposure
+        second: 1
+      data:
+        first:
+          name: _SunDisk
+        second: 2
+      data:
+        first:
+          name: _SunSize
+        second: 0.04
+      data:
+        first:
+          name: _AtmosphereThickness
+        second: 1
       data:
         first:
           name: _Parallax
@@ -166,6 +267,18 @@ Material:
         first:
           name: _Strength
         second: 0.2
+      data:
+        first:
+          name: _InvFade
+        second: 1
+      data:
+        first:
+          name: _Focus
+        second: -100
+      data:
+        first:
+          name: _Rotation
+        second: 0
     m_Colors:
       data:
         first:
@@ -175,3 +288,31 @@ Material:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      data:
+        first:
+          name: _SkyTint
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      data:
+        first:
+          name: _GroundColor
+        second: {r: 0.369, g: 0.349, b: 0.341, a: 1}
+      data:
+        first:
+          name: _Specular
+        second: {r: 0, g: 0, b: 0, a: 0}
+      data:
+        first:
+          name: _Tint
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+      data:
+        first:
+          name: _TintColor
+        second: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+      data:
+        first:
+          name: _EmisColor
+        second: {r: 0.2, g: 0.2, b: 0.2, a: 0}

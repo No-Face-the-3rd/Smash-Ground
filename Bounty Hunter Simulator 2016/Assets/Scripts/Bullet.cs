@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
     public Vector3 rotateRate;
     private float curLife;
     private Rigidbody rb;
+    public float spreadAngle;
 
 	void Start ()
     {
