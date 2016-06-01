@@ -38,6 +38,7 @@ public class AimAtClosestPlayer : MonoBehaviour
         float minDist = float.MaxValue;
         int target = -1;
 
+
         for (int i = 0; i < playerLocator.players.Length; ++i)
         {
             directionToPlayer = (playerLocator.players[i].transform.position - tf.position);
@@ -51,8 +52,8 @@ public class AimAtClosestPlayer : MonoBehaviour
                     target = i;
                 }
             }
-
         }
+        
 
         if(target >= 0)
         {
