@@ -38,9 +38,24 @@ public class AvoidPlayer : MonoBehaviour
             }
         }
 
+        MoveToStartLoc guard = GetComponent<MoveToStartLoc>();
+        Wander wandBehavior = GetComponent<Wander>();
+        AvoidPlayerDirection(target);
+
         if(target >= 0)
         {
+            if (guard != null)
+                guard.enabled = false;
+            if (wandBehavior != null)
+                wandBehavior.enabled = false;
             AvoidPlayerDirection(target);
+        }
+        else
+        {
+            if (guard != null)
+                guard.enabled = true;
+            if (wandBehavior != null)
+                wandBehavior.enabled = true;
         }
         
 	}

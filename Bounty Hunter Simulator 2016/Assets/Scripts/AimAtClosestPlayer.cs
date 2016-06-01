@@ -24,8 +24,8 @@ public class AimAtClosestPlayer : MonoBehaviour
         originalTimer = fireDelay;
         playerLocator = GameObject.FindObjectOfType<PlayerLocator>();
 
-        //attackSpawnOffset = attackPre.GetComponent<Bullet>().spawnOffsetLength;
-        //attackYOffset = attackPre.GetComponent<Bullet>().spawnOffsetHeight;
+        attackSpawnOffset = attackPre.GetComponent<Bullet>().spawnOffsetLength;
+        attackYOffset = attackPre.GetComponent<Bullet>().spawnOffsetHeight;
     }
 
 	void Update ()
@@ -51,6 +51,7 @@ public class AimAtClosestPlayer : MonoBehaviour
                     target = i;
                 }
             }
+
         }
 
         if(target >= 0)
@@ -70,7 +71,8 @@ public class AimAtClosestPlayer : MonoBehaviour
             GameObject tmp = (GameObject)Instantiate(attackPre, tf.position + tf.forward * attackSpawnOffset + attackYOffset,
                     Quaternion.LookRotation(tf.forward));
             tmp.layer = 11;
-  //          tmp.GetComponent<Bullet>().owner = -1;
+            tmp.GetComponent<Bullet>().owner = -1;
         }
     }
 }
+//Minimum range is 2.5
