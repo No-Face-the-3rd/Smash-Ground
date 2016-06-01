@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AimAtClosestPlayer : MonoBehaviour
+public class ShootClosestPlayer : MonoBehaviour
 {
     #region Agent Info
 
     private Transform tf;
     public PlayerLocator playerLocator;
+    private AimAt aimLoc;
     public GameObject attackPre;
     public Vector3 attackYOffset;
     public float attackSpawnOffset;
@@ -24,6 +25,7 @@ public class AimAtClosestPlayer : MonoBehaviour
         originalTimer = fireDelay;
         playerLocator = GameObject.FindObjectOfType<PlayerLocator>();
 
+        aimLoc = GetComponent<AimAt>();
         attackSpawnOffset = attackPre.GetComponent<Bullet>().spawnOffsetLength;
         attackYOffset = attackPre.GetComponent<Bullet>().spawnOffsetHeight;
     }
@@ -63,7 +65,7 @@ public class AimAtClosestPlayer : MonoBehaviour
 
     void Aim(int _target)
     {
-        tf.LookAt(playerLocator.players[_target].transform.position);
+        aimLoc.aimAtLoc = playerLocator.players[_target].transform.position;
         tf.forward = new Vector3(tf.forward.x, 0, tf.forward.z);
         fireDelay -= Time.deltaTime;
         if (fireDelay <= 0 && directionToPlayer.magnitude <= attackRange)

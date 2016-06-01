@@ -481,15 +481,79 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11407976, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
       propertyPath: maxRadiusAvoid
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 11410828, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
       propertyPath: maxRadiusForAim
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 11410828, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
+      propertyPath: attackRange
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11410438, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
+      propertyPath: moveSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11410828, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11410438, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11447644, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11407976, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
+    - {fileID: 11447644, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &901738032 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 199930, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
+  m_PrefabInternal: {fileID: 901738031}
+--- !u!114 &901738033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 901738032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e314dcb8808db4ca6ff0755dfe3592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLocator: {fileID: 0}
+  maxRadiusAvoid: 6
+  playerFieldOfViewAngle: 45
+--- !u!114 &901738035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 901738032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a53b3fa93b391f4da04e587477ad64f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wandTimer: 1
+--- !u!114 &901738042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 901738032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7265f1c3840144da7e97b3197c1c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimAtLoc: {x: 0, y: 0, z: 0}
 --- !u!1001 &965443252
 Prefab:
   m_ObjectHideFlags: 0
