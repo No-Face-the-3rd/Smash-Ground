@@ -249,7 +249,7 @@ MonoBehaviour:
   dodgeTime: 0.1
   primaryPref: {fileID: 111134, guid: d735933aca89e9147914c278ba507806, type: 2}
   secondaryPref: {fileID: 143720, guid: f4a77b79b56ef584f8f5759a80e71cfa, type: 2}
-  camTarget: {x: 0, y: 2.75, z: 0}
+  camTarget: {x: 0, y: 3, z: 0}
   arrayIndex: 2
   owner: 0
 --- !u!135 &13585744
@@ -281,7 +281,7 @@ Prefab:
       objectReference: {fileID: 143720, guid: f4a77b79b56ef584f8f5759a80e71cfa, type: 2}
     - target: {fileID: 0}
       propertyPath: camTarget.y
-      value: 2.75
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
