@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11496388}
   - 135: {fileID: 13509406}
   m_Layer: 0
-  m_Name: char_helper(tmp)
+  m_Name: char_mannequin_manny
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,6 +106,7 @@ MonoBehaviour:
   camTarget: {x: 0, y: 3.5, z: 0}
   arrayIndex: 1
   owner: 0
+  spreadAngle: 20
 --- !u!135 &13509406
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -124,7 +125,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: spreadAngle
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 138224}
