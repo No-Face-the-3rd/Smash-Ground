@@ -18,6 +18,7 @@ public class character : MonoBehaviour
     private Vector3 dodgeDir;
     public int arrayIndex;
     public int owner;
+    public float spreadAngle;
     void Start()
     {
         nextPrimary = nextSecondary = nextDodge = 0.0f;
@@ -35,6 +36,12 @@ public class character : MonoBehaviour
         {
             if (transform.parent != null)
             {
+                character[] others = FindObjectsOfType<character>();
+                for(int i = 0;i < others.Length;i++)
+                {
+                    if (others[i].owner == owner && others[i].health <= 0 && others[i].transform.parent == null)
+                        Destroy(others[i].gameObject);
+                }
                 transform.parent = null;
                 transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                 GetComponent<Collider>().enabled = true;
@@ -88,16 +95,30 @@ public class character : MonoBehaviour
 
     public virtual void doPrimary()
     {
-        GameObject tmp = (GameObject)Instantiate(primaryPref, tf.position + tf.forward * primaryPref.GetComponent<Bullet>().spawnOffsetLength + primaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward));
+        GameObject tmp = (GameObject)Instantiate(primaryPref, tf.position + tf.forward * primaryPref.GetComponent<Bullet>().spawnOffsetLength + transform.parent.rotation * primaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward));
         tmp.layer = 9;
         tmp.GetComponent<Bullet>().owner = transform.parent.GetComponent<PlayerController>().playerNum;
+        if(transform.parent.GetComponent<PlayerController>().powerup == PlayerController.powerUps.SPREAD)
+        {
+            GameObject tmp2 = (GameObject)Instantiate(primaryPref, tf.position + tf.forward * primaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f,spreadAngle,0.0f) * transform.parent.rotation) * primaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f,spreadAngle,0.0f));
+            GameObject tmp3 = (GameObject)Instantiate(primaryPref, tf.position + tf.forward * primaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f, -spreadAngle, 0.0f) * transform.parent.rotation) * primaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f, -spreadAngle, 0.0f));
+            tmp2.layer = tmp3.layer = 9;
+            tmp2.GetComponent<Bullet>().owner = tmp3.GetComponent<Bullet>().owner = transform.parent.GetComponent<PlayerController>().playerNum;
+        }
     }
 
     public virtual void doSecondary()
     {
-        GameObject tmp = (GameObject)Instantiate(secondaryPref, tf.position + tf.forward * secondaryPref.GetComponent<Bullet>().spawnOffsetLength + secondaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward));
+        GameObject tmp = (GameObject)Instantiate(secondaryPref, tf.position + tf.forward * secondaryPref.GetComponent<Bullet>().spawnOffsetLength + transform.parent.rotation * secondaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward));
         tmp.layer = 9;
         tmp.GetComponent<Bullet>().owner = transform.parent.GetComponent<PlayerController>().playerNum;
+        if (transform.parent.GetComponent<PlayerController>().powerup == PlayerController.powerUps.SPREAD)
+        {
+            GameObject tmp2 = (GameObject)Instantiate(secondaryPref, tf.position + tf.forward * secondaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f, spreadAngle, 0.0f) * transform.parent.rotation) * secondaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f, spreadAngle, 0.0f));
+            GameObject tmp3 = (GameObject)Instantiate(secondaryPref, tf.position + tf.forward * secondaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f, -spreadAngle, 0.0f) * transform.parent.rotation) * secondaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f, -spreadAngle, 0.0f));
+            tmp2.layer = tmp3.layer = 9;
+            tmp2.GetComponent<Bullet>().owner = tmp3.GetComponent<Bullet>().owner = transform.parent.GetComponent<PlayerController>().playerNum;
+        }
     }
 
     public virtual void doDodge()
@@ -118,6 +139,7 @@ public class character : MonoBehaviour
 
 public class PlayerController : MonoBehaviour
 {
+    public enum powerUps { NONE, EVADE, INVIS, NUKE, PROT, SPREAD };
 
     public int playerNum;
 
@@ -144,8 +166,12 @@ public class PlayerController : MonoBehaviour
 
     private character child;
 
+    public powerUps powerup;
+    public float powerupTime;
     void Start()
     {
+        powerup = powerUps.NONE;
+        powerupTime = 0.0f;
         charDB = FindObjectOfType<CharacterDB>().gameObject;
         charSelUsed = false;
         curInd = 0;
@@ -186,6 +212,13 @@ public class PlayerController : MonoBehaviour
     {
         if (tf.childCount == 0)
             child = null;
+        else
+            powerupTime -= Time.deltaTime;
+        if(powerupTime <= 0.0f)
+        {
+            powerupTime = 0.0f;
+            powerup = powerUps.NONE;
+        }
         horizMove = Input.GetAxis("moveHoriz_P" + playerNum);
         horizFace = Input.GetAxis("faceHoriz_P" + playerNum);
         vertMove = Input.GetAxis("moveVert_P" + playerNum);
@@ -287,14 +320,13 @@ public class PlayerController : MonoBehaviour
         //reset cam when playing
         if (cs.GetComponent<Transform>().rotation != Quaternion.Euler(new Vector3(0.0f, 180.0f, 0.0f)))
         {
-            Vector3 csPos = cs.GetComponent<Transform>().position;
             cs.GetComponent<Transform>().rotation = Quaternion.Euler(new Vector3(0.0f, 180.0f, 0.0f));
             cs.GetComponent<Transform>().position = csTarg + -(camDist * cs.GetComponent<Transform>().forward);
         }
         if (Mathf.Abs(horizFace) > Mathf.Epsilon || Mathf.Abs(vertFace) > Mathf.Epsilon)
             tf.forward = new Vector3(horizFace, 0.0f, vertFace);
         float tmp = rb.velocity.y;
-        rb.velocity = Vector3.Normalize(new Vector3(horizMove, -0.0f, vertMove)) * (GetComponent<PlayerController>().speed + child.speed);
+        rb.velocity = Vector3.Normalize(new Vector3(horizMove, -0.0f, vertMove)) * (GetComponent<PlayerController>().speed + child.speed) * (powerup == powerUps.EVADE ? 1.5f : 1.0f);
         rb.velocity = new Vector3(rb.velocity.x, tmp, rb.velocity.z);
     }
 
@@ -361,6 +393,7 @@ public class PlayerController : MonoBehaviour
             curInd--;
         GetComponent<Collider>().enabled = true;
         rb.useGravity = true;
+        powerupTime = 0.0f;
     }
 
     void OnCollisionEnter(Collision collision)
