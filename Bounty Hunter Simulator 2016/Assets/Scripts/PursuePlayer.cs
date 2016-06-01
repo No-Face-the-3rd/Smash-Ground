@@ -6,6 +6,7 @@ public class PursuePlayer : MonoBehaviour
 {
     #region Agent Info
 
+    public Animator anim;
     private Vector3 directionToPlayer, checkLoc;
     public bool movePursueRadiusWithSelf;
     public PlayerLocator playerLocator;
@@ -23,6 +24,7 @@ public class PursuePlayer : MonoBehaviour
         }
         pursueLoc = GetComponent<driveToTarget>();
         playerLocator = FindObjectOfType<PlayerLocator>(); //get the active players
+        anim = GetComponent<Animator>();
 	}
 	void Update ()
     {
