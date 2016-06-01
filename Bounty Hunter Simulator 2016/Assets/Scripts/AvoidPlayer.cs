@@ -24,6 +24,7 @@ public class AvoidPlayer : MonoBehaviour
     {
         float minDist = float.MaxValue;
         int target = -1;
+
         for (int i = 0; i < playerLocator.players.Length; ++i)
         {
             directionToPlayer = playerLocator.players[i].transform.position - transform.position;
@@ -40,7 +41,7 @@ public class AvoidPlayer : MonoBehaviour
 
         MoveToStartLoc guard = GetComponent<MoveToStartLoc>();
         Wander wandBehavior = GetComponent<Wander>();
-        AvoidPlayerDirection(target);
+ 
 
         if(target >= 0)
         {
