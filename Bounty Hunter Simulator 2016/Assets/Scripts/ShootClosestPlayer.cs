@@ -67,7 +67,12 @@ public class ShootClosestPlayer : MonoBehaviour
             Aim(target);
         }
         else
-            guard.enabled = true;
+        {
+            if(guard != null)
+            {
+                guard.enabled = true;
+            }
+        }
     }
 
     void Aim(int _target)

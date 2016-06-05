@@ -8,6 +8,8 @@ public class AvoidPlayer : MonoBehaviour
 
     public PlayerLocator playerLocator;
     private Transform tf;
+    public float avoidTimer;
+    private float originalTimer;
     public float maxRadiusAvoid;
     public float playerFieldOfViewAngle;
     private Vector3 playerDirection, directionToPlayer;
@@ -19,6 +21,7 @@ public class AvoidPlayer : MonoBehaviour
         travelLoc = GetComponent<driveToTarget>();
         tf = GetComponent<Transform>();
         playerLocator = GameObject.FindObjectOfType<PlayerLocator>();
+        originalTimer = avoidTimer;
     }
 	void Update ()
     {
@@ -67,12 +70,16 @@ public class AvoidPlayer : MonoBehaviour
 
         if(angle < playerFieldOfViewAngle * 0.5f)
         {
-            if(Vector3.Distance(travelLoc.targetLoc, tf.position) < 0.80f)
+            avoidTimer -= Time.deltaTime;
+            if (Vector3.Distance(travelLoc.targetLoc, tf.position) < 0.80f || avoidTimer <= 0)
             {
+                avoidTimer = originalTimer;
                 travelLoc.targetLoc.x = transform.position.x + (Random.insideUnitCircle.x * 5);
                 travelLoc.targetLoc.z = transform.position.z + (Random.insideUnitCircle.y * 5);
             }
         }
+        else
+            travelLoc.targetLoc = transform.position;
     }
 }
 
