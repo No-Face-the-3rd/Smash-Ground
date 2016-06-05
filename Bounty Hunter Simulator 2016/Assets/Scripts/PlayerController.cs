@@ -18,6 +18,7 @@ public class character : MonoBehaviour
     private Vector3 dodgeDir;
     public int arrayIndex;
     public int owner;
+    public int rescueScore;
     void Start()
     {
         nextPrimary = nextSecondary = nextDodge = 0.0f;
@@ -44,7 +45,6 @@ public class character : MonoBehaviour
                 transform.parent = null;
                 transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                 GetComponent<Collider>().enabled = true;
-                Vector3 tmp = Vector3.zero;
                 transform.rotation = Quaternion.Euler(Vector3.zero);
                 transform.gameObject.layer = 16;
             }
@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject charDB;
     [SerializeField]
-    private List<int> nextRoom, curRoom;
+    public List<int> nextRoom, curRoom;
     private int curInd, prevInd;
     private GameObject curChar, nextChar;
 
@@ -167,8 +167,12 @@ public class PlayerController : MonoBehaviour
 
     public powerUps powerup;
     public float powerupTime;
+
+    private ScoreManager scorer;
+
     void Start()
     {
+        scorer = FindObjectOfType<ScoreManager>();
         powerup = powerUps.NONE;
         powerupTime = 0.0f;
         charDB = FindObjectOfType<CharacterDB>().gameObject;
@@ -213,6 +217,7 @@ public class PlayerController : MonoBehaviour
             child = null;
         else
             powerupTime -= Time.deltaTime;
+        
         if(powerupTime <= 0.0f)
         {
             powerupTime = 0.0f;
@@ -400,6 +405,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.layer == 16)
         {
             nextRoom.Add(collision.gameObject.GetComponent<character>().arrayIndex);
+            scorer.addScore(playerNum, collision.gameObject.GetComponent<character>().rescueScore);
             Destroy(collision.gameObject);
         }
         if(collision.gameObject.layer == 11)

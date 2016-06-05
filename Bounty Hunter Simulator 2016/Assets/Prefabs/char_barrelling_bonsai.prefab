@@ -210,7 +210,7 @@ MonoBehaviour:
   camTarget: {x: 0, y: 3.5, z: 0}
   arrayIndex: 0
   owner: 0
-  spreadAngle: 25
+  rescueScore: 20
 --- !u!135 &13570992
 SphereCollider:
   m_ObjectHideFlags: 1
