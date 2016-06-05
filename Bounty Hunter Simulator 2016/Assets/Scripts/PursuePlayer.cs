@@ -7,6 +7,7 @@ public class PursuePlayer : MonoBehaviour
     #region Agent Info
 
     public Animator anim;
+    private AimAt aim;
     private Vector3 directionToPlayer, checkLoc;
     public bool movePursueRadiusWithSelf;
     public PlayerLocator playerLocator;
@@ -25,6 +26,7 @@ public class PursuePlayer : MonoBehaviour
         pursueLoc = GetComponent<driveToTarget>();
         playerLocator = FindObjectOfType<PlayerLocator>(); //get the active players
         anim = GetComponent<Animator>();
+        aim = GetComponent<AimAt>();
 	}
 	void Update ()
     {
@@ -71,6 +73,12 @@ public class PursuePlayer : MonoBehaviour
     void Pursue(int _target)
     {
         pursueLoc.targetLoc = playerLocator.players[_target].transform.position + directionToPlayer.normalized * attackRange;
+
+        ShootClosestPlayer shoot = GetComponent<ShootClosestPlayer>();
+        if (shoot == null)
+        {
+            aim.aimAtLoc = pursueLoc.targetLoc;
+        }
     }
 }
 

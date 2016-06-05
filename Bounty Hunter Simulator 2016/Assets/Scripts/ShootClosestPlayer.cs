@@ -7,14 +7,14 @@ public class ShootClosestPlayer : MonoBehaviour
 
     private Transform tf;
     public PlayerLocator playerLocator;
-    private AimAt aimLoc;
+    private AimAt aim;
     public GameObject attackPre;
     public Vector3 attackYOffset;
     public float attackSpawnOffset;
     public float maxRadiusForAim;
     public float fireDelay;
     private float originalTimer;
-    public float attackRange; // little bigger than actual attack distance
+    public float attackRange; // little bigger than actual attack distance, Minimum range is 2.5
     private Vector3 directionToPlayer;
 
     #endregion
@@ -25,7 +25,7 @@ public class ShootClosestPlayer : MonoBehaviour
         originalTimer = fireDelay;
         playerLocator = GameObject.FindObjectOfType<PlayerLocator>();
 
-        aimLoc = GetComponent<AimAt>();
+        aim = GetComponent<AimAt>();
         attackSpawnOffset = attackPre.GetComponent<Bullet>().spawnOffsetLength;
         attackYOffset = attackPre.GetComponent<Bullet>().spawnOffsetHeight;
     }
@@ -55,17 +55,24 @@ public class ShootClosestPlayer : MonoBehaviour
                 }
             }
         }
-        
 
-        if(target >= 0)
+        MoveToStartLoc guard = GetComponent<MoveToStartLoc>();
+
+        if (target >= 0)
         {
+            if (guard != null)
+            {
+                guard.enabled = false;
+            }
             Aim(target);
         }
+        else
+            guard.enabled = true;
     }
 
     void Aim(int _target)
     {
-        aimLoc.aimAtLoc = playerLocator.players[_target].transform.position;
+        aim.aimAtLoc = playerLocator.players[_target].transform.position;
         tf.forward = new Vector3(tf.forward.x, 0, tf.forward.z);
         fireDelay -= Time.deltaTime;
         if (fireDelay <= 0 && directionToPlayer.magnitude <= attackRange)
@@ -78,4 +85,3 @@ public class ShootClosestPlayer : MonoBehaviour
         }
     }
 }
-//Minimum range is 2.5

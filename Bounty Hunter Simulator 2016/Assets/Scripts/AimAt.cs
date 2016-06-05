@@ -18,5 +18,6 @@ public class AimAt : MonoBehaviour
 	void Update ()
     {
         transform.LookAt(aimAtLoc);
+        transform.forward = new Vector3(transform.forward.x, 0.0f, transform.forward.z);
 	}
 }
