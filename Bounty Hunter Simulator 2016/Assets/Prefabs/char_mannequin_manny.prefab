@@ -106,7 +106,7 @@ MonoBehaviour:
   camTarget: {x: 0, y: 3.5, z: 0}
   arrayIndex: 1
   owner: 0
-  rescueScore: 20
+  spreadAngle: 0
 --- !u!135 &13509406
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -125,11 +125,7 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: spreadAngle
-      value: 20
-      objectReference: {fileID: 0}
+    m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 138224}

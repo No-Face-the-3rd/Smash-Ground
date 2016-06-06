@@ -4,16 +4,19 @@ using System.Collections;
 public class PlayerLocator : MonoBehaviour
 {
     public GameObject [] players;
+    public GameObject [] targetable;
 	void Update ()
     {
-        GameObject [] tmp = GameObject.FindGameObjectsWithTag("Player");
-        int playersToCount = 0;
-        int[] ids = new int[tmp.Length];
-        for (int i = 0;i < tmp.Length;i++)
+        players = GameObject.FindGameObjectsWithTag("Player");
+        int targetableToCount = 0;
+        int[] ids = new int[players.Length];
+        for (int i = 0;i < players.Length;i++)
         {
-            if(tmp[i].transform.childCount > 0 /*|| tmp[i].GetComponent<PlayerController>().powerup != PlayerController.powerUps.INVIS*/)
+            if(players[i].transform.childCount > 0 
+                && players[i].GetComponent<PlayerController>().powerup != PlayerController.powerUps.INVIS 
+                && players[i].layer != 15)
             {
-                playersToCount++;
+                targetableToCount++;
                 ids[i] = i;
             }
             else
@@ -21,15 +24,13 @@ public class PlayerLocator : MonoBehaviour
                 ids[i] = -1;
             }
         }
-        players = new GameObject[playersToCount];
+        targetable = new GameObject[targetableToCount];
         for(int i = 0;i <ids.Length;i++)
         {
             if(ids[i] >= 0)
             {
-                players[ids[i]] = tmp[ids[i]];
+                targetable[ids[i]] = players[ids[i]];
             }
         }
     }
 }
-
-//Jacob wrote

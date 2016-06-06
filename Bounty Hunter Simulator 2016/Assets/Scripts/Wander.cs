@@ -7,6 +7,7 @@ public class Wander : MonoBehaviour
     #region Agent info
     private Vector3 startLoc;
     private driveToTarget wanderLoc;
+    private AimAt aim;
     public float wandTimer;
     private float originalTimer;
     #endregion
@@ -15,6 +16,7 @@ public class Wander : MonoBehaviour
         originalTimer = wandTimer;
         wanderLoc = GetComponent<driveToTarget>();
         startLoc = wanderLoc.targetLoc;
+        aim = GetComponent<AimAt>();
 	}
 	void Update ()
     {
@@ -26,6 +28,7 @@ public class Wander : MonoBehaviour
             wanderLoc.targetLoc.x = startLoc.x + (Random.insideUnitCircle.x * 5);
             wanderLoc.targetLoc.z = startLoc.z + (Random.insideUnitCircle.y * 5);
         }
+        aim.aimAtLoc = wanderLoc.targetLoc;
     }
 }
 
