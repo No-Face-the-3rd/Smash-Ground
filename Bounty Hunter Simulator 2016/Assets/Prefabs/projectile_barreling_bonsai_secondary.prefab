@@ -146,6 +146,7 @@ MonoBehaviour:
   spawnOffsetHeight: {x: 0, y: 0.25, z: 0}
   spawnOffsetLength: -1
   rotateRate: {x: 0, y: 15, z: 15}
+  spreadAngle: 125
 --- !u!135 &13534244
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -196,6 +197,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: numTargets
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spreadAngle
+      value: 125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
