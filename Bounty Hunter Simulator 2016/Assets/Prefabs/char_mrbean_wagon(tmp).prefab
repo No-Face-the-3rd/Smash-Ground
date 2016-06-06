@@ -359,11 +359,12 @@ MonoBehaviour:
   globalDelay: 0.02
   dodgeSpd: 10
   dodgeTime: 0.15
-  primaryPref: {fileID: 0}
+  primaryPref: {fileID: 171266, guid: 87bf473f781d28e48816ff81036656b1, type: 2}
   secondaryPref: {fileID: 0}
   camTarget: {x: 0, y: 2.75, z: 0}
   arrayIndex: 2
   owner: 0
+  rescueScore: 20
 --- !u!135 &13554000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -387,6 +388,10 @@ Prefab:
       propertyPath: camTarget.y
       value: 2.75
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: primaryPref
+      value: 
+      objectReference: {fileID: 171266, guid: 87bf473f781d28e48816ff81036656b1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 112576}

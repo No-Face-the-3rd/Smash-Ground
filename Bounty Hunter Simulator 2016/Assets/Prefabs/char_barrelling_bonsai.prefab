@@ -210,6 +210,7 @@ MonoBehaviour:
   camTarget: {x: 0, y: 3.5, z: 0}
   arrayIndex: 0
   owner: 0
+  rescueScore: 20
 --- !u!135 &13570992
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1792,6 +1793,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spreadAngle
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

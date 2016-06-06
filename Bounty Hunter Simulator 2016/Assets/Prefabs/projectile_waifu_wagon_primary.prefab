@@ -172,9 +172,10 @@ MonoBehaviour:
   speed: 3
   upForce: 0
   lifetime: 3
-  spawnOffsetHeight: {x: -0.4, y: 0.5, z: 0}
-  spawnOffsetLength: 0.4
+  spawnOffsetHeight: {x: -0.6, y: 0.5, z: 0}
+  spawnOffsetLength: 0.6
   rotateRate: {x: 0, y: -1, z: 0}
+  spreadAngle: 30
 --- !u!135 &13569262
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -193,7 +194,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: spreadAngle
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spawnOffsetHeight.x
+      value: -0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spawnOffsetLength
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 111134}
