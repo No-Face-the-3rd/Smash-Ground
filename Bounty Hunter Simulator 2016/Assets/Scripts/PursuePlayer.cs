@@ -35,6 +35,7 @@ public class PursuePlayer : MonoBehaviour
 
         float minDist = float.MaxValue;
         int target = -1;
+
         for (int i = 0; i < playerLocator.players.Length; ++i)
         {
             directionToPlayer = playerLocator.players[i].transform.position - checkLoc;
