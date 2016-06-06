@@ -7,18 +7,18 @@ public class character : MonoBehaviour
     public int health;
     public float speed;
     public float primaryDelay, secondaryDelay, dodgeDelay, globalDelay, dodgeSpd, dodgeTime;
-    private float nextPrimary, nextSecondary, nextDodge;
+    protected float nextPrimary, nextSecondary, nextDodge;
     public GameObject primaryPref, secondaryPref;
     public Vector3 camTarget;
 
 
-    private Transform ptf, tf;
-    private Rigidbody prb;
+    protected Transform ptf, tf;
+    protected Rigidbody prb;
     private bool dodging;
     private Vector3 dodgeDir;
     public int arrayIndex;
     public int owner;
-    public float spreadAngle;
+    public int rescueScore;
     void Start()
     {
         nextPrimary = nextSecondary = nextDodge = 0.0f;
@@ -45,7 +45,6 @@ public class character : MonoBehaviour
                 transform.parent = null;
                 transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                 GetComponent<Collider>().enabled = true;
-                Vector3 tmp = Vector3.zero;
                 transform.rotation = Quaternion.Euler(Vector3.zero);
                 transform.gameObject.layer = 16;
             }
@@ -100,8 +99,8 @@ public class character : MonoBehaviour
         tmp.GetComponent<Bullet>().owner = transform.parent.GetComponent<PlayerController>().playerNum;
         if(transform.parent.GetComponent<PlayerController>().powerup == PlayerController.powerUps.SPREAD)
         {
-            GameObject tmp2 = (GameObject)Instantiate(primaryPref, tf.position + tf.forward * primaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f,spreadAngle,0.0f) * transform.parent.rotation) * primaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f,spreadAngle,0.0f));
-            GameObject tmp3 = (GameObject)Instantiate(primaryPref, tf.position + tf.forward * primaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f, -spreadAngle, 0.0f) * transform.parent.rotation) * primaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f, -spreadAngle, 0.0f));
+            GameObject tmp2 = (GameObject)Instantiate(primaryPref, tf.position + tf.forward * primaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f,primaryPref.GetComponent<Bullet>().spreadAngle,0.0f) * transform.parent.rotation) * primaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f, primaryPref.GetComponent<Bullet>().spreadAngle,0.0f));
+            GameObject tmp3 = (GameObject)Instantiate(primaryPref, tf.position + tf.forward * primaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f, -primaryPref.GetComponent<Bullet>().spreadAngle, 0.0f) * transform.parent.rotation) * primaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f, -primaryPref.GetComponent<Bullet>().spreadAngle, 0.0f));
             tmp2.layer = tmp3.layer = 9;
             tmp2.GetComponent<Bullet>().owner = tmp3.GetComponent<Bullet>().owner = transform.parent.GetComponent<PlayerController>().playerNum;
         }
@@ -114,8 +113,8 @@ public class character : MonoBehaviour
         tmp.GetComponent<Bullet>().owner = transform.parent.GetComponent<PlayerController>().playerNum;
         if (transform.parent.GetComponent<PlayerController>().powerup == PlayerController.powerUps.SPREAD)
         {
-            GameObject tmp2 = (GameObject)Instantiate(secondaryPref, tf.position + tf.forward * secondaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f, spreadAngle, 0.0f) * transform.parent.rotation) * secondaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f, spreadAngle, 0.0f));
-            GameObject tmp3 = (GameObject)Instantiate(secondaryPref, tf.position + tf.forward * secondaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f, -spreadAngle, 0.0f) * transform.parent.rotation) * secondaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f, -spreadAngle, 0.0f));
+            GameObject tmp2 = (GameObject)Instantiate(secondaryPref, tf.position + tf.forward * secondaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f, secondaryPref.GetComponent<Bullet>().spreadAngle, 0.0f) * transform.parent.rotation) * secondaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f, secondaryPref.GetComponent<Bullet>().spreadAngle, 0.0f));
+            GameObject tmp3 = (GameObject)Instantiate(secondaryPref, tf.position + tf.forward * secondaryPref.GetComponent<Bullet>().spawnOffsetLength + (Quaternion.Euler(0.0f, -secondaryPref.GetComponent<Bullet>().spreadAngle, 0.0f) * transform.parent.rotation) * secondaryPref.GetComponent<Bullet>().spawnOffsetHeight, Quaternion.LookRotation(transform.forward) * Quaternion.Euler(0.0f, -secondaryPref.GetComponent<Bullet>().spreadAngle, 0.0f));
             tmp2.layer = tmp3.layer = 9;
             tmp2.GetComponent<Bullet>().owner = tmp3.GetComponent<Bullet>().owner = transform.parent.GetComponent<PlayerController>().playerNum;
         }
@@ -156,7 +155,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject charDB;
     [SerializeField]
-    private List<int> nextRoom, curRoom;
+    public List<int> nextRoom, curRoom;
     private int curInd, prevInd;
     private GameObject curChar, nextChar;
 
@@ -168,8 +167,12 @@ public class PlayerController : MonoBehaviour
 
     public powerUps powerup;
     public float powerupTime;
+
+    private ScoreManager scorer;
+
     void Start()
     {
+        scorer = FindObjectOfType<ScoreManager>();
         powerup = powerUps.NONE;
         powerupTime = 0.0f;
         charDB = FindObjectOfType<CharacterDB>().gameObject;
@@ -214,6 +217,7 @@ public class PlayerController : MonoBehaviour
             child = null;
         else
             powerupTime -= Time.deltaTime;
+        
         if(powerupTime <= 0.0f)
         {
             powerupTime = 0.0f;
@@ -401,6 +405,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.layer == 16)
         {
             nextRoom.Add(collision.gameObject.GetComponent<character>().arrayIndex);
+            scorer.addScore(playerNum, collision.gameObject.GetComponent<character>().rescueScore);
             Destroy(collision.gameObject);
         }
         if(collision.gameObject.layer == 11)
