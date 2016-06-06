@@ -8,6 +8,8 @@ public class AvoidPlayer : MonoBehaviour
 
     public PlayerLocator playerLocator;
     private Transform tf;
+    public float avoidTimer;
+    private float originalTimer;
     public float maxRadiusAvoid;
     public float playerFieldOfViewAngle;
     private Vector3 playerDirection, directionToPlayer;
@@ -19,15 +21,16 @@ public class AvoidPlayer : MonoBehaviour
         travelLoc = GetComponent<driveToTarget>();
         tf = GetComponent<Transform>();
         playerLocator = GameObject.FindObjectOfType<PlayerLocator>();
+        originalTimer = avoidTimer;
     }
 	void Update ()
     {
         float minDist = float.MaxValue;
         int target = -1;
 
-        for (int i = 0; i < playerLocator.players.Length; ++i)
+        for (int i = 0; i < playerLocator.targetable.Length; ++i)
         {
-            directionToPlayer = playerLocator.players[i].transform.position - transform.position;
+            directionToPlayer = playerLocator.targetable[i].transform.position - transform.position;
             float tmpDist = directionToPlayer.magnitude;
             if (tmpDist < maxRadiusAvoid) //if within distance of radius, range too large
             {
@@ -62,17 +65,21 @@ public class AvoidPlayer : MonoBehaviour
 	}
     void AvoidPlayerDirection(int _target)
     {
-        playerDirection = (tf.position - playerLocator.players[_target].transform.position);
-        float angle = Vector3.Angle(playerDirection, playerLocator.players[_target].transform.forward);
+        playerDirection = (tf.position - playerLocator.targetable[_target].transform.position);
+        float angle = Vector3.Angle(playerDirection, playerLocator.targetable[_target].transform.forward);
 
         if(angle < playerFieldOfViewAngle * 0.5f)
         {
-            if(Vector3.Distance(travelLoc.targetLoc, tf.position) < 0.80f)
+            avoidTimer -= Time.deltaTime;
+            if (Vector3.Distance(travelLoc.targetLoc, tf.position) < 0.80f || avoidTimer <= 0)
             {
+                avoidTimer = originalTimer;
                 travelLoc.targetLoc.x = transform.position.x + (Random.insideUnitCircle.x * 5);
                 travelLoc.targetLoc.z = transform.position.z + (Random.insideUnitCircle.y * 5);
             }
         }
+        else
+            travelLoc.targetLoc = transform.position;
     }
 }
 

@@ -5,7 +5,7 @@ using System.Collections;
 public class driveToTarget : MonoBehaviour
 {
     public Animator anim;
-    public Vector3 targetLoc;
+    public Vector3 targetLoc, directionToTarget;
     public float moveSpeed;
     private Rigidbody rb;
     void Start ()
@@ -19,13 +19,14 @@ public class driveToTarget : MonoBehaviour
 	}
 	void Update ()
     {
-        if (Vector3.Distance(targetLoc, transform.position) > 0.80f)
+        directionToTarget = targetLoc - transform.position;
+        if (directionToTarget.magnitude > 0.80f)
         {
             anim.Play("walking", -1, 0f);
-            transform.LookAt(targetLoc);
-            transform.forward = new Vector3(transform.forward.x, 0, transform.forward.z);
-            rb.velocity = new Vector3(transform.forward.x * moveSpeed, 0.0f, transform.forward.z * moveSpeed);
+            rb.velocity = new Vector3(directionToTarget.x * moveSpeed, 0.0f, directionToTarget.z * moveSpeed);
         }
+        else
+            anim.Play("idle", -1, 0f);
     }
 }
 

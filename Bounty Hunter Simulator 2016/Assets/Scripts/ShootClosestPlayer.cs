@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AimAtClosestPlayer : MonoBehaviour
+public class ShootClosestPlayer : MonoBehaviour
 {
     #region Agent Info
 
     private Transform tf;
     public PlayerLocator playerLocator;
+    private AimAt aim;
     public GameObject attackPre;
     public Vector3 attackYOffset;
     public float attackSpawnOffset;
     public float maxRadiusForAim;
     public float fireDelay;
     private float originalTimer;
-    public float attackRange; // little bigger than actual attack distance
+    public float attackRange; // little bigger than actual attack distance, Minimum range is 2.5
     private Vector3 directionToPlayer;
 
     #endregion
@@ -24,6 +25,7 @@ public class AimAtClosestPlayer : MonoBehaviour
         originalTimer = fireDelay;
         playerLocator = GameObject.FindObjectOfType<PlayerLocator>();
 
+        aim = GetComponent<AimAt>();
         attackSpawnOffset = attackPre.GetComponent<Bullet>().spawnOffsetLength;
         attackYOffset = attackPre.GetComponent<Bullet>().spawnOffsetHeight;
     }
@@ -39,9 +41,9 @@ public class AimAtClosestPlayer : MonoBehaviour
         int target = -1;
 
 
-        for (int i = 0; i < playerLocator.players.Length; ++i)
+        for (int i = 0; i < playerLocator.targetable.Length; ++i)
         {
-            directionToPlayer = (playerLocator.players[i].transform.position - tf.position);
+            directionToPlayer = (playerLocator.targetable[i].transform.position - tf.position);
             float tmpDist = directionToPlayer.magnitude;
 
             if (tmpDist < maxRadiusForAim)
@@ -53,17 +55,29 @@ public class AimAtClosestPlayer : MonoBehaviour
                 }
             }
         }
-        
 
-        if(target >= 0)
+        MoveToStartLoc guard = GetComponent<MoveToStartLoc>();
+
+        if (target >= 0)
         {
+            if (guard != null)
+            {
+                guard.enabled = false;
+            }
             Aim(target);
+        }
+        else
+        {
+            if(guard != null)
+            {
+                guard.enabled = true;
+            }
         }
     }
 
     void Aim(int _target)
     {
-        tf.LookAt(playerLocator.players[_target].transform.position);
+        aim.aimAtLoc = playerLocator.targetable[_target].transform.position;
         tf.forward = new Vector3(tf.forward.x, 0, tf.forward.z);
         fireDelay -= Time.deltaTime;
         if (fireDelay <= 0 && directionToPlayer.magnitude <= attackRange)
@@ -76,4 +90,3 @@ public class AimAtClosestPlayer : MonoBehaviour
         }
     }
 }
-//Minimum range is 2.5
