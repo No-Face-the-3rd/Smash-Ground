@@ -510,6 +510,7 @@ Prefab:
     m_RemovedComponents:
     - {fileID: 11407976, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
     - {fileID: 11447644, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
+    - {fileID: 11410828, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &901738032 stripped
@@ -524,12 +525,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 901738032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61e314dcb8808db4ca6ff0755dfe3592, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a53b3fa93b391f4da04e587477ad64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLocator: {fileID: 0}
-  maxRadiusAvoid: 6
-  playerFieldOfViewAngle: 45
+  wandTimer: 1
 --- !u!114 &901738035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,10 +537,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 901738032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a53b3fa93b391f4da04e587477ad64f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cda34fecda9e364ab222dc73eb538a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wandTimer: 1
+  anim: {fileID: 0}
+  movePursueRadiusWithSelf: 1
+  playerLocator: {fileID: 0}
+  maxRadiusPursue: 5
+  attackRange: 3
+--- !u!114 &901738037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 901738032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6822642fffe05514f8f19f1acd2ab03f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLocator: {fileID: 0}
+  attackPre: {fileID: 132590, guid: a9884bed5291cd141bdf3675c44e39d4, type: 2}
+  attackYOffset: {x: 0, y: 1, z: 0}
+  attackSpawnOffset: 0.5
+  maxRadiusForAim: 3
+  fireDelay: 1
+  attackRange: 3
 --- !u!114 &901738042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,7 +628,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 190282, guid: 868b0697fb6610d42921869d9c815783, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 868b0697fb6610d42921869d9c815783, type: 2}
