@@ -41,9 +41,9 @@ public class ShootClosestPlayer : MonoBehaviour
         int target = -1;
 
 
-        for (int i = 0; i < playerLocator.players.Length; ++i)
+        for (int i = 0; i < playerLocator.targetable.Length; ++i)
         {
-            directionToPlayer = (playerLocator.players[i].transform.position - tf.position);
+            directionToPlayer = (playerLocator.targetable[i].transform.position - tf.position);
             float tmpDist = directionToPlayer.magnitude;
 
             if (tmpDist < maxRadiusForAim)
@@ -77,7 +77,7 @@ public class ShootClosestPlayer : MonoBehaviour
 
     void Aim(int _target)
     {
-        aim.aimAtLoc = playerLocator.players[_target].transform.position;
+        aim.aimAtLoc = playerLocator.targetable[_target].transform.position;
         tf.forward = new Vector3(tf.forward.x, 0, tf.forward.z);
         fireDelay -= Time.deltaTime;
         if (fireDelay <= 0 && directionToPlayer.magnitude <= attackRange)

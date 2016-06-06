@@ -28,9 +28,9 @@ public class AvoidPlayer : MonoBehaviour
         float minDist = float.MaxValue;
         int target = -1;
 
-        for (int i = 0; i < playerLocator.players.Length; ++i)
+        for (int i = 0; i < playerLocator.targetable.Length; ++i)
         {
-            directionToPlayer = playerLocator.players[i].transform.position - transform.position;
+            directionToPlayer = playerLocator.targetable[i].transform.position - transform.position;
             float tmpDist = directionToPlayer.magnitude;
             if (tmpDist < maxRadiusAvoid) //if within distance of radius, range too large
             {
@@ -65,8 +65,8 @@ public class AvoidPlayer : MonoBehaviour
 	}
     void AvoidPlayerDirection(int _target)
     {
-        playerDirection = (tf.position - playerLocator.players[_target].transform.position);
-        float angle = Vector3.Angle(playerDirection, playerLocator.players[_target].transform.forward);
+        playerDirection = (tf.position - playerLocator.targetable[_target].transform.position);
+        float angle = Vector3.Angle(playerDirection, playerLocator.targetable[_target].transform.forward);
 
         if(angle < playerFieldOfViewAngle * 0.5f)
         {
