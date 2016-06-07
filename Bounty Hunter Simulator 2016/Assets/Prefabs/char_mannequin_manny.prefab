@@ -103,10 +103,12 @@ MonoBehaviour:
   dodgeTime: 0.25
   primaryPref: {fileID: 177712, guid: 2c8e575634629b14ab5ae7297580783d, type: 2}
   secondaryPref: {fileID: 0}
+  auraPref: {fileID: 145030, guid: 8e2f4591247016340a3c47f4218bee8e, type: 2}
   camTarget: {x: 0, y: 3.5, z: 0}
   arrayIndex: 1
   owner: 0
   rescueScore: 0
+  immuneAura: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &13509406
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -130,6 +132,10 @@ Prefab:
       propertyPath: primaryPref
       value: 
       objectReference: {fileID: 177712, guid: 2c8e575634629b14ab5ae7297580783d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: auraPref
+      value: 
+      objectReference: {fileID: 145030, guid: 8e2f4591247016340a3c47f4218bee8e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 138224}
