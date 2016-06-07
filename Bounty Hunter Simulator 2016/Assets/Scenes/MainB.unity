@@ -461,7 +461,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 423290, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 423290, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
       propertyPath: m_LocalRotation.z
@@ -469,7 +469,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 423290, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.00000016292068
       objectReference: {fileID: 0}
     - target: {fileID: 423290, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
       propertyPath: m_RootOrder
@@ -527,15 +527,16 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 901738032}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61e314dcb8808db4ca6ff0755dfe3592, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cda34fecda9e364ab222dc73eb538a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  movePursueRadiusWithSelf: 0
   playerLocator: {fileID: 0}
-  avoidTimer: 1.5
-  maxRadiusAvoid: 6
-  playerFieldOfViewAngle: 60
+  maxRadiusPursue: 4
+  attackRange: 3
 --- !u!114 &901738037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,9 +552,9 @@ MonoBehaviour:
   attackPre: {fileID: 132590, guid: a9884bed5291cd141bdf3675c44e39d4, type: 2}
   attackYOffset: {x: 0, y: 1, z: 0}
   attackSpawnOffset: 0.5
-  maxRadiusForAim: 4
+  maxRadiusForAim: 5
   fireDelay: 1
-  attackRange: 3
+  attackRange: 4
   shoot: 0
 --- !u!114 &901738041
 MonoBehaviour:
@@ -563,7 +564,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 901738032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870b74268e2c2fe468ad67199d8b51ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 40c935c3db6fbb546bbf4731ae69ba0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &901738042

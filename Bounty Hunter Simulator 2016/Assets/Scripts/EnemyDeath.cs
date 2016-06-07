@@ -39,4 +39,9 @@ public class EnemyDeath : MonoBehaviour
             lastHitBy = collision.gameObject.GetComponent<Bullet>().owner;
         }
     }
+
+    public void DoDestroy()
+    {
+        Destroy(this.gameObject);
+    }
 }
