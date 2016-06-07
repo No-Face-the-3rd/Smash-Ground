@@ -1,23 +1,15 @@
 fileFormatVersion: 2
-guid: 87aa60129bb249546931be16cc731b66
-timeCreated: 1464024421
+guid: ecef19903cc8b714badccb7fddc322ec
+timeCreated: 1465235029
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: pCylinder5
-    100002: pPlane4
-    100004: //RootNode
-    400000: pCylinder5
-    400002: pPlane4
-    400004: //RootNode
-    2300000: pCylinder5
-    2300002: pPlane4
-    3300000: pCylinder5
-    3300002: pPlane4
-    4300000: pCylinder5
-    4300002: pPlane4
-    7400000: Take 001
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pPlane1
     9500000: //RootNode
   materials:
     importMaterials: 1

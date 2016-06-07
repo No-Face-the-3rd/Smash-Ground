@@ -7,8 +7,7 @@ public class UIPowerupManagerScript : MonoBehaviour
     public Image[] powerupIcons;
     public RawImage[] powerupDisplay;
     public Texture[] textures;
-    //private PlayerLocator locator;
-    private GameObject[] players;
+    private PlayerLocator locator;
     private bool front;
     private float flipTime;
 
@@ -16,19 +15,18 @@ public class UIPowerupManagerScript : MonoBehaviour
     {
         front = true;
         flipTime = 0.0f;
-        //locator = FindObjectOfType<PlayerLocator>();
+        locator = FindObjectOfType<PlayerLocator>();
 	}
 
 
     void Update()
     {
-        players = GameObject.FindGameObjectsWithTag("Player");
-        for (int i = 0; i < /*locator.*/players.Length; i++)
+        for (int i = 0; i < locator.players.Length; i++)
         {
-            int idTmp = /*locator.*/players[i].GetComponent<PlayerController>().playerNum - 1;
+            int idTmp = locator.players[i].GetComponent<PlayerController>().playerNum - 1;
             if (idTmp < powerupIcons.Length)
             {
-                int textureID = ((int)/*locator.*/players[i].GetComponent<PlayerController>().powerup * 2 - (front ? 1 : 0));
+                int textureID = ((int)locator.players[i].GetComponent<PlayerController>().powerup * 2 - (front ? 1 : 0));
                 textureID = textureID < 0 ? 0 : textureID;
                 powerupDisplay[idTmp].texture = textures[textureID];
             }
