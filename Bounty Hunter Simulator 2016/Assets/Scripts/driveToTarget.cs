@@ -22,11 +22,12 @@ public class driveToTarget : MonoBehaviour
         directionToTarget = targetLoc - transform.position;
         if (directionToTarget.magnitude > 0.80f)
         {
-            anim.Play("walking", -1, 0f);
             rb.velocity = new Vector3(directionToTarget.x * moveSpeed, 0.0f, directionToTarget.z * moveSpeed);
         }
         else
-            anim.Play("idle", -1, 0f);
+        {
+            //anim.Play("idle", -1, 0f);
+        }
     }
 }
 

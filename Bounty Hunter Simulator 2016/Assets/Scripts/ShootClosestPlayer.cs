@@ -16,6 +16,7 @@ public class ShootClosestPlayer : MonoBehaviour
     private float originalTimer;
     public float attackRange; // little bigger than actual attack distance, Minimum range is 2.5
     private Vector3 directionToPlayer;
+    public bool shoot;
 
     #endregion
 
@@ -28,10 +29,12 @@ public class ShootClosestPlayer : MonoBehaviour
         aim = GetComponent<AimAt>();
         attackSpawnOffset = attackPre.GetComponent<Bullet>().spawnOffsetLength;
         attackYOffset = attackPre.GetComponent<Bullet>().spawnOffsetHeight;
+        shoot = false;
     }
 
 	void Update ()
     {
+        shoot = false;
         ShootBehavior();
 	}
 
@@ -64,6 +67,7 @@ public class ShootClosestPlayer : MonoBehaviour
             {
                 guard.enabled = false;
             }
+            
             Aim(target);
         }
         else
@@ -83,6 +87,7 @@ public class ShootClosestPlayer : MonoBehaviour
         if (fireDelay <= 0 && directionToPlayer.magnitude <= attackRange)
         {
             fireDelay = originalTimer;
+            shoot = true;
             GameObject tmp = (GameObject)Instantiate(attackPre, tf.position + tf.forward * attackSpawnOffset + attackYOffset,
                     Quaternion.LookRotation(tf.forward));
             tmp.layer = 11;
