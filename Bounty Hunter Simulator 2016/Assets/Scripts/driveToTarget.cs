@@ -22,7 +22,9 @@ public class driveToTarget : MonoBehaviour
         if (gameObject.tag == "Active")
         {
             directionToTarget = Vector3.Normalize(targetLoc - transform.position);
+            if (directionToTarget.magnitude >= 0.80f)
             {
+                rb.velocity = new Vector3(directionToTarget.x * moveSpeed, rb.velocity.y, directionToTarget.z * moveSpeed);
             }
         }
     }
