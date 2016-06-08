@@ -26,8 +26,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 486308}
   - 95: {fileID: 9534926}
+  - 65: {fileID: 6592978}
   - 65: {fileID: 6538184}
   - 65: {fileID: 6522104}
+  - 114: {fileID: 11453060}
   m_Layer: 0
   m_Name: env_door_left_right
   m_TagString: Untagged
@@ -306,6 +308,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 6, z: 9}
   m_Center: {x: 0, y: 3, z: -7}
+--- !u!65 &6592978
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 6, z: 6}
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!95 &9534926
 Animator:
   serializedVersion: 3
@@ -315,7 +329,7 @@ Animator:
   m_GameObject: {fileID: 143078}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 7f2790d818061594f969f451d1f25062, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2ba0ebd708a416c49a834ce491034655, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -323,13 +337,47 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11453060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ef52dbc43292df4e9e11b671e231707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  switchDoor: 0
+  anim: {fileID: 0}
+  doorOpen: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.z
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2ba0ebd708a416c49a834ce491034655, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 143078}
