@@ -479,49 +479,19 @@ Prefab:
       propertyPath: m_Name
       value: MeleeEnemy1
       objectReference: {fileID: 0}
-    - target: {fileID: 11407976, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
-      propertyPath: maxRadiusAvoid
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 11410828, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
-      propertyPath: maxRadiusForAim
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 11410828, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
-      propertyPath: attackRange
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 11410438, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
-      propertyPath: moveSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11410828, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11410438, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11447644, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9592866, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
-      propertyPath: m_ApplyRootMotion
-      value: 0
+    - target: {fileID: 199930, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
+      propertyPath: m_TagString
+      value: Active
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 11407976, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
-    - {fileID: 11447644, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
-    - {fileID: 11410828, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
+    - {fileID: 11429436, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &901738032 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 199930, guid: 9f56cba177dd53a4c97a06d58c1076c9, type: 2}
   m_PrefabInternal: {fileID: 901738031}
---- !u!114 &901738034
+--- !u!114 &901738033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -529,15 +499,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 901738032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cda34fecda9e364ab222dc73eb538a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b7cbc33a104f044fa4b155794ece6af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  movePursueRadiusWithSelf: 0
-  playerLocator: {fileID: 0}
-  maxRadiusPursue: 4
-  attackRange: 3
---- !u!114 &901738037
+  health: 1
+  lastHitBy: 0
+  scoreValue: 0
+--- !u!114 &901738044
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -545,40 +513,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 901738032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6822642fffe05514f8f19f1acd2ab03f, type: 3}
+  m_Script: {fileID: 11500000, guid: 97376b4925caa56438b8b268b2f952b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLocator: {fileID: 0}
-  attackPre: {fileID: 132590, guid: a9884bed5291cd141bdf3675c44e39d4, type: 2}
-  attackYOffset: {x: 0, y: 1, z: 0}
-  attackSpawnOffset: 0.5
-  maxRadiusForAim: 5
-  fireDelay: 1
-  attackRange: 4
-  shoot: 0
---- !u!114 &901738041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 901738032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40c935c3db6fbb546bbf4731ae69ba0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &901738042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 901738032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b7265f1c3840144da7e97b3197c1c9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aimAtLoc: {x: 0, y: 0, z: 0}
 --- !u!1001 &965443252
 Prefab:
   m_ObjectHideFlags: 0
