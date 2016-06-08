@@ -96,17 +96,19 @@ MonoBehaviour:
   health: 1
   speed: 3
   primaryDelay: 1
-  secondaryDelay: 2
+  secondaryDelay: 1
   dodgeDelay: 1
   globalDelay: 0.5
   dodgeSpd: 15
   dodgeTime: 0.25
-  primaryPref: {fileID: 0}
-  secondaryPref: {fileID: 0}
+  primaryPref: {fileID: 156362, guid: c8f827669a5c75b48a6b256efd2e0288, type: 2}
+  secondaryPref: {fileID: 177712, guid: 2c8e575634629b14ab5ae7297580783d, type: 2}
+  auraPref: {fileID: 145030, guid: 8e2f4591247016340a3c47f4218bee8e, type: 2}
   camTarget: {x: 0, y: 3.5, z: 0}
   arrayIndex: 1
   owner: 0
-  spreadAngle: 0
+  rescueScore: 0
+  immuneAura: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &13509406
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -125,7 +127,27 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: primaryPref
+      value: 
+      objectReference: {fileID: 156362, guid: c8f827669a5c75b48a6b256efd2e0288, type: 2}
+    - target: {fileID: 0}
+      propertyPath: auraPref
+      value: 
+      objectReference: {fileID: 145030, guid: 8e2f4591247016340a3c47f4218bee8e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: secondaryPref
+      value: 
+      objectReference: {fileID: 177712, guid: 2c8e575634629b14ab5ae7297580783d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: secondaryDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: globalDelay
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 138224}

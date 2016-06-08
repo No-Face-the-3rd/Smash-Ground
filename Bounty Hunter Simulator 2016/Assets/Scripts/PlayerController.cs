@@ -8,7 +8,7 @@ public class character : MonoBehaviour
     public float speed;
     public float primaryDelay, secondaryDelay, dodgeDelay, globalDelay, dodgeSpd, dodgeTime;
     protected float nextPrimary, nextSecondary, nextDodge;
-    public GameObject primaryPref, secondaryPref;
+    public GameObject primaryPref, secondaryPref, auraPref;
     public Vector3 camTarget;
 
 
@@ -19,6 +19,7 @@ public class character : MonoBehaviour
     public int arrayIndex;
     public int owner;
     public int rescueScore;
+    public Color immuneAura;
     void Start()
     {
         nextPrimary = nextSecondary = nextDodge = 0.0f;
@@ -88,6 +89,10 @@ public class character : MonoBehaviour
             {
                 ptf.gameObject.layer = 8;
                 dodgeDir = new Vector3(0.0f, 1.0f, 0.0f);
+                if (tf.GetComponentsInChildren<ImmuneAura>().Length > 0 && tf.parent.GetComponent<PlayerController>().powerup != PlayerController.powerUps.PROT)
+                    Destroy(tf.GetComponentInChildren<ImmuneAura>().gameObject);
+                if (Time.time > nextDodge - dodgeDelay)
+                    dodging = false;
             }
         }
     }
@@ -122,6 +127,8 @@ public class character : MonoBehaviour
 
     public virtual void doDodge()
     {
+        GameObject tmp = (GameObject)Instantiate(auraPref, tf.position, tf.parent.rotation);
+        tmp.transform.parent = tf;
         if (dodgeDir == new Vector3(0.0f, 1.0f, 0.0f))
             dodgeDir = Vector3.Normalize(prb.velocity);
         Vector3 newVel = ((dodgeDir * dodgeSpd) + prb.velocity);
@@ -214,13 +221,36 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (tf.childCount == 0)
+        {
             child = null;
+            powerupTime = 0.0f;
+        }
         else
+        {
+            if (powerup == powerUps.NUKE)
+            {
+                doNuke();
+            }
+            if (powerup == powerUps.PROT)
+            {
+                ImmuneAura [] tmp = child.transform.GetComponentsInChildren<ImmuneAura>();
+                if(tmp.Length < 1)
+                {
+                    GameObject tmp2 = (GameObject)Instantiate(child.auraPref, child.transform.position, child.transform.rotation);
+                    tmp2.transform.parent = child.transform;
+                }
+            }
             powerupTime -= Time.deltaTime;
+
+        }
         
         if(powerupTime <= 0.0f)
         {
             powerupTime = 0.0f;
+            if(powerup == powerUps.PROT)
+            {
+                Destroy(child.transform.GetComponentInChildren<ImmuneAura>().gameObject);
+            }
             powerup = powerUps.NONE;
         }
         horizMove = Input.GetAxis("moveHoriz_P" + playerNum);
@@ -231,6 +261,8 @@ public class PlayerController : MonoBehaviour
         secondaryIn = Input.GetAxis("secondaryAttack_P" + playerNum);
         dodgeIn = Input.GetAxis("dodge_P" + playerNum);
         charSel = (int)Input.GetAxisRaw("charSel_P" + playerNum);
+
+
         if (charSel != 0)
         {
             if(!charSelUsed)
@@ -433,5 +465,15 @@ public class PlayerController : MonoBehaviour
         curRoom = nextRoom;
         cycleChar(curInd);
         nextRoom = new List<int>();
+    }
+
+    void doNuke()
+    {
+        //GameObject[] toKill = GameObject.FindGameObjectsWithTag("Active");
+       // for(int i= 0;i < toKill.Length;i++)
+       // {
+            //toKill[i].GetComponent<EnemyDeath>().deathFunc();
+       // }
+
     }
 }
