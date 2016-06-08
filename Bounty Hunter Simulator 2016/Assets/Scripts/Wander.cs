@@ -21,13 +21,14 @@ public class Wander : MonoBehaviour
 	void Update ()
     {
         wandTimer -= Time.deltaTime;
-        if (/*Vector3.Distance(wanderLoc.targetLoc, transform.position) < 0.80f ||*/ wandTimer <= 0)
+        if (Vector3.Distance(wanderLoc.targetLoc, transform.position) < 0.80f || wandTimer <= 0)
         {
             wandTimer = originalTimer;
             startLoc = wanderLoc.targetLoc;
             wanderLoc.targetLoc.x = startLoc.x + (Random.insideUnitCircle.x * 5);
             wanderLoc.targetLoc.z = startLoc.z + (Random.insideUnitCircle.y * 5);
         }
+
         aim.aimAtLoc = wanderLoc.targetLoc;
     }
 }

@@ -4,13 +4,11 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody))]
 public class driveToTarget : MonoBehaviour
 {
-    public Animator anim;
     public Vector3 targetLoc, directionToTarget;
     public float moveSpeed;
     private Rigidbody rb;
     void Start ()
     {
-        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         if (targetLoc == Vector3.zero)
         {
@@ -21,10 +19,13 @@ public class driveToTarget : MonoBehaviour
     {
         if (gameObject.tag == "Active")
         {
-            directionToTarget = Vector3.Normalize(targetLoc - transform.position);
-            if (directionToTarget.magnitude >= 0.80f)
+            directionToTarget = targetLoc - transform.position;
+            Debug.Log(directionToTarget.magnitude);
+            if (directionToTarget.magnitude >= 1f)
             {
-                rb.velocity = new Vector3(directionToTarget.x * moveSpeed, rb.velocity.y, directionToTarget.z * moveSpeed);
+                rb.velocity = new Vector3(directionToTarget.normalized.x * moveSpeed, 
+                                          rb.velocity.y, 
+                                          directionToTarget.normalized.z * moveSpeed);
             }
         }
     }

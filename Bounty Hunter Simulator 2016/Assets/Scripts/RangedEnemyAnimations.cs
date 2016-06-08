@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RangedEnemyAnimations : MonoBehaviour {
+public class RangedEnemyAnimations : EnemySkin
+{
 
     private Rigidbody rb;
     private Animator anim;
     private ShootClosestPlayer shoot;
     private EnemyHealth health;
+
 
     void Awake()
     {
@@ -16,9 +18,10 @@ public class RangedEnemyAnimations : MonoBehaviour {
         health = GetComponent<EnemyHealth>();
     }
 
-    void Update()
+    public override void Update()
     {
-        Debug.Log(rb.velocity);
+        base.Update();
+
         anim.SetFloat("magOfVelocity", Vector3.Magnitude(rb.velocity));
         anim.SetBool("shoot", shoot.shoot);
         if (health != null)

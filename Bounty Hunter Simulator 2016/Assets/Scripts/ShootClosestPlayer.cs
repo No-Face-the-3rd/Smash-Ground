@@ -34,8 +34,11 @@ public class ShootClosestPlayer : MonoBehaviour
 
 	void Update ()
     {
-        shoot = false;
-        ShootBehavior();
+        if (gameObject.tag == "Active")
+        {
+            shoot = false;
+            ShootBehavior();
+        }
 	}
 
     void ShootBehavior()
@@ -60,6 +63,7 @@ public class ShootClosestPlayer : MonoBehaviour
         }
 
         MoveToStartLoc guard = GetComponent<MoveToStartLoc>();
+        Wander wandBehavior = GetComponent<Wander>();
 
         if (target >= 0)
         {
@@ -67,7 +71,11 @@ public class ShootClosestPlayer : MonoBehaviour
             {
                 guard.enabled = false;
             }
-            
+            if (wandBehavior != null)
+            {
+                wandBehavior.enabled = false;
+            }
+
             Aim(target);
         }
         else
@@ -75,6 +83,10 @@ public class ShootClosestPlayer : MonoBehaviour
             if(guard != null)
             {
                 guard.enabled = true;
+            }
+            if (wandBehavior != null)
+            {
+                wandBehavior.enabled = true;
             }
         }
     }
