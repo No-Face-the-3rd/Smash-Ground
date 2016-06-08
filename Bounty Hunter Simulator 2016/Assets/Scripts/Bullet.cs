@@ -53,6 +53,8 @@ public class Bullet : MonoBehaviour
     {
         Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
         numTargets--;
+        if (collision.gameObject.layer == 0)
+            numTargets = 0;
     }
 
 }
