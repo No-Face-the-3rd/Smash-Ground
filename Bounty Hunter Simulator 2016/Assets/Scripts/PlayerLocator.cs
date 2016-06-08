@@ -24,12 +24,14 @@ public class PlayerLocator : MonoBehaviour
                 ids[i] = -1;
             }
         }
+        int temp = 0;
         targetable = new GameObject[targetableToCount];
         for(int i = 0;i <ids.Length;i++)
         {
             if(ids[i] >= 0)
             {
-                targetable[ids[i]] = players[ids[i]];
+                targetable[temp] = players[ids[i]];
+                temp++;
             }
         }
     }
