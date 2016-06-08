@@ -16,6 +16,7 @@ public class ShootClosestPlayer : MonoBehaviour
     private float originalTimer;
     public float attackRange; // little bigger than actual attack distance, Minimum range is 2.5
     private Vector3 directionToPlayer;
+    public bool shoot;
 
     #endregion
 
@@ -28,11 +29,16 @@ public class ShootClosestPlayer : MonoBehaviour
         aim = GetComponent<AimAt>();
         attackSpawnOffset = attackPre.GetComponent<Bullet>().spawnOffsetLength;
         attackYOffset = attackPre.GetComponent<Bullet>().spawnOffsetHeight;
+        shoot = false;
     }
 
 	void Update ()
     {
-        ShootBehavior();
+        if (gameObject.tag == "Active")
+        {
+            shoot = false;
+            ShootBehavior();
+        }
 	}
 
     void ShootBehavior()
@@ -57,6 +63,7 @@ public class ShootClosestPlayer : MonoBehaviour
         }
 
         MoveToStartLoc guard = GetComponent<MoveToStartLoc>();
+        Wander wandBehavior = GetComponent<Wander>();
 
         if (target >= 0)
         {
@@ -64,6 +71,11 @@ public class ShootClosestPlayer : MonoBehaviour
             {
                 guard.enabled = false;
             }
+            if (wandBehavior != null)
+            {
+                wandBehavior.enabled = false;
+            }
+
             Aim(target);
         }
         else
@@ -71,6 +83,10 @@ public class ShootClosestPlayer : MonoBehaviour
             if(guard != null)
             {
                 guard.enabled = true;
+            }
+            if (wandBehavior != null)
+            {
+                wandBehavior.enabled = true;
             }
         }
     }
@@ -83,6 +99,7 @@ public class ShootClosestPlayer : MonoBehaviour
         if (fireDelay <= 0 && directionToPlayer.magnitude <= attackRange)
         {
             fireDelay = originalTimer;
+            shoot = true;
             GameObject tmp = (GameObject)Instantiate(attackPre, tf.position + tf.forward * attackSpawnOffset + attackYOffset,
                     Quaternion.LookRotation(tf.forward));
             tmp.layer = 11;
