@@ -17,16 +17,23 @@ public class driveToTarget : MonoBehaviour
 	}
 	void Update ()
     {
-        if (gameObject.tag == "Active")
+        if (gameObject.tag != "Inactive")
         {
             directionToTarget = targetLoc - transform.position;
-            Debug.Log(directionToTarget.magnitude);
             if (directionToTarget.magnitude >= 1f)
             {
                 rb.velocity = new Vector3(directionToTarget.normalized.x * moveSpeed, 
                                           rb.velocity.y, 
                                           directionToTarget.normalized.z * moveSpeed);
             }
+            else
+            {
+                if(gameObject.tag == "Spawning")
+                {
+                    gameObject.tag = "Active";
+                }
+            }
+           
         }
     }
 }

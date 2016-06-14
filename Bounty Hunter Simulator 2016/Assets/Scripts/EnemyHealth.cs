@@ -7,12 +7,10 @@ public class EnemyHealth : MonoBehaviour
     public int health;
     public int lastHitBy;
     public int scoreValue;
-    private ScoreManager score;
-    private Animator anim;
+    public ScoreManager score;
 
     void Start()
     {
-        anim = GetComponent<Animator>();
         lastHitBy = -1;
         score = FindObjectOfType<ScoreManager>();
     }
