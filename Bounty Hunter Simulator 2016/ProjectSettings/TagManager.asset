@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Active
   - Inactive
+  - Spawning
   layers:
   - Default
   - TransparentFX

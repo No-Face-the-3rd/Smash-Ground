@@ -109,6 +109,7 @@ MonoBehaviour:
   owner: 0
   rescueScore: 0
   immuneAura: {r: 0, g: 0, b: 0, a: 0}
+  deathPref: {fileID: 187502, guid: 2a45fc26e3f03004fa99d9a978d22c9f, type: 2}
 --- !u!135 &13509406
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -148,6 +149,10 @@ Prefab:
       propertyPath: globalDelay
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: deathPref
+      value: 
+      objectReference: {fileID: 187502, guid: 2a45fc26e3f03004fa99d9a978d22c9f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 138224}
