@@ -34,7 +34,7 @@ public class ShootClosestPlayer : MonoBehaviour
 
 	void Update ()
     {
-        if (gameObject.tag == "Active")
+        if (gameObject.tag != "Inactive")
         {
             shoot = false;
             ShootBehavior();

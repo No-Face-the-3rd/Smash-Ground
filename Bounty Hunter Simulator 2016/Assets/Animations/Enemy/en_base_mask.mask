@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1011 &101100000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: en_base_mask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: shiv_bot
+    m_Weight: 1
+  - m_Path: skel_grp
+    m_Weight: 1
+  - m_Path: skel_grp/shiv_cog
+    m_Weight: 1
+  - m_Path: skel_grp/shiv_cog/shiv_pelvis
+    m_Weight: 1
+  - m_Path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip
+    m_Weight: 1
+  - m_Path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip/shiv_l_knee
+    m_Weight: 1
+  - m_Path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip/shiv_l_knee/shiv_l_foot
+    m_Weight: 1
+  - m_Path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip/shiv_l_knee/shiv_l_foot/shiv_l_toe
+    m_Weight: 1
+  - m_Path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip
+    m_Weight: 1
+  - m_Path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip/shiv_r_knee
+    m_Weight: 1
+  - m_Path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip/shiv_r_knee/shiv_r_foot
+    m_Weight: 1
+  - m_Path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip/shiv_r_knee/shiv_r_foot/shiv_r_toe
+    m_Weight: 1
+  - m_Path: skel_grp/shiv_cog/shiv_spine1
+    m_Weight: 0
+  - m_Path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2
+    m_Weight: 0
+  - m_Path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_l_clavicle
+    m_Weight: 0
+  - m_Path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_l_clavicle/shiv_l_shoulder
+    m_Weight: 0
+  - m_Path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_l_clavicle/shiv_l_shoulder/shiv_l_elbow
+    m_Weight: 0
+  - m_Path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_r_clavicle
+    m_Weight: 0
+  - m_Path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_r_clavicle/shiv_r_shoulder
+    m_Weight: 0
+  - m_Path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_r_clavicle/shiv_r_shoulder/shiv_r_elbow
+    m_Weight: 0
