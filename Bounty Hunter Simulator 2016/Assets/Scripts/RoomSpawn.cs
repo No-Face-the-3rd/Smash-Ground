@@ -31,14 +31,17 @@ public class RoomSpawn : MonoBehaviour
         List<int> indToDel = new List<int>();
 	    for(int i = 0;i < enemiesToSpawn.Count;i++)
         {
-            if(Time.time - startTime >= enemiesToSpawn[i].spawnTime)
+            if (Time.time - startTime >= enemiesToSpawn[i].spawnTime)
             {
-                GameObject tmp = (GameObject)Instantiate(enemyData.enemyDB[enemiesToSpawn[i].ind], transform.position + enemiesToSpawn[i].relSpawnPos, Quaternion.Euler(enemiesToSpawn[i].rotation));
-                if (tmp.gameObject.layer != 10)
-                    tmp.gameObject.layer = 10;
-                tmp.tag = "Active";
-                tmp.GetComponent<driveToTarget>().targetLoc = enemiesToSpawn[i].startDriveTo;
-                indToDel.Add(i);
+                if (enemiesToSpawn[i].ind < enemyData.enemyDB.Length)
+                {
+                    GameObject tmp = (GameObject)Instantiate(enemyData.enemyDB[enemiesToSpawn[i].ind], transform.position + enemiesToSpawn[i].relSpawnPos, Quaternion.Euler(enemiesToSpawn[i].rotation));
+                    if (tmp.gameObject.layer != 10)
+                        tmp.gameObject.layer = 10;
+                    tmp.tag = "Active";
+                    tmp.GetComponent<driveToTarget>().targetLoc = enemiesToSpawn[i].startDriveTo;
+                    indToDel.Add(i);
+                }
             }
         }
         for(int i = indToDel.Count - 1;i >= 0;i--)
@@ -46,8 +49,9 @@ public class RoomSpawn : MonoBehaviour
             enemiesToSpawn.RemoveAt(indToDel[i]);
         }
         GameObject[] testActive = GameObject.FindGameObjectsWithTag("Active");
+        GameObject[] testSpawning = GameObject.FindGameObjectsWithTag("Spawning");
 
-        if(testActive.Length == 0 && enemiesToSpawn.Count == 0)
+        if(testActive.Length == 0 && enemiesToSpawn.Count == 0 && testSpawning.Length == 0)
         {
             for(int i = 0;i < doors.Length;i++)
             {

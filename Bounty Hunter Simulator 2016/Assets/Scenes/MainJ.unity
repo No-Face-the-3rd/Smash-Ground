@@ -691,7 +691,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 494950, guid: 8da77e4ef0516d747bd8fd215bb4cdbc, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 494950, guid: 8da77e4ef0516d747bd8fd215bb4cdbc, type: 2}
       propertyPath: m_LocalPosition.z
@@ -996,7 +996,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ef6a25d7d18118248941427071aef2a5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ef6a25d7d18118248941427071aef2a5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1163,28 +1163,28 @@ MonoBehaviour:
   enemiesToSpawn:
   - ind: 0
     spawnTime: 0
-    relSpawnPos: {x: 0, y: 0, z: 0}
+    relSpawnPos: {x: 5, y: 0, z: 5}
+    rotation: {x: 0, y: 125, z: 0}
+    startDriveTo: {x: 0, y: 0, z: 0}
+  - ind: 1
+    spawnTime: 1
+    relSpawnPos: {x: 0, y: 0, z: 5}
+    rotation: {x: 0, y: 65, z: 0}
+    startDriveTo: {x: 0, y: 0, z: 0}
+  - ind: 2
+    spawnTime: 2
+    relSpawnPos: {x: -5, y: 0, z: 5}
+    rotation: {x: 0, y: 35, z: 0}
+    startDriveTo: {x: 0, y: 0, z: 0}
+  - ind: 3
+    spawnTime: 3
+    relSpawnPos: {x: -5, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
     startDriveTo: {x: 0, y: 0, z: 0}
-  - ind: 0
-    spawnTime: 0
-    relSpawnPos: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0}
-    startDriveTo: {x: 0, y: 0, z: 0}
-  - ind: 0
-    spawnTime: 0
-    relSpawnPos: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0}
-    startDriveTo: {x: 0, y: 0, z: 0}
-  - ind: 0
-    spawnTime: 0
-    relSpawnPos: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0}
-    startDriveTo: {x: 0, y: 0, z: 0}
-  - ind: 0
-    spawnTime: 0
-    relSpawnPos: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0}
+  - ind: 4
+    spawnTime: 4
+    relSpawnPos: {x: -5, y: 0, z: -5}
+    rotation: {x: 0, y: 235, z: 0}
     startDriveTo: {x: 0, y: 0, z: 0}
   doors:
   - {fileID: 1832948823}
