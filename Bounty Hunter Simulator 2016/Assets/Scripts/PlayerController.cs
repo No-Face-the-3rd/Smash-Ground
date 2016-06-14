@@ -214,8 +214,6 @@ public class PlayerController : MonoBehaviour
             child = tf.GetChild(0).GetComponent<character>();
 
         charSwitchTime = 0;
-//            if (playerNum == 0)
-//                playerNum = 1;
     }
 
     void Update()
@@ -469,11 +467,13 @@ public class PlayerController : MonoBehaviour
 
     void doNuke()
     {
-        //GameObject[] toKill = GameObject.FindGameObjectsWithTag("Active");
-       // for(int i= 0;i < toKill.Length;i++)
-       // {
-            //toKill[i].GetComponent<EnemyDeath>().deathFunc();
-       // }
+        GameObject[] toKill = GameObject.FindGameObjectsWithTag("Active");
+        for (int i = 0; i < toKill.Length; i++)
+        {
+            if (toKill[i].GetComponent<EnemyHealth>() != null)
+                toKill[i].GetComponent<EnemyHealth>().lastHitBy = -1;
+            toKill[i].GetComponent<EnemyDeath>().DoDestroy();
+        }
 
     }
 }
