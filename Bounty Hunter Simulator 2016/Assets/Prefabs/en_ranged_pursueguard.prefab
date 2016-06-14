@@ -293,7 +293,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.2354496, y: 1.4698229e-15, z: 6.619493}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 420228}
@@ -474,8 +474,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97376b4925caa56438b8b268b2f952b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupMaxRange: 0
-  powerupSpawnThres: 0
+  powerupMaxRange: 10
+  powerupSpawnThres: 1
+  deathParticle: {fileID: 115084, guid: 2d14a539a31cca84c98a27d08ce4e77a, type: 2}
 --- !u!114 &11412536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -670,6 +671,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: powerupSpawnThres
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -5,11 +5,13 @@ using System.Collections;
 public class Wander : MonoBehaviour
 {
     #region Agent info
+
     private Vector3 startLoc;
     private driveToTarget wanderLoc;
     private AimAt aim;
     public float wandTimer;
     private float originalTimer;
+
     #endregion
     void Start ()
     {
