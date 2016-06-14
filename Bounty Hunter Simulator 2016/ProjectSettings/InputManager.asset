@@ -563,7 +563,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 8
+    axis: 9
     joyNum: 1
   - serializedVersion: 3
     m_Name: secondaryAttack_P1
@@ -579,7 +579,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 9
+    axis: 8
     joyNum: 1
   - serializedVersion: 3
     m_Name: primaryAttack_P2
@@ -595,7 +595,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 8
+    axis: 9
     joyNum: 2
   - serializedVersion: 3
     m_Name: secondaryAttack_P2
@@ -611,7 +611,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 2
-    axis: 9
+    axis: 8
     joyNum: 2
   - serializedVersion: 3
     m_Name: dodge_P1
