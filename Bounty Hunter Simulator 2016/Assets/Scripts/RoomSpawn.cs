@@ -20,6 +20,8 @@ public class RoomSpawn : MonoBehaviour
 
     private float startTime;
 
+    public Vector3 relRespawnLoc;
+
 	void Start ()
     {
         enemyData = FindObjectOfType<EnemyDB>();
@@ -38,8 +40,8 @@ public class RoomSpawn : MonoBehaviour
                     GameObject tmp = (GameObject)Instantiate(enemyData.enemyDB[enemiesToSpawn[i].ind], transform.position + enemiesToSpawn[i].relSpawnPos, Quaternion.Euler(enemiesToSpawn[i].rotation));
                     if (tmp.gameObject.layer != 10)
                         tmp.gameObject.layer = 10;
-                    tmp.tag = "Active";
-                    tmp.GetComponent<driveToTarget>().targetLoc = enemiesToSpawn[i].startDriveTo;
+                    tmp.tag = "Spawning";
+                    tmp.GetComponent<driveToTarget>().targetLoc = enemiesToSpawn[i].startDriveTo + transform.position;
                     indToDel.Add(i);
                 }
             }

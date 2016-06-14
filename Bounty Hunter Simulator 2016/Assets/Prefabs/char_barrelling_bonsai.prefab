@@ -178,7 +178,7 @@ Animator:
   m_GameObject: {fileID: 126986}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 95753539254713b4b970f41ca78d4b22, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: feb5993d18123014bb2c350cceeb518d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -213,6 +213,7 @@ MonoBehaviour:
   owner: 0
   rescueScore: 20
   immuneAura: {r: 0, g: 1, b: 0.13103461, a: 0}
+  deathPref: {fileID: 187502, guid: 2a45fc26e3f03004fa99d9a978d22c9f, type: 2}
 --- !u!135 &13570992
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1816,6 +1817,14 @@ Prefab:
       propertyPath: auraPref
       value: 
       objectReference: {fileID: 145030, guid: 8e2f4591247016340a3c47f4218bee8e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: feb5993d18123014bb2c350cceeb518d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: deathPref
+      value: 
+      objectReference: {fileID: 187502, guid: 2a45fc26e3f03004fa99d9a978d22c9f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 126986}

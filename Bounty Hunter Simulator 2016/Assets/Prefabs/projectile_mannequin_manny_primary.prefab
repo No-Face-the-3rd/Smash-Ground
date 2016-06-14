@@ -112,9 +112,9 @@ MonoBehaviour:
   owner: 0
   damage: 1
   numTargets: 1
-  speed: 20
+  speed: 40
   upForce: 0
-  lifetime: 0.05
+  lifetime: 0.025
   spawnOffsetHeight: {x: 0.75, y: 3.25, z: 0}
   spawnOffsetLength: 0.25
   rotateRate: {x: 0, y: 0, z: 0}
@@ -144,7 +144,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: speed
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spawnOffsetLength
@@ -152,7 +152,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: lifetime
-      value: 0.05
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spawnOffsetHeight.x
