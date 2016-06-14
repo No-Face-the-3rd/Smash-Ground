@@ -503,8 +503,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97376b4925caa56438b8b268b2f952b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupMaxRange: 0
-  powerupSpawnThres: 0
+  powerupMaxRange: 10
+  powerupSpawnThres: 3
+  deathParticle: {fileID: 115084, guid: 2d14a539a31cca84c98a27d08ce4e77a, type: 2}
 --- !u!114 &11474168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -654,6 +655,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: deathParticle
+      value: 
+      objectReference: {fileID: 115084, guid: 2d14a539a31cca84c98a27d08ce4e77a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: powerupMaxRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: powerupSpawnThres
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

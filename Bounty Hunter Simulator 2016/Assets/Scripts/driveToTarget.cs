@@ -10,10 +10,6 @@ public class driveToTarget : MonoBehaviour
     void Start ()
     {
         rb = GetComponent<Rigidbody>();
-        if (targetLoc == Vector3.zero)
-        {
-            targetLoc = transform.position;
-        }
 	}
 	void Update ()
     {

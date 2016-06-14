@@ -10,10 +10,13 @@ public class MoveToStartLoc : MonoBehaviour
 
 	void Start ()
     {
-        moveTo = GetComponentInChildren<driveToTarget>();
-        aim = GetComponentInChildren<AimAt>();
-        startLoc = transform.position;
-	}
+        moveTo = GetComponent<driveToTarget>();
+        aim = GetComponent<AimAt>();
+        if (this.gameObject.tag == "Spawning")
+        {
+            startLoc = moveTo.targetLoc;
+        }
+    }
 	
 	void Update ()
     {

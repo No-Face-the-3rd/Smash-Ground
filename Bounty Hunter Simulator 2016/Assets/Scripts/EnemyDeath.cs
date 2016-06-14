@@ -7,6 +7,7 @@ public class EnemyDeath : MonoBehaviour
     public float powerupMaxRange;
     public float powerupSpawnThres;
     private PowerupDB powersDB;
+    public GameObject deathParticle;
 
     void Start()
     {
@@ -15,8 +16,6 @@ public class EnemyDeath : MonoBehaviour
     }
     public void DoDestroy()
     {
-        this.gameObject.tag = "Inactive";
-
         if (enemyHealth != null && enemyHealth.lastHitBy >= 0)
         {
             enemyHealth.score.addScore(enemyHealth.lastHitBy, enemyHealth.scoreValue);
@@ -26,6 +25,12 @@ public class EnemyDeath : MonoBehaviour
                 Instantiate(powersDB.powerups[ind], this.transform.position + new Vector3(0, 1, 0), powersDB.powerups[ind].transform.rotation);
             }
         }
+        Instantiate(deathParticle, transform.position + new Vector3(0.0f,1.0f,0.0f), Quaternion.Euler(Vector3.zero));
         Destroy(this.gameObject);
+    }
+
+    public void SetInactive()
+    {
+        this.gameObject.tag = "Inactive";
     }
 }

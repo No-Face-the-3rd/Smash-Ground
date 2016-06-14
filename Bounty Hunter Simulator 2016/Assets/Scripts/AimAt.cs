@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class AimAt : MonoBehaviour
-{
-
+{ 
     public Vector3 aimAtLoc;
 	void Start ()
     {
