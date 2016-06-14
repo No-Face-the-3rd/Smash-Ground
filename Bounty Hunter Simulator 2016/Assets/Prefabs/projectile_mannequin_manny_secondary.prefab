@@ -115,7 +115,7 @@ MonoBehaviour:
   speed: 20
   upForce: 0
   lifetime: 0.05
-  spawnOffsetHeight: {x: 0.75, y: 3.25, z: 0}
+  spawnOffsetHeight: {x: -0.75, y: 3.25, z: 0}
   spawnOffsetLength: 0.25
   rotateRate: {x: 0, y: 0, z: 0}
   spreadAngle: 15
@@ -152,7 +152,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spawnOffsetHeight.x
-      value: 0.75
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: speed

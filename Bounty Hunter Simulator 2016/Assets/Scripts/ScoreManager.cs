@@ -21,7 +21,7 @@ public class ScoreManager : MonoBehaviour
             int idTmp = locator.players[i].GetComponent<PlayerController>().playerNum - 1;
             if (idTmp < scoreTexts.Length)
             {
-                scoreTexts[idTmp].text = "Success: " + scores[idTmp];
+                scoreTexts[idTmp].text = "Hotdogs: " + scores[idTmp];
             }
         }
     }
