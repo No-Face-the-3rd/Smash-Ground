@@ -20,8 +20,14 @@ public class character : MonoBehaviour
     public int owner;
     public int rescueScore;
     public Color immuneAura;
+
+    private Animator anim;
+    private Vector3 lastPos;
+
+    public GameObject deathPref;
     void Start()
     {
+        anim = GetComponent<Animator>();
         nextPrimary = nextSecondary = nextDodge = 0.0f;
         tf = GetComponent<Transform>();
         ptf = tf.parent;
@@ -50,6 +56,19 @@ public class character : MonoBehaviour
                 transform.gameObject.layer = 16;
             }
 
+        }
+        if(anim != null)
+        {
+            Vector3 distTest = lastPos - transform.position;
+            if (distTest.magnitude > 0.1f)
+            {
+                anim.StartPlayback();
+            }
+            else
+            {
+                anim.StopPlayback();
+            }
+            lastPos = transform.position;
         }
     }
     public virtual void processInput(float primary, float secondary, float dodge)
@@ -176,9 +195,11 @@ public class PlayerController : MonoBehaviour
     public float powerupTime;
 
     private ScoreManager scorer;
+    private GameObject main;
 
     void Start()
     {
+        main = GameObject.FindObjectOfType<MainCameraController>().gameObject;
         scorer = FindObjectOfType<ScoreManager>();
         powerup = powerUps.NONE;
         powerupTime = 0.0f;
@@ -231,15 +252,16 @@ public class PlayerController : MonoBehaviour
             }
             if (powerup == powerUps.PROT)
             {
-                ImmuneAura [] tmp = child.transform.GetComponentsInChildren<ImmuneAura>();
-                if(tmp.Length < 1)
+                gameObject.layer = 15;
+                ImmuneAura[] tmp = child.transform.GetComponentsInChildren<ImmuneAura>();
+                if (tmp.Length < 1)
                 {
                     GameObject tmp2 = (GameObject)Instantiate(child.auraPref, child.transform.position, child.transform.rotation);
                     tmp2.transform.parent = child.transform;
                 }
             }
             powerupTime -= Time.deltaTime;
-
+            
         }
         
         if(powerupTime <= 0.0f)
@@ -248,6 +270,7 @@ public class PlayerController : MonoBehaviour
             if(powerup == powerUps.PROT)
             {
                 Destroy(child.transform.GetComponentInChildren<ImmuneAura>().gameObject);
+                gameObject.layer = 8;
             }
             powerup = powerUps.NONE;
         }
@@ -285,10 +308,24 @@ public class PlayerController : MonoBehaviour
         if (tf.childCount > 0)
         {
             movePlayer();
+            GetComponent<Collider>().enabled = true;
+            GetComponent<Rigidbody>().useGravity = true;
             child.processInput(primaryIn, secondaryIn, dodgeIn);
         }
         else
         {
+            if (main.GetComponent<MainCameraController>() == null)
+            {
+                main = GameObject.FindObjectOfType<MainCameraController>().gameObject;
+            }
+            Vector3 respawnPoint = main.GetComponent<MainCameraController>().target.GetComponent<RoomSpawn>().relRespawnLoc + main.GetComponent<MainCameraController>().target.transform.position;
+            Vector3 tmp = transform.position - respawnPoint;
+            if(tmp.magnitude > 0.1f)
+            {
+                transform.position = respawnPoint;
+            }
+            GetComponent<Collider>().enabled = false;
+            GetComponent<Rigidbody>().useGravity = false;
             moveCam();
             if (charSwitching)
             {
@@ -443,11 +480,14 @@ public class PlayerController : MonoBehaviour
             child.getDamage(collision.gameObject.GetComponent<Bullet>().damage);
             if (child.health <= 0)
             {
+                GameObject tmp = (GameObject)GameObject.Instantiate(child.GetComponent<character>().deathPref, transform.position + new Vector3(0.0f, 1.0f, 0.0f), Quaternion.Euler(Vector3.zero));
+                tmp.GetComponent<Renderer>().material.SetColor("_EmissionColor", child.GetComponent<character>().immuneAura);
                 GetComponent<Collider>().enabled = false;
                 rb.useGravity = false;
                 rb.velocity = Vector3.zero;
                 curInd = 0;
                 cycleChar(curInd);
+                powerup = powerUps.NONE;
             }
         }
     }
