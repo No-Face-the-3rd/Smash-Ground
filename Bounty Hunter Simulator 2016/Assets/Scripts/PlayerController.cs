@@ -189,7 +189,7 @@ public class PlayerController : MonoBehaviour
     private int charSel,charSwitchTime;
     private bool charChoose;
 
-    private character child;
+    public character child;
 
     public powerUps powerup;
     public float powerupTime;
@@ -371,6 +371,7 @@ public class PlayerController : MonoBehaviour
         cs.depth = playerNum;
         cs.cullingMask = 1 << (11 + playerNum);
         cs.orthographic = false;
+        
 
         Destroy(cs.GetComponent<MainCameraController>());
 
@@ -525,7 +526,6 @@ public class PlayerController : MonoBehaviour
         GameObject[] toKill = GameObject.FindGameObjectsWithTag("Active");
         for (int i = 0; i < toKill.Length; i++)
         {
-            
             if (toKill[i].GetComponent<EnemyHealth>() != null)
                 toKill[i].GetComponent<EnemyHealth>().lastHitBy = -1;
             toKill[i].GetComponent<EnemyDeath>().DoDestroy();
