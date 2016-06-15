@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 461092}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_r_shoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23,7 +23,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 412820}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_l_shoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 479350}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 450964}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_r_toe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 451010}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_spine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 458534}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_r_hip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 405548}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_cog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 427090}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_l_hip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 438284}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_l_knee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 468930}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_l_elbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 482668}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_r_knee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 424190}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_pelvis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 474940}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_r_foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - 114: {fileID: 11473394}
   - 114: {fileID: 11498354}
   - 114: {fileID: 11452352}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: en_melee_pursuewander
   m_TagString: Active
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 462744}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_l_foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 464686}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: skel_grp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 482324}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_r_clavicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 422170}
   - 137: {fileID: 13754804}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_bot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +290,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 498150}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_l_clavicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 407874}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_r_elbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 407002}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shiv_l_toe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -744,6 +744,7 @@ MonoBehaviour:
   powerupMaxRange: 5
   powerupSpawnThres: 1
   deathParticle: {fileID: 115084, guid: 2d14a539a31cca84c98a27d08ce4e77a, type: 2}
+  powerupsIcanSpawn: 0000000001000000020000000300000004000000
 --- !u!136 &13605078
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -825,6 +826,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: powerupsIcanSpawn.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: color.r
       value: 0.044333916
       objectReference: {fileID: 0}
@@ -840,6 +845,26 @@ Prefab:
       propertyPath: deathParticle
       value: 
       objectReference: {fileID: 115084, guid: 2d14a539a31cca84c98a27d08ce4e77a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: powerupsIcanSpawn.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: powerupsIcanSpawn.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: powerupsIcanSpawn.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: powerupsIcanSpawn.Array.data[4]
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 160974}
