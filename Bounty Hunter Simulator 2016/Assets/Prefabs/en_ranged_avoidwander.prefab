@@ -530,6 +530,7 @@ MonoBehaviour:
   powerupMaxRange: 10
   powerupSpawnThres: 1
   deathParticle: {fileID: 115084, guid: 2d14a539a31cca84c98a27d08ce4e77a, type: 2}
+  powerupsIcanSpawn: 0000000001000000020000000300000004000000
 --- !u!114 &11458648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -650,6 +651,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: powerupsIcanSpawn.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: scoreValue
       value: 15
       objectReference: {fileID: 0}
@@ -692,6 +697,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: powerupSpawnThres
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: powerupsIcanSpawn.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: powerupsIcanSpawn.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: powerupsIcanSpawn.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: powerupsIcanSpawn.Array.data[4]
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
