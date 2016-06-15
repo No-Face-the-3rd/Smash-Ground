@@ -1,0 +1,24 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class BossAnimations : MonoBehaviour
+{
+    private Rigidbody rb;
+    private Animator anim;
+    private BossShoot attack;
+    private EnemyHealth health;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
+        attack = GetComponent<BossShoot>();
+        health = GetComponent<EnemyHealth>();
+    }
+
+    void Update()
+    {
+        anim.SetFloat("magOfVelocity", Vector3.Magnitude(rb.velocity));
+
+    }
+}

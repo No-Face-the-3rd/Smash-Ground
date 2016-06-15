@@ -1,0 +1,892 @@
+fileFormatVersion: 2
+guid: 4c443dc6731984e4198a4c587ef4ced0
+timeCreated: 1465946009
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: bot
+    100004: bot_body1
+    100006: cog
+    100008: eye
+    100010: foot_lb
+    100012: foot_lf
+    100014: foot_rb
+    100016: foot_rf
+    100018: knee_lb
+    100020: knee_lf
+    100022: knee_rb
+    100024: knee_rf
+    100026: lb_foot
+    100028: lb_hip
+    100030: lb_knee
+    100032: lb_toe
+    100034: leg_lb
+    100036: leg_lb 1
+    100038: leg_lf
+    100040: leg_lf 1
+    100042: leg_rb
+    100044: leg_rb 1
+    100046: leg_rf
+    100048: leg_rf 1
+    100050: lf_foot
+    100052: lf_hip
+    100054: lf_knee
+    100056: lf_toe
+    100058: polySurface1
+    100060: polySurface2
+    100062: polySurface3
+    100064: rb_foot
+    100066: rb_hip
+    100068: rb_knee
+    100070: rb_toe
+    100072: rf_foot
+    100074: rf_hip
+    100076: rf_knee
+    100078: rf_toe
+    100080: skeleton_grp
+    100082: spine1
+    100084: spine2
+    100086: waist1
+    400000: //RootNode
+    400002: bot
+    400004: bot_body1
+    400006: cog
+    400008: eye
+    400010: foot_lb
+    400012: foot_lf
+    400014: foot_rb
+    400016: foot_rf
+    400018: knee_lb
+    400020: knee_lf
+    400022: knee_rb
+    400024: knee_rf
+    400026: lb_foot
+    400028: lb_hip
+    400030: lb_knee
+    400032: lb_toe
+    400034: leg_lb
+    400036: leg_lb 1
+    400038: leg_lf
+    400040: leg_lf 1
+    400042: leg_rb
+    400044: leg_rb 1
+    400046: leg_rf
+    400048: leg_rf 1
+    400050: lf_foot
+    400052: lf_hip
+    400054: lf_knee
+    400056: lf_toe
+    400058: polySurface1
+    400060: polySurface2
+    400062: polySurface3
+    400064: rb_foot
+    400066: rb_hip
+    400068: rb_knee
+    400070: rb_toe
+    400072: rf_foot
+    400074: rf_hip
+    400076: rf_knee
+    400078: rf_toe
+    400080: skeleton_grp
+    400082: spine1
+    400084: spine2
+    400086: waist1
+    4300000: polySurface1
+    4300002: polySurface2
+    4300004: polySurface3
+    4300006: knee_rf
+    4300008: leg_rf
+    4300010: foot_rf
+    4300012: knee_rb
+    4300014: leg_rb
+    4300016: foot_rb
+    4300018: knee_lf
+    4300020: leg_lf
+    4300022: foot_lf
+    4300024: knee_lb
+    4300026: leg_lb
+    4300028: foot_lb
+    7400000: idle
+    7400002: walking
+    7400004: turn_right
+    7400006: turn_left
+    7400008: shooting
+    7400010: death
+    9500000: //RootNode
+    13700000: foot_lb
+    13700002: foot_lf
+    13700004: foot_rb
+    13700006: foot_rf
+    13700008: knee_lb
+    13700010: knee_lf
+    13700012: knee_rb
+    13700014: knee_rf
+    13700016: leg_lb 1
+    13700018: leg_lf 1
+    13700020: leg_rb 1
+    13700022: leg_rf 1
+    13700024: polySurface1
+    13700026: polySurface2
+    13700028: polySurface3
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bot
+        weight: 1
+      - path: bot/bot_body1
+        weight: 1
+      - path: bot/bot_body1/polySurface1
+        weight: 1
+      - path: bot/bot_body1/polySurface2
+        weight: 1
+      - path: bot/bot_body1/polySurface3
+        weight: 1
+      - path: bot/leg_lb
+        weight: 1
+      - path: bot/leg_lb/foot_lb
+        weight: 1
+      - path: bot/leg_lb/knee_lb
+        weight: 1
+      - path: bot/leg_lb/leg_lb 1
+        weight: 1
+      - path: bot/leg_lf
+        weight: 1
+      - path: bot/leg_lf/foot_lf
+        weight: 1
+      - path: bot/leg_lf/knee_lf
+        weight: 1
+      - path: bot/leg_lf/leg_lf 1
+        weight: 1
+      - path: bot/leg_rb
+        weight: 1
+      - path: bot/leg_rb/foot_rb
+        weight: 1
+      - path: bot/leg_rb/knee_rb
+        weight: 1
+      - path: bot/leg_rb/leg_rb 1
+        weight: 1
+      - path: bot/leg_rf
+        weight: 1
+      - path: bot/leg_rf/foot_rf
+        weight: 1
+      - path: bot/leg_rf/knee_rf
+        weight: 1
+      - path: bot/leg_rf/leg_rf 1
+        weight: 1
+      - path: skeleton_grp
+        weight: 1
+      - path: skeleton_grp/cog
+        weight: 1
+      - path: skeleton_grp/cog/spine1
+        weight: 1
+      - path: skeleton_grp/cog/spine1/spine2
+        weight: 1
+      - path: skeleton_grp/cog/spine1/spine2/eye
+        weight: 1
+      - path: skeleton_grp/cog/waist1
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee/lb_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee/lb_foot/lb_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee/lf_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee/lf_foot/lf_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee/rb_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee/rb_foot/rb_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee/rf_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee/rf_foot/rf_toe
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: walking
+      takeName: Take 001
+      firstFrame: 30
+      lastFrame: 57
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bot
+        weight: 1
+      - path: bot/bot_body1
+        weight: 1
+      - path: bot/bot_body1/polySurface1
+        weight: 1
+      - path: bot/bot_body1/polySurface2
+        weight: 1
+      - path: bot/bot_body1/polySurface3
+        weight: 1
+      - path: bot/leg_lb
+        weight: 1
+      - path: bot/leg_lb/foot_lb
+        weight: 1
+      - path: bot/leg_lb/knee_lb
+        weight: 1
+      - path: bot/leg_lb/leg_lb 1
+        weight: 1
+      - path: bot/leg_lf
+        weight: 1
+      - path: bot/leg_lf/foot_lf
+        weight: 1
+      - path: bot/leg_lf/knee_lf
+        weight: 1
+      - path: bot/leg_lf/leg_lf 1
+        weight: 1
+      - path: bot/leg_rb
+        weight: 1
+      - path: bot/leg_rb/foot_rb
+        weight: 1
+      - path: bot/leg_rb/knee_rb
+        weight: 1
+      - path: bot/leg_rb/leg_rb 1
+        weight: 1
+      - path: bot/leg_rf
+        weight: 1
+      - path: bot/leg_rf/foot_rf
+        weight: 1
+      - path: bot/leg_rf/knee_rf
+        weight: 1
+      - path: bot/leg_rf/leg_rf 1
+        weight: 1
+      - path: skeleton_grp
+        weight: 1
+      - path: skeleton_grp/cog
+        weight: 1
+      - path: skeleton_grp/cog/spine1
+        weight: 1
+      - path: skeleton_grp/cog/spine1/spine2
+        weight: 1
+      - path: skeleton_grp/cog/spine1/spine2/eye
+        weight: 1
+      - path: skeleton_grp/cog/waist1
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee/lb_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee/lb_foot/lb_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee/lf_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee/lf_foot/lf_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee/rb_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee/rb_foot/rb_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee/rf_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee/rf_foot/rf_toe
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: turn_right
+      takeName: Take 001
+      firstFrame: 62
+      lastFrame: 85
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bot
+        weight: 1
+      - path: bot/bot_body1
+        weight: 1
+      - path: bot/bot_body1/polySurface1
+        weight: 1
+      - path: bot/bot_body1/polySurface2
+        weight: 1
+      - path: bot/bot_body1/polySurface3
+        weight: 1
+      - path: bot/leg_lb
+        weight: 1
+      - path: bot/leg_lb/foot_lb
+        weight: 1
+      - path: bot/leg_lb/knee_lb
+        weight: 1
+      - path: bot/leg_lb/leg_lb 1
+        weight: 1
+      - path: bot/leg_lf
+        weight: 1
+      - path: bot/leg_lf/foot_lf
+        weight: 1
+      - path: bot/leg_lf/knee_lf
+        weight: 1
+      - path: bot/leg_lf/leg_lf 1
+        weight: 1
+      - path: bot/leg_rb
+        weight: 1
+      - path: bot/leg_rb/foot_rb
+        weight: 1
+      - path: bot/leg_rb/knee_rb
+        weight: 1
+      - path: bot/leg_rb/leg_rb 1
+        weight: 1
+      - path: bot/leg_rf
+        weight: 1
+      - path: bot/leg_rf/foot_rf
+        weight: 1
+      - path: bot/leg_rf/knee_rf
+        weight: 1
+      - path: bot/leg_rf/leg_rf 1
+        weight: 1
+      - path: skeleton_grp
+        weight: 1
+      - path: skeleton_grp/cog
+        weight: 1
+      - path: skeleton_grp/cog/spine1
+        weight: 1
+      - path: skeleton_grp/cog/spine1/spine2
+        weight: 1
+      - path: skeleton_grp/cog/spine1/spine2/eye
+        weight: 1
+      - path: skeleton_grp/cog/waist1
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee/lb_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee/lb_foot/lb_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee/lf_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee/lf_foot/lf_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee/rb_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee/rb_foot/rb_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee/rf_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee/rf_foot/rf_toe
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: turn_left
+      takeName: Take 001
+      firstFrame: 87
+      lastFrame: 110
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bot
+        weight: 1
+      - path: bot/bot_body1
+        weight: 1
+      - path: bot/bot_body1/polySurface1
+        weight: 1
+      - path: bot/bot_body1/polySurface2
+        weight: 1
+      - path: bot/bot_body1/polySurface3
+        weight: 1
+      - path: bot/leg_lb
+        weight: 1
+      - path: bot/leg_lb/foot_lb
+        weight: 1
+      - path: bot/leg_lb/knee_lb
+        weight: 1
+      - path: bot/leg_lb/leg_lb 1
+        weight: 1
+      - path: bot/leg_lf
+        weight: 1
+      - path: bot/leg_lf/foot_lf
+        weight: 1
+      - path: bot/leg_lf/knee_lf
+        weight: 1
+      - path: bot/leg_lf/leg_lf 1
+        weight: 1
+      - path: bot/leg_rb
+        weight: 1
+      - path: bot/leg_rb/foot_rb
+        weight: 1
+      - path: bot/leg_rb/knee_rb
+        weight: 1
+      - path: bot/leg_rb/leg_rb 1
+        weight: 1
+      - path: bot/leg_rf
+        weight: 1
+      - path: bot/leg_rf/foot_rf
+        weight: 1
+      - path: bot/leg_rf/knee_rf
+        weight: 1
+      - path: bot/leg_rf/leg_rf 1
+        weight: 1
+      - path: skeleton_grp
+        weight: 1
+      - path: skeleton_grp/cog
+        weight: 1
+      - path: skeleton_grp/cog/spine1
+        weight: 1
+      - path: skeleton_grp/cog/spine1/spine2
+        weight: 1
+      - path: skeleton_grp/cog/spine1/spine2/eye
+        weight: 1
+      - path: skeleton_grp/cog/waist1
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee/lb_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee/lb_foot/lb_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee/lf_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee/lf_foot/lf_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee/rb_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee/rb_foot/rb_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee/rf_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee/rf_foot/rf_toe
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: shooting
+      takeName: Take 001
+      firstFrame: 112
+      lastFrame: 135
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bot
+        weight: 1
+      - path: bot/bot_body1
+        weight: 1
+      - path: bot/bot_body1/polySurface1
+        weight: 1
+      - path: bot/bot_body1/polySurface2
+        weight: 1
+      - path: bot/bot_body1/polySurface3
+        weight: 1
+      - path: bot/leg_lb
+        weight: 1
+      - path: bot/leg_lb/foot_lb
+        weight: 1
+      - path: bot/leg_lb/knee_lb
+        weight: 1
+      - path: bot/leg_lb/leg_lb 1
+        weight: 1
+      - path: bot/leg_lf
+        weight: 1
+      - path: bot/leg_lf/foot_lf
+        weight: 1
+      - path: bot/leg_lf/knee_lf
+        weight: 1
+      - path: bot/leg_lf/leg_lf 1
+        weight: 1
+      - path: bot/leg_rb
+        weight: 1
+      - path: bot/leg_rb/foot_rb
+        weight: 1
+      - path: bot/leg_rb/knee_rb
+        weight: 1
+      - path: bot/leg_rb/leg_rb 1
+        weight: 1
+      - path: bot/leg_rf
+        weight: 1
+      - path: bot/leg_rf/foot_rf
+        weight: 1
+      - path: bot/leg_rf/knee_rf
+        weight: 1
+      - path: bot/leg_rf/leg_rf 1
+        weight: 1
+      - path: skeleton_grp
+        weight: 1
+      - path: skeleton_grp/cog
+        weight: 1
+      - path: skeleton_grp/cog/spine1
+        weight: 1
+      - path: skeleton_grp/cog/spine1/spine2
+        weight: 1
+      - path: skeleton_grp/cog/spine1/spine2/eye
+        weight: 1
+      - path: skeleton_grp/cog/waist1
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee/lb_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee/lb_foot/lb_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee/lf_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee/lf_foot/lf_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee/rb_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee/rb_foot/rb_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee/rf_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee/rf_foot/rf_toe
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: death
+      takeName: Take 001
+      firstFrame: 137
+      lastFrame: 210
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bot
+        weight: 1
+      - path: bot/bot_body1
+        weight: 1
+      - path: bot/bot_body1/polySurface1
+        weight: 1
+      - path: bot/bot_body1/polySurface2
+        weight: 1
+      - path: bot/bot_body1/polySurface3
+        weight: 1
+      - path: bot/leg_lb
+        weight: 1
+      - path: bot/leg_lb/foot_lb
+        weight: 1
+      - path: bot/leg_lb/knee_lb
+        weight: 1
+      - path: bot/leg_lb/leg_lb 1
+        weight: 1
+      - path: bot/leg_lf
+        weight: 1
+      - path: bot/leg_lf/foot_lf
+        weight: 1
+      - path: bot/leg_lf/knee_lf
+        weight: 1
+      - path: bot/leg_lf/leg_lf 1
+        weight: 1
+      - path: bot/leg_rb
+        weight: 1
+      - path: bot/leg_rb/foot_rb
+        weight: 1
+      - path: bot/leg_rb/knee_rb
+        weight: 1
+      - path: bot/leg_rb/leg_rb 1
+        weight: 1
+      - path: bot/leg_rf
+        weight: 1
+      - path: bot/leg_rf/foot_rf
+        weight: 1
+      - path: bot/leg_rf/knee_rf
+        weight: 1
+      - path: bot/leg_rf/leg_rf 1
+        weight: 1
+      - path: skeleton_grp
+        weight: 1
+      - path: skeleton_grp/cog
+        weight: 1
+      - path: skeleton_grp/cog/spine1
+        weight: 1
+      - path: skeleton_grp/cog/spine1/spine2
+        weight: 1
+      - path: skeleton_grp/cog/spine1/spine2/eye
+        weight: 1
+      - path: skeleton_grp/cog/waist1
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee/lb_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lb_hip/lb_knee/lb_foot/lb_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee/lf_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/lf_hip/lf_knee/lf_foot/lf_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee/rb_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rb_hip/rb_knee/rb_foot/rb_toe
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee/rf_foot
+        weight: 1
+      - path: skeleton_grp/cog/waist1/rf_hip/rf_knee/rf_foot/rf_toe
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 175
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
