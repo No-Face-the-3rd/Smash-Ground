@@ -19,6 +19,9 @@ public class BossAnimations : MonoBehaviour
     void Update()
     {
         anim.SetFloat("magOfVelocity", Vector3.Magnitude(rb.velocity));
-
+        anim.SetBool("TurnLeft", attack.turnLeft);
+        anim.SetBool("turn", attack.turn);
+        anim.SetInteger("health", health.health);
+        anim.SetBool("Shoot", attack.shoot);
     }
 }

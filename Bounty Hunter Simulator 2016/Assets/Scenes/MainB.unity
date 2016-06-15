@@ -523,39 +523,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b6c7bae296985eb40b334da2e0c27a9d, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &858404582 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 109734, guid: 8468f23105225a44d82daed37d83372a, type: 2}
-  m_PrefabInternal: {fileID: 1388188486}
---- !u!114 &858404592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 858404582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7cbc33a104f044fa4b155794ece6af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 20
-  lastHitBy: 0
-  scoreValue: 500
-  score: {fileID: 0}
---- !u!114 &858404593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 858404582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97376b4925caa56438b8b268b2f952b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerupMaxRange: 10
-  powerupSpawnThres: 10
-  deathParticle: {fileID: 0}
 --- !u!1001 &965443252
 Prefab:
   m_ObjectHideFlags: 0
@@ -727,9 +694,9 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11428872, guid: 8468f23105225a44d82daed37d83372a, type: 2}
-      propertyPath: attackPre.Array.size
-      value: 2
+    - target: {fileID: 11452058, guid: 8468f23105225a44d82daed37d83372a, type: 2}
+      propertyPath: powerupsICanSpawn.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 402928, guid: 8468f23105225a44d82daed37d83372a, type: 2}
       propertyPath: m_LocalPosition.x
@@ -767,41 +734,9 @@ Prefab:
       propertyPath: m_Name
       value: boss_bot
       objectReference: {fileID: 0}
-    - target: {fileID: 11428872, guid: 8468f23105225a44d82daed37d83372a, type: 2}
-      propertyPath: attackPre.Array.data[0]
-      value: 
-      objectReference: {fileID: 102348, guid: 49c8195d2318c8c409be7f5847b67ed3, type: 2}
-    - target: {fileID: 11428872, guid: 8468f23105225a44d82daed37d83372a, type: 2}
-      propertyPath: attackPre.Array.data[1]
-      value: 
-      objectReference: {fileID: 160974, guid: 7dc0a18eea9a2904991f2057d9fa73c9, type: 2}
-    - target: {fileID: 11428872, guid: 8468f23105225a44d82daed37d83372a, type: 2}
-      propertyPath: fireDelay
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 11428872, guid: 8468f23105225a44d82daed37d83372a, type: 2}
-      propertyPath: attackRange
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 11428872, guid: 8468f23105225a44d82daed37d83372a, type: 2}
-      propertyPath: turnSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 11428872, guid: 8468f23105225a44d82daed37d83372a, type: 2}
-      propertyPath: maxRadiusForAim
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 11428872, guid: 8468f23105225a44d82daed37d83372a, type: 2}
-      propertyPath: attackSpawnOffset
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11428872, guid: 8468f23105225a44d82daed37d83372a, type: 2}
-      propertyPath: attackYOffset.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 109734, guid: 8468f23105225a44d82daed37d83372a, type: 2}
-      propertyPath: m_TagString
-      value: Active
+    - target: {fileID: 11452058, guid: 8468f23105225a44d82daed37d83372a, type: 2}
+      propertyPath: powerupsICanSpawn.Array.data[0]
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8468f23105225a44d82daed37d83372a, type: 2}
@@ -838,6 +773,21 @@ MonoBehaviour:
   - {fileID: 138224, guid: 014356db4abe45c42b59b429efd64f6e, type: 2}
   - {fileID: 112576, guid: 83c73a3851a354a439a0b801096e2e4f, type: 2}
   - {fileID: 140176, guid: c7284b6372b4dc543b376f8fc0d00de8, type: 2}
+  - {fileID: 111356, guid: 86f09f037d0d9a340b191f21134aea3d, type: 2}
+  - {fileID: 111356, guid: 86f09f037d0d9a340b191f21134aea3d, type: 2}
+  - {fileID: 111356, guid: 86f09f037d0d9a340b191f21134aea3d, type: 2}
+  - {fileID: 111356, guid: 86f09f037d0d9a340b191f21134aea3d, type: 2}
+  - {fileID: 111356, guid: 86f09f037d0d9a340b191f21134aea3d, type: 2}
+  - {fileID: 111356, guid: 86f09f037d0d9a340b191f21134aea3d, type: 2}
+  - {fileID: 111356, guid: 86f09f037d0d9a340b191f21134aea3d, type: 2}
+  - {fileID: 111356, guid: 86f09f037d0d9a340b191f21134aea3d, type: 2}
+  - {fileID: 111356, guid: 86f09f037d0d9a340b191f21134aea3d, type: 2}
+  - {fileID: 111356, guid: 86f09f037d0d9a340b191f21134aea3d, type: 2}
+  - {fileID: 111356, guid: 86f09f037d0d9a340b191f21134aea3d, type: 2}
+  - {fileID: 111356, guid: 86f09f037d0d9a340b191f21134aea3d, type: 2}
+  - {fileID: 111356, guid: 86f09f037d0d9a340b191f21134aea3d, type: 2}
+  - {fileID: 111356, guid: 86f09f037d0d9a340b191f21134aea3d, type: 2}
+  - {fileID: 111356, guid: 86f09f037d0d9a340b191f21134aea3d, type: 2}
   - {fileID: 111356, guid: 86f09f037d0d9a340b191f21134aea3d, type: 2}
 --- !u!4 &1633958275
 Transform:

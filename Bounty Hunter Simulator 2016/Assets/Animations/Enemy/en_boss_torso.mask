@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1011 &101100000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: en_boss_torso
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: bot
+    m_Weight: 1
+  - m_Path: bot/bot_body1
+    m_Weight: 1
+  - m_Path: bot/bot_body1/polySurface1
+    m_Weight: 1
+  - m_Path: bot/bot_body1/polySurface2
+    m_Weight: 1
+  - m_Path: bot/bot_body1/polySurface3
+    m_Weight: 1
+  - m_Path: bot/leg_lb
+    m_Weight: 0
+  - m_Path: bot/leg_lb/foot_lb
+    m_Weight: 0
+  - m_Path: bot/leg_lb/knee_lb
+    m_Weight: 0
+  - m_Path: bot/leg_lb/leg_lb 1
+    m_Weight: 0
+  - m_Path: bot/leg_lf
+    m_Weight: 0
+  - m_Path: bot/leg_lf/foot_lf
+    m_Weight: 0
+  - m_Path: bot/leg_lf/knee_lf
+    m_Weight: 0
+  - m_Path: bot/leg_lf/leg_lf 1
+    m_Weight: 0
+  - m_Path: bot/leg_rb
+    m_Weight: 0
+  - m_Path: bot/leg_rb/foot_rb
+    m_Weight: 0
+  - m_Path: bot/leg_rb/knee_rb
+    m_Weight: 0
+  - m_Path: bot/leg_rb/leg_rb 1
+    m_Weight: 0
+  - m_Path: bot/leg_rf
+    m_Weight: 0
+  - m_Path: bot/leg_rf/foot_rf
+    m_Weight: 0
+  - m_Path: bot/leg_rf/knee_rf
+    m_Weight: 0
+  - m_Path: bot/leg_rf/leg_rf 1
+    m_Weight: 0
+  - m_Path: skeleton_grp
+    m_Weight: 1
+  - m_Path: skeleton_grp/cog
+    m_Weight: 1
+  - m_Path: skeleton_grp/cog/spine1
+    m_Weight: 1
+  - m_Path: skeleton_grp/cog/spine1/spine2
+    m_Weight: 1
+  - m_Path: skeleton_grp/cog/spine1/spine2/eye
+    m_Weight: 1
+  - m_Path: skeleton_grp/cog/waist1
+    m_Weight: 0
+  - m_Path: skeleton_grp/cog/waist1/lb_hip
+    m_Weight: 0
+  - m_Path: skeleton_grp/cog/waist1/lb_hip/lb_knee
+    m_Weight: 0
+  - m_Path: skeleton_grp/cog/waist1/lb_hip/lb_knee/lb_foot
+    m_Weight: 0
+  - m_Path: skeleton_grp/cog/waist1/lb_hip/lb_knee/lb_foot/lb_toe
+    m_Weight: 0
+  - m_Path: skeleton_grp/cog/waist1/lf_hip
+    m_Weight: 0
+  - m_Path: skeleton_grp/cog/waist1/lf_hip/lf_knee
+    m_Weight: 0
+  - m_Path: skeleton_grp/cog/waist1/lf_hip/lf_knee/lf_foot
+    m_Weight: 0
+  - m_Path: skeleton_grp/cog/waist1/lf_hip/lf_knee/lf_foot/lf_toe
+    m_Weight: 0
+  - m_Path: skeleton_grp/cog/waist1/rb_hip
+    m_Weight: 0
+  - m_Path: skeleton_grp/cog/waist1/rb_hip/rb_knee
+    m_Weight: 0
+  - m_Path: skeleton_grp/cog/waist1/rb_hip/rb_knee/rb_foot
+    m_Weight: 0
+  - m_Path: skeleton_grp/cog/waist1/rb_hip/rb_knee/rb_foot/rb_toe
+    m_Weight: 0
+  - m_Path: skeleton_grp/cog/waist1/rf_hip
+    m_Weight: 0
+  - m_Path: skeleton_grp/cog/waist1/rf_hip/rf_knee
+    m_Weight: 0
+  - m_Path: skeleton_grp/cog/waist1/rf_hip/rf_knee/rf_foot
+    m_Weight: 0
+  - m_Path: skeleton_grp/cog/waist1/rf_hip/rf_knee/rf_foot/rf_toe
+    m_Weight: 0

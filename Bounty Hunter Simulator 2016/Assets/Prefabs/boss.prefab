@@ -120,11 +120,15 @@ GameObject:
   - 114: {fileID: 11456888}
   - 136: {fileID: 13600956}
   - 114: {fileID: 11447234}
-  - 114: {fileID: 11423214}
   - 114: {fileID: 11428872}
+  - 114: {fileID: 11479738}
+  - 114: {fileID: 11452058}
+  - 114: {fileID: 11486016}
+  - 114: {fileID: 11450680}
+  - 114: {fileID: 11407428}
   m_Layer: 10
   m_Name: boss
-  m_TagString: Untagged
+  m_TagString: Spawning
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1286,18 +1290,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11423214
+--- !u!114 &11407428
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109734}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b7265f1c3840144da7e97b3197c1c9c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a53b3fa93b391f4da04e587477ad64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimAtLoc: {x: 0, y: 0, z: 0}
+  wandTimer: 1
 --- !u!114 &11428872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1310,15 +1314,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLocator: {fileID: 0}
-  attackPre: []
-  attackYOffset: {x: 0, y: 0, z: 0}
-  attackSpawnOffset: 0
-  maxRadiusForAim: 0
-  fireDelay: 0
-  attackRange: 0
-  turnSpeed: 0
+  attackPre:
+  - {fileID: 102348, guid: 49c8195d2318c8c409be7f5847b67ed3, type: 2}
+  - {fileID: 191500, guid: 7bb95d682e7c3a94c99a0535705e0850, type: 2}
+  attackYOffset: {x: 0, y: 3, z: 0}
+  attackSpawnOffset: 1.5
+  maxRadiusForAim: 20
+  fireDelay: 0.5
+  attackRange: 20
+  turnSpeed: 30
   shoot: 0
   turnLeft: 0
+  turn: 0
+  bossTurnFOV: 30
 --- !u!114 &11447234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1330,6 +1338,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1fb24b503885d740bcbb0df3cdeaf9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11450680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109734}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b7265f1c3840144da7e97b3197c1c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimAtLoc: {x: 0, y: 0, z: 0}
+--- !u!114 &11452058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97376b4925caa56438b8b268b2f952b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerupMaxRange: 10
+  powerupSpawnThres: 10
+  deathParticle: {fileID: 115084, guid: 2d14a539a31cca84c98a27d08ce4e77a, type: 2}
+  powerupsICanSpawn: 02000000
 --- !u!114 &11456888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1350,15 +1385,45 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 109734}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cda34fecda9e364ab222dc73eb538a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePursueRadiusWithSelf: 0
+  movePursueRadiusWithSelf: 1
   playerLocator: {fileID: 0}
   maxRadiusPursue: 10
   attackRange: 3
+--- !u!114 &11479738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7cbc33a104f044fa4b155794ece6af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  lastHitBy: 0
+  scoreValue: 500
+  score: {fileID: 0}
+--- !u!114 &11486016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6a3b88a3cf09554b963a645b98f01d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  regenTimer: 10
+  beginningTurnSpeed: 30
+  middleTurnSpeed: 50
+  endTurnSpeed: 70
 --- !u!136 &13600956
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2263,6 +2328,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: powerupsIcanSpawn.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2273,6 +2342,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: powerupsIcanSpawn.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: health
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

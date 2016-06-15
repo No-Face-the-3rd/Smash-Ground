@@ -100,10 +100,14 @@ public class ShootClosestPlayer : MonoBehaviour
         {
             fireDelay = originalTimer;
             shoot = true;
-            GameObject tmp = (GameObject)Instantiate(attackPre, tf.position + tf.forward * attackSpawnOffset + attackYOffset,
-                    Quaternion.LookRotation(tf.forward));
-            tmp.layer = 11;
-            tmp.GetComponent<Bullet>().owner = -1;
         }
+    }
+
+    void Fire()
+    {
+        GameObject tmp = (GameObject)Instantiate(attackPre, tf.position + tf.forward * attackSpawnOffset + attackYOffset,
+                    Quaternion.LookRotation(tf.forward));
+        tmp.layer = 11;
+        tmp.GetComponent<Bullet>().owner = -1;
     }
 }
