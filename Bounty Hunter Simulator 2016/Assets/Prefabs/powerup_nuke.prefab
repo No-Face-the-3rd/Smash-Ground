@@ -14,7 +14,8 @@ GameObject:
   - 114: {fileID: 11421280}
   - 135: {fileID: 13505048}
   - 114: {fileID: 11423820}
-  m_Layer: 0
+  - 114: {fileID: 11428912}
+  m_Layer: 11
   m_Name: powerup_nuke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,6 +111,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 3
   powerTime: 0.1
+--- !u!114 &11428912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8810616e88058489238b9e5daa96d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 5
 --- !u!135 &13505048
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -140,6 +153,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: powerTime
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
