@@ -42,6 +42,7 @@ public class RoomSpawn : MonoBehaviour
                         tmp.gameObject.layer = 10;
                     tmp.tag = "Spawning";
                     tmp.GetComponent<driveToTarget>().targetLoc = enemiesToSpawn[i].startDriveTo + transform.position;
+                    tmp.GetComponent<AimAt>().aimAtLoc = tmp.transform.position + Quaternion.Euler(enemiesToSpawn[i].rotation) * Vector3.forward;
                     indToDel.Add(i);
                 }
             }

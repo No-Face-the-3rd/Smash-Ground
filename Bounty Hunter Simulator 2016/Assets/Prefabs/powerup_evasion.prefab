@@ -14,7 +14,8 @@ GameObject:
   - 114: {fileID: 11488518}
   - 114: {fileID: 11473308}
   - 135: {fileID: 13530164}
-  m_Layer: 0
+  - 114: {fileID: 11465128}
+  m_Layer: 11
   m_Name: powerup_evasion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,6 +85,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11465128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8810616e88058489238b9e5daa96d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 5
 --- !u!114 &11473308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,6 +228,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Radius
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

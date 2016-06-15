@@ -62,11 +62,11 @@ public class character : MonoBehaviour
             Vector3 distTest = lastPos - transform.position;
             if (distTest.magnitude > 0.1f)
             {
-                anim.StartPlayback();
+                anim.speed = 1.0f;
             }
             else
             {
-                anim.StopPlayback();
+                anim.speed = 0.0f;
             }
             lastPos = transform.position;
         }
@@ -327,20 +327,28 @@ public class PlayerController : MonoBehaviour
             GetComponent<Collider>().enabled = false;
             GetComponent<Rigidbody>().useGravity = false;
             moveCam();
-            if (charSwitching)
+            if (curRoom.Count > 0)
             {
-                switchChar();
-                charSwitchTime++;
-                charChoose = false;
+                if (charSwitching)
+                {
+                    switchChar();
+                    charSwitchTime++;
+                    charChoose = false;
+                }
+                else
+                    selectCharacter();
+                if (charSwitchTime > 30)
+                {
+                    charSwitching = false;
+                    Destroy(curChar);
+                    curChar = nextChar;
+                    charSwitchTime = 0;
+                }
+
             }
             else
-                selectCharacter();
-            if (charSwitchTime > 30)
             {
-                charSwitching = false;
                 Destroy(curChar);
-                curChar = nextChar;
-                charSwitchTime = 0;
             }
         }
 
@@ -477,7 +485,10 @@ public class PlayerController : MonoBehaviour
         }
         if(collision.gameObject.layer == 11)
         {
-            child.getDamage(collision.gameObject.GetComponent<Bullet>().damage);
+            if(collision.gameObject.GetComponent<Bullet>() != null)
+            {
+                child.getDamage(collision.gameObject.GetComponent<Bullet>().damage);
+            }
             if (child.health <= 0)
             {
                 GameObject tmp = (GameObject)GameObject.Instantiate(child.GetComponent<character>().deathPref, transform.position + new Vector3(0.0f, 1.0f, 0.0f), Quaternion.Euler(Vector3.zero));
@@ -486,7 +497,11 @@ public class PlayerController : MonoBehaviour
                 rb.useGravity = false;
                 rb.velocity = Vector3.zero;
                 curInd = 0;
-                cycleChar(curInd);
+                if (curRoom.Count > 0)
+                {
+                    cycleChar(curInd);
+
+                }
                 powerup = powerUps.NONE;
             }
         }
@@ -510,6 +525,7 @@ public class PlayerController : MonoBehaviour
         GameObject[] toKill = GameObject.FindGameObjectsWithTag("Active");
         for (int i = 0; i < toKill.Length; i++)
         {
+            
             if (toKill[i].GetComponent<EnemyHealth>() != null)
                 toKill[i].GetComponent<EnemyHealth>().lastHitBy = -1;
             toKill[i].GetComponent<EnemyDeath>().DoDestroy();

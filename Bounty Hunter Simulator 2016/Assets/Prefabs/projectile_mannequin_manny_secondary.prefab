@@ -114,7 +114,7 @@ MonoBehaviour:
   numTargets: 1
   speed: 40
   upForce: 0
-  lifetime: 0.025
+  lifetime: 0.05
   spawnOffsetHeight: {x: -0.75, y: 3.25, z: 0}
   spawnOffsetLength: 0.25
   rotateRate: {x: 0, y: 0, z: 0}
@@ -140,7 +140,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: lifetime
-      value: 0.025
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spawnOffsetLength

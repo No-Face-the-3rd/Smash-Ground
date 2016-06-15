@@ -14,7 +14,8 @@ GameObject:
   - 114: {fileID: 11409114}
   - 135: {fileID: 13505944}
   - 114: {fileID: 11403032}
-  m_Layer: 0
+  - 114: {fileID: 11404094}
+  m_Layer: 11
   m_Name: powerup_spreadshot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,6 +98,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 5
   powerTime: 5
+--- !u!114 &11404094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8810616e88058489238b9e5daa96d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 5
 --- !u!114 &11409114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -138,6 +151,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: powerTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: timer
       value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
