@@ -4,7 +4,6 @@ using System.Collections;
 
 public class UIPowerupManagerScript : MonoBehaviour
 {
-    public Image[] powerupIcons;
     public RawImage[] powerupDisplay;
     public Texture[] textures;
     private PlayerLocator locator;
@@ -24,7 +23,7 @@ public class UIPowerupManagerScript : MonoBehaviour
         for (int i = 0; i < locator.players.Length; i++)
         {
             int idTmp = locator.players[i].GetComponent<PlayerController>().playerNum - 1;
-            if (idTmp < powerupIcons.Length)
+            if (idTmp < powerupDisplay.Length)
             {
                 int textureID = ((int)locator.players[i].GetComponent<PlayerController>().powerup * 2 - (front ? 1 : 0));
                 textureID = textureID < 0 ? 0 : textureID;

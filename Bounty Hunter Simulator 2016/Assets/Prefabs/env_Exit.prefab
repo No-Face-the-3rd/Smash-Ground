@@ -10,8 +10,8 @@ GameObject:
   - 4: {fileID: 499362}
   - 33: {fileID: 3339656}
   - 23: {fileID: 2387426}
-  - 114: {fileID: 11410110}
   - 65: {fileID: 6560954}
+  - 114: {fileID: 11407364}
   m_Layer: 0
   m_Name: env_Exit
   m_TagString: Untagged
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105462}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 0.15, y: 0.1, z: 0.15}
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,9 +74,9 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 100, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11410110
+  m_Size: {x: 15, y: 50, z: 15}
+  m_Center: {x: 0, y: 25, z: 0}
+--- !u!114 &11407364
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -84,9 +84,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 105462}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72cf1601bdf7629479b68c9f8c3a4e2f, type: 3}
+  m_Script: {fileID: 11500000, guid: c5aab8bc183b26347b2fb7c19c7c9e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextRoom: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

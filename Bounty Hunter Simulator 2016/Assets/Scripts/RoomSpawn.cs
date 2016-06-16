@@ -63,6 +63,15 @@ public class RoomSpawn : MonoBehaviour
                     door.switchDoor = true;
             }
         }
+        else
+        {
+            for (int i = 0; i < doors.Length; i++)
+            {
+                DoorControl door = doors[i].GetComponent<DoorControl>();
+                if (door.doorOpen)
+                    door.switchDoor = true;
+            }
+        }
         
 	}
 }

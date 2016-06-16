@@ -22,6 +22,8 @@ public class RoomChangeManager : MonoBehaviour
 
     void Update()
     {
+        if (mainCam == null)
+            mainCam = MainCameraController.FindObjectOfType<MainCameraController>();
         if (switchRoom)
         {
             if (nextRoom != null)
@@ -38,13 +40,17 @@ public class RoomChangeManager : MonoBehaviour
                     {
                         player.nextRoom.Add(player.child.arrayIndex);
                         scorer.addScore(player.playerNum, player.child.rescueScore * 2);
-                        Destroy(player.child);
+                        Destroy(player.child.gameObject);
                     }
                     for(int j = 0;j < player.curRoom.Count;j++)
                     {
                         player.nextRoom.Add(player.curRoom[j]);
                     }
+                    player.curRoom.Clear();
+                    player.nextRoom.Sort();
                     player.curRoom = player.nextRoom;
+                    player.curInd = 0;
+                    player.cycleChar(player.curInd);
                     player.nextRoom = new List<int>();
                 }
             }
