@@ -164,7 +164,7 @@ public class character : MonoBehaviour
 
 public class PlayerController : MonoBehaviour
 {
-    public enum powerUps { NONE, EVADE, INVIS, NUKE, PROT, SPREAD };
+    public enum powerUps { NONE, EVADE, INVIS, NUKE, PROT, SPREAD, HOTDOG };
 
     public int playerNum;
 
@@ -182,7 +182,8 @@ public class PlayerController : MonoBehaviour
     public GameObject charDB;
     [SerializeField]
     public List<int> nextRoom, curRoom;
-    private int curInd, prevInd;
+    public int curInd;
+    private int prevInd;
     private GameObject curChar, nextChar;
 
     private bool charSelUsed, charSwitching;
@@ -196,9 +197,11 @@ public class PlayerController : MonoBehaviour
 
     private ScoreManager scorer;
     private GameObject main;
+    private AudioSource audio;
 
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         main = GameObject.FindObjectOfType<MainCameraController>().gameObject;
         scorer = FindObjectOfType<ScoreManager>();
         powerup = powerUps.NONE;
@@ -433,7 +436,7 @@ public class PlayerController : MonoBehaviour
             createChar();
     }
 
-    void cycleChar(int targetIndex)
+    public void cycleChar(int targetIndex)
     {
             charSwitching = true;
             if (cs.GetComponent<Transform>().rotation != Quaternion.Euler(new Vector3(0.0f, 180.0f, 0.0f)))
@@ -489,6 +492,17 @@ public class PlayerController : MonoBehaviour
             if(collision.gameObject.GetComponent<Bullet>() != null)
             {
                 child.getDamage(collision.gameObject.GetComponent<Bullet>().damage);
+                AudioSource childAudio = child.GetComponent<AudioSource>();
+                if (childAudio != null)
+                {
+                    childAudio.pitch = Random.Range(0.1f, 3.0f);
+                    childAudio.Play();
+                }
+                else
+                {
+                    audio.pitch = Random.Range(0.1f, 3.0f);
+                    audio.Play();
+                }
             }
             if (child.health <= 0)
             {
