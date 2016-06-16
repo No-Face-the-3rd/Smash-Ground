@@ -124,8 +124,8 @@ GameObject:
   - 114: {fileID: 11479738}
   - 114: {fileID: 11452058}
   - 114: {fileID: 11486016}
-  - 114: {fileID: 11450680}
   - 114: {fileID: 11407428}
+  - 82: {fileID: 8250238}
   m_Layer: 10
   m_Name: boss
   m_TagString: Spawning
@@ -1273,6 +1273,80 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!82 &8250238
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109734}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 844b19d22720a574c92e59710476c47c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &9557288
 Animator:
   serializedVersion: 3
@@ -1326,7 +1400,8 @@ MonoBehaviour:
   shoot: 0
   turnLeft: 0
   turn: 0
-  bossTurnFOV: 30
+  bossTurnFOV: 35
+  planeToUse: {fileID: 0}
 --- !u!114 &11447234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1338,18 +1413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1fb24b503885d740bcbb0df3cdeaf9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11450680
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 109734}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b7265f1c3840144da7e97b3197c1c9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aimAtLoc: {x: 0, y: 0, z: 0}
 --- !u!114 &11452058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1393,7 +1456,7 @@ MonoBehaviour:
   movePursueRadiusWithSelf: 1
   playerLocator: {fileID: 0}
   maxRadiusPursue: 10
-  attackRange: 3
+  attackRange: 1
 --- !u!114 &11479738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1409,6 +1472,7 @@ MonoBehaviour:
   lastHitBy: 0
   scoreValue: 500
   score: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &11486016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1420,10 +1484,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a3b88a3cf09554b963a645b98f01d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  regenTimer: 10
-  beginningTurnSpeed: 30
-  middleTurnSpeed: 50
-  endTurnSpeed: 70
+  regenTimer: 15
+  beginningTurnSpeed: 50
+  middleTurnSpeed: 70
+  endTurnSpeed: 90
 --- !u!136 &13600956
 CapsuleCollider:
   m_ObjectHideFlags: 1

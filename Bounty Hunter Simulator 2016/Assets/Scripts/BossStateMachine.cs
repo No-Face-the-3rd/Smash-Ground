@@ -32,7 +32,8 @@ public class BossStateMachine : MonoBehaviour
     }
 
 	void Update ()
-    {
+    {   
+        //state machine
         switch(currentState)
         {
             case STATE.BEGINNING:
@@ -54,8 +55,8 @@ public class BossStateMachine : MonoBehaviour
     void Beginning()
     {
         shoot.turnSpeed = beginningTurnSpeed;
-        rb.velocity = Vector3.zero;
-        if(health.health < 17)
+        rb.velocity = Vector3.zero;     //can't move
+        if(health.health < 17)  //if true, switch state
         {
             currentState = STATE.MIDDLE;
         }
@@ -63,16 +64,16 @@ public class BossStateMachine : MonoBehaviour
 
     void Middle()
     {
-        shoot.turnSpeed = middleTurnSpeed;
-        regenTimer = originalTimer;
-        wander.enabled = true;
+        shoot.turnSpeed = middleTurnSpeed; 
+        regenTimer = originalTimer; // so it doesn't instantly heal when it goes back to END state
+        wander.enabled = true;  //wanders around
 
-        if (health.health > 17)
+        if (health.health > 17) //if health somehow goes up
         {
             currentState = STATE.BEGINNING;
             wander.enabled = false;
         }
-        if (health.health < 12)
+        if (health.health < 12) //if health lowers past 12
         {
             currentState = STATE.END;
             wander.enabled = false;
@@ -90,7 +91,7 @@ public class BossStateMachine : MonoBehaviour
             currentState = STATE.MIDDLE;
             pursue.enabled = false;
         }
-        regenTimer -= Time.deltaTime;
+        regenTimer -= Time.deltaTime; //regen
 
         if(regenTimer < 0)
         {

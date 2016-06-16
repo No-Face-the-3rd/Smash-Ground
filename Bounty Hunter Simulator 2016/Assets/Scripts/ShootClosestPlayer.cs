@@ -34,7 +34,7 @@ public class ShootClosestPlayer : MonoBehaviour
 
 	void Update ()
     {
-        if (gameObject.tag != "Inactive")
+        if (gameObject.tag != "Inactive")   //if i can shoot
         {
             shoot = false;
             ShootBehavior();
@@ -43,18 +43,17 @@ public class ShootClosestPlayer : MonoBehaviour
 
     void ShootBehavior()
     {
-        float minDist = float.MaxValue;
-        int target = -1;
-
+        float minDist = float.MaxValue; //used to see which player is closer
+        int target = -1;                //start out without a target
 
         for (int i = 0; i < playerLocator.targetable.Length; ++i)
         {
-            directionToPlayer = (playerLocator.targetable[i].transform.position - tf.position);
-            float tmpDist = directionToPlayer.magnitude;
+            directionToPlayer = (playerLocator.targetable[i].transform.position - tf.position); //find the direction to the current player
+            float tmpDist = directionToPlayer.magnitude;                    ////distance between me and the player
 
-            if (tmpDist < maxRadiusForAim)
+            if (tmpDist < maxRadiusForAim)//if within distance of radius
             {
-                if (tmpDist < minDist)
+                if (tmpDist < minDist) //if the new player position is closer, set minimum distance to tmpDist && set target to i
                 {
                     minDist = tmpDist;
                     target = i;
@@ -62,10 +61,10 @@ public class ShootClosestPlayer : MonoBehaviour
             }
         }
 
-        MoveToStartLoc guard = GetComponent<MoveToStartLoc>();
+        MoveToStartLoc guard = GetComponent<MoveToStartLoc>();  //used for fixing previous bugs where the behaviors were additive
         Wander wandBehavior = GetComponent<Wander>();
 
-        if (target >= 0)
+        if (target >= 0)    //if I have a target
         {
             if (guard != null)
             {
@@ -80,7 +79,8 @@ public class ShootClosestPlayer : MonoBehaviour
         }
         else
         {
-            if(guard != null)
+            //if not go back to whatever I was doing
+            if (guard != null)
             {
                 guard.enabled = true;
             }
@@ -91,23 +91,24 @@ public class ShootClosestPlayer : MonoBehaviour
         }
     }
 
-    void Aim(int _target)
+    void Aim(int _target)   //organization
     {
-        aim.aimAtLoc = playerLocator.targetable[_target].transform.position;
-        tf.forward = new Vector3(tf.forward.x, 0, tf.forward.z);
-        fireDelay -= Time.deltaTime;
-        if (fireDelay <= 0 && directionToPlayer.magnitude <= attackRange)
+        aim.aimAtLoc = playerLocator.targetable[_target].transform.position;    //aim at the current player's position
+        tf.forward = new Vector3(tf.forward.x, 0, tf.forward.z);    //0 out the Y so they don't tilt
+        fireDelay -= Time.deltaTime;            
+        if (fireDelay <= 0 && directionToPlayer.magnitude <= attackRange)   //if I can shoot
         {
-            fireDelay = originalTimer;
-            shoot = true;
+            fireDelay = originalTimer;  //reset timer
+            shoot = true;   //shoot to true
         }
     }
 
-    void Fire()
+    void Fire() //animation event
     {
         GameObject tmp = (GameObject)Instantiate(attackPre, tf.position + tf.forward * attackSpawnOffset + attackYOffset,
                     Quaternion.LookRotation(tf.forward));
         tmp.layer = 11;
         tmp.GetComponent<Bullet>().owner = -1;
+        //spawning attack prefab/bullet
     }
 }

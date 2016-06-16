@@ -15,23 +15,32 @@ public class EnemyDeath : MonoBehaviour
         powersDB = FindObjectOfType<PowerupDB>();
         enemyHealth = GetComponent<EnemyHealth>();
     }
-    public void DoDestroy()
+    public void DoDestroy() //used whenever an Enemy needs to die
     {
         if (enemyHealth != null && enemyHealth.lastHitBy >= 0)
         {
             enemyHealth.score.addScore(enemyHealth.lastHitBy, enemyHealth.scoreValue);
             if(Random.Range(0.0f, powerupMaxRange) < powerupSpawnThres)
             {
-                int ind = Random.Range(0, powerupsICanSpawn.Length);
-
-                if (powerupsICanSpawn[ind] < powersDB.powerups.Length)
+                if (powerupsICanSpawn.Length > 0)       //If i have a different powerup spawning than default
                 {
-                    Instantiate(powersDB.powerups[powerupsICanSpawn[ind]], this.transform.position + new Vector3(0, 1, 0), powersDB.powerups[ind].transform.rotation);
 
+                    int ind = Random.Range(0, powerupsICanSpawn.Length);    //get a random number for chooseing which powerup
+
+                    if (powerupsICanSpawn[ind] < powersDB.powerups.Length)  //Used to catch if the number is valid to spawn the powerup
+                    {
+                        Instantiate(powersDB.powerups[powerupsICanSpawn[ind]], this.transform.position + new Vector3(0, 1, 0), powersDB.powerups[ind].transform.rotation);  //spawn the powerup
+
+                    }
+                    else
+                    {
+                        Debug.LogError("Chosen Index Exceeds Array Size");  
+                    }   
                 }
                 else
                 {
-                    Debug.LogError("Chosen Index Exceeds Array Size");
+                    int ind = Random.Range(0, powersDB.powerups.Length);    //use the default spawning, choose a powerup randomly
+                    Instantiate(powersDB.powerups[ind], this.transform.position + new Vector3(0, 1, 0), powersDB.powerups[ind].transform.rotation); //spawn it
                 }
             }
         }
@@ -39,7 +48,7 @@ public class EnemyDeath : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    public void SetInactive()
+    public void SetInactive()   //used for animation event
     {
         this.gameObject.tag = "Inactive";
     }

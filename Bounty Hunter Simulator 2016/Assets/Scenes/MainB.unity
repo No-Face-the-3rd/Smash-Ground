@@ -604,7 +604,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 478782, guid: 868b0697fb6610d42921869d9c815783, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.57
+      value: -3.19
       objectReference: {fileID: 0}
     - target: {fileID: 478782, guid: 868b0697fb6610d42921869d9c815783, type: 2}
       propertyPath: m_LocalPosition.y
@@ -612,7 +612,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 478782, guid: 868b0697fb6610d42921869d9c815783, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 6.11
       objectReference: {fileID: 0}
     - target: {fileID: 478782, guid: 868b0697fb6610d42921869d9c815783, type: 2}
       propertyPath: m_LocalRotation.x
@@ -652,10 +652,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11452058, guid: 8468f23105225a44d82daed37d83372a, type: 2}
-      propertyPath: powerupsICanSpawn.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 402928, guid: 8468f23105225a44d82daed37d83372a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -686,15 +682,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 402928, guid: 8468f23105225a44d82daed37d83372a, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 109734, guid: 8468f23105225a44d82daed37d83372a, type: 2}
       propertyPath: m_Name
       value: boss_bot
       objectReference: {fileID: 0}
-    - target: {fileID: 11452058, guid: 8468f23105225a44d82daed37d83372a, type: 2}
-      propertyPath: powerupsICanSpawn.Array.data[0]
-      value: 2
+    - target: {fileID: 8250238, guid: 8468f23105225a44d82daed37d83372a, type: 2}
+      propertyPath: m_Volume
+      value: 0.653
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8468f23105225a44d82daed37d83372a, type: 2}
