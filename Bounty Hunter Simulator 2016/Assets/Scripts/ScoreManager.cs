@@ -6,8 +6,8 @@ public class ScoreManager : MonoBehaviour
 {
     public Text[] scoreTexts;
     private PlayerLocator locator;
-
     private int[] scores;
+
 	void Start ()
     {
         locator = FindObjectOfType<PlayerLocator>();
@@ -28,6 +28,15 @@ public class ScoreManager : MonoBehaviour
 
     public void addScore(int player,int score)
     {
+        for(int i = 0;i < locator.players.Length;i++)
+        {
+            if(locator.players[i].GetComponent<PlayerController>().playerNum == player)
+            {
+                if (locator.players[i].GetComponent<PlayerController>().powerup == PlayerController.powerUps.HOTDOG)
+                    score += score;
+                break;
+            }
+        }
         scores[player - 1] += score;
     }
 }
