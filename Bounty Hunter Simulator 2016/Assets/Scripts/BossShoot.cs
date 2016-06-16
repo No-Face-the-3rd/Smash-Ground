@@ -21,7 +21,7 @@ public class BossShoot : MonoBehaviour
     public bool turnLeft;
     public bool turn;
     public float bossTurnFOV;
-
+    public GameObject planeToUse;
     #endregion
 
     void Start()
@@ -114,17 +114,11 @@ public class BossShoot : MonoBehaviour
                     Quaternion.LookRotation(tf.forward));
             tmp.layer = 10;
             tmp.gameObject.tag = "Spawning";
-//            tmp.GetComponent<driveToTarget>().targetLoc =
-            /*
-                set tag to spawning
-                set layer to enemies
-                set drive to target to a random point on the plane
-            */
+            tmp.GetComponent<driveToTarget>().targetLoc = new Vector3(Random.Range(planeToUse.gameObject.transform.position.x, planeToUse.gameObject.transform.position.x + 5),
+                0.0f,
+                Random.Range(planeToUse.gameObject.transform.position.z, planeToUse.gameObject.transform.position.z + 5));
+          
         }
-    }
-
-    void FixedUpdate()
-    {
     }
 
     void CheckTurnLeft()
@@ -153,5 +147,17 @@ public class BossShoot : MonoBehaviour
         {
             turn = false;
         }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 0)
+        {
+            if(planeToUse == null)
+            {
+                planeToUse = collision.gameObject.transform.parent.FindChild("env_floor").gameObject;
+            }
+        }
+
     }
 }
