@@ -625,9 +625,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ed8ef6da48332104ea3d57edb7a4bf31, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -746,7 +746,8 @@ MonoBehaviour:
   lastHitBy: -1
   scoreValue: 10
   score: {fileID: 0}
-  audioClip: {fileID: 0}
+  audioSource: {fileID: 0}
+  enemyHit: {fileID: 8300000, guid: ed8ef6da48332104ea3d57edb7a4bf31, type: 3}
 --- !u!114 &11421086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -758,10 +759,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97376b4925caa56438b8b268b2f952b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupMaxRange: 5
+  powerupMaxRange: 3
   powerupSpawnThres: 1
   deathParticle: {fileID: 115084, guid: 2d14a539a31cca84c98a27d08ce4e77a, type: 2}
-  powerupsICanSpawn: 00000000010000000300000004000000
+  powerupsICanSpawn: 0000000001000000030000000400000005000000
+  audioSource: {fileID: 0}
+  deathFall: {fileID: 0}
 --- !u!114 &11444628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -819,7 +822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef7bdf12e4b8fd0439214e9d51442bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.044333916, g: 0.5798263, b: 0.60294116, a: 1}
+  color: {r: 0, g: 0.32352942, b: 0.055780947, a: 1}
 --- !u!114 &11493594
 MonoBehaviour:
   m_ObjectHideFlags: 1

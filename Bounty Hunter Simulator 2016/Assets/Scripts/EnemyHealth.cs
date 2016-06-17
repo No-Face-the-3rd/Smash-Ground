@@ -8,21 +8,22 @@ public class EnemyHealth : MonoBehaviour
     public int lastHitBy;
     public int scoreValue;
     public ScoreManager score;
-    public AudioSource audioClip;
+    public AudioSource audioSource;
+    public AudioClip enemyHit;
 
     void Start()
     {
         lastHitBy = -1;
         score = FindObjectOfType<ScoreManager>();
-        audioClip = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == 9) //if collides with anything on the player bullet layer, subtract from health/update last hit by
         {
-            audioClip.timeSamples = 0;
-            audioClip.Play();
+            audioSource.timeSamples = 0;
+            audioSource.PlayOneShot(enemyHit);
             health -= collision.gameObject.GetComponent<Bullet>().damage;
             lastHitBy = collision.gameObject.GetComponent<Bullet>().owner;
         }

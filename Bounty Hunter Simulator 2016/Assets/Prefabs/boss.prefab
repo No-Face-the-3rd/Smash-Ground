@@ -1282,9 +1282,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 844b19d22720a574c92e59710476c47c, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1391,6 +1391,9 @@ MonoBehaviour:
   attackPre:
   - {fileID: 102348, guid: 49c8195d2318c8c409be7f5847b67ed3, type: 2}
   - {fileID: 191500, guid: 7bb95d682e7c3a94c99a0535705e0850, type: 2}
+  - {fileID: 116798, guid: ad3a5c3f531f5344290ac4fca8d3137d, type: 2}
+  - {fileID: 102348, guid: 49c8195d2318c8c409be7f5847b67ed3, type: 2}
+  - {fileID: 102348, guid: 49c8195d2318c8c409be7f5847b67ed3, type: 2}
   attackYOffset: {x: 0, y: 3, z: 0}
   attackSpawnOffset: 1.5
   maxRadiusForAim: 20
@@ -1428,6 +1431,8 @@ MonoBehaviour:
   powerupSpawnThres: 10
   deathParticle: {fileID: 115084, guid: 2d14a539a31cca84c98a27d08ce4e77a, type: 2}
   powerupsICanSpawn: 02000000
+  audioSource: {fileID: 0}
+  deathFall: {fileID: 0}
 --- !u!114 &11456888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1472,7 +1477,8 @@ MonoBehaviour:
   lastHitBy: 0
   scoreValue: 500
   score: {fileID: 0}
-  audioClip: {fileID: 0}
+  audioSource: {fileID: 0}
+  enemyHit: {fileID: 8300000, guid: 844b19d22720a574c92e59710476c47c, type: 3}
 --- !u!114 &11486016
 MonoBehaviour:
   m_ObjectHideFlags: 1

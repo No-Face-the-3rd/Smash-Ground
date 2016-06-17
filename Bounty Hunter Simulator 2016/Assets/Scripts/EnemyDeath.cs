@@ -9,9 +9,12 @@ public class EnemyDeath : MonoBehaviour
     private PowerupDB powersDB;
     public GameObject deathParticle;
     public int [] powerupsICanSpawn;
+    public AudioSource audioSource;
+    public AudioClip deathFall;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         powersDB = FindObjectOfType<PowerupDB>();
         enemyHealth = GetComponent<EnemyHealth>();
     }
@@ -50,6 +53,13 @@ public class EnemyDeath : MonoBehaviour
 
     public void SetInactive()   //used for animation event
     {
+        PlayClipForTimer();
         this.gameObject.tag = "Inactive";
+    }
+
+    public void PlayClipForTimer()
+    {
+        audioSource.timeSamples = 0;
+        audioSource.PlayOneShot(deathFall);
     }
 }
