@@ -20,9 +20,8 @@ public class MoveToStartLoc : MonoBehaviour
 	
 	void Update ()
     {
+        //drive to handles the logic
         moveTo.targetLoc = startLoc;
         aim.aimAtLoc = startLoc;
     }
 }
-
-//DONE

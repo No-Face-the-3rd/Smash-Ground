@@ -21,8 +21,9 @@ public class MeleeEnemyAnimations : EnemySkin
 
     public override void Update()
     {
-        base.Update();
-        anim.SetFloat("magOfVelocity", Vector3.Magnitude(rb.velocity));
+        base.Update(); // sets color of the base material to whatever color I select on the inspector
+        
+        anim.SetFloat("magOfVelocity", Vector3.Magnitude(rb.velocity)); //sets animation parameters
         anim.SetBool("attack", attack.shoot);
         if (health != null)
         {

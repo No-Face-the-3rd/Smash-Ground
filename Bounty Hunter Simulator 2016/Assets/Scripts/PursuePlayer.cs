@@ -18,28 +18,28 @@ public class PursuePlayer : MonoBehaviour
 
     void Start ()
     {
-        if(!movePursueRadiusWithSelf)
+        if(!movePursueRadiusWithSelf)   //if I don't wanna pursue based of my positon, set the position I'll check to my starting location
         {
             checkLoc = transform.position;
         }
         pursueLoc = GetComponent<driveToTarget>();
-        playerLocator = FindObjectOfType<PlayerLocator>(); //get the active players
+        playerLocator = FindObjectOfType<PlayerLocator>();
         aim = GetComponent<AimAt>();
 	}
 	void Update ()
     {
-        if(movePursueRadiusWithSelf)
+        if(movePursueRadiusWithSelf)   //if true, always check from my current position
         {
             checkLoc = transform.position;
         }
 
-        float minDist = float.MaxValue;
-        int target = -1;
+        float minDist = float.MaxValue; //used to see which player is closer
+        int target = -1;                //start out without a target
 
         for (int i = 0; i < playerLocator.targetable.Length; ++i)
         {
-            directionToPlayer = playerLocator.targetable[i].transform.position - checkLoc;
-            float tmpDist = directionToPlayer.magnitude;
+            directionToPlayer = playerLocator.targetable[i].transform.position - checkLoc; //find the direction to the current player
+            float tmpDist = directionToPlayer.magnitude;        //distance between check location and the player
             if (tmpDist < maxRadiusPursue) //if within distance of radius
             {
                 if (tmpDist < minDist) //if the new player position is closer, set minimum distance to tmpDist && set target to i
@@ -50,9 +50,10 @@ public class PursuePlayer : MonoBehaviour
             }
         }
 
-        MoveToStartLoc guard = GetComponent<MoveToStartLoc>();
+        MoveToStartLoc guard = GetComponent<MoveToStartLoc>();  //used for fixing previous bugs where the behaviors were additive
         Wander wandBehavior = GetComponent<Wander>();
-        if (target >= 0)
+
+        if (target >= 0) //if there is a target
         {
             if (guard != null)
                 guard.enabled = false;
@@ -62,17 +63,18 @@ public class PursuePlayer : MonoBehaviour
         }
         else
         {
+            //if not go back to whatever I was doing
             if (guard != null)
                 guard.enabled = true;
             if (wandBehavior != null)
                 wandBehavior.enabled = true;
         }
     }
-    void Pursue(int _target)
+    void Pursue(int _target) //used just to organize code more
     {
-        pursueLoc.targetLoc = playerLocator.targetable[_target].transform.position + directionToPlayer.normalized * attackRange;
+        pursueLoc.targetLoc = playerLocator.targetable[_target].transform.position + directionToPlayer.normalized * attackRange;    //pursue to where I can reach the player
 
-        ShootClosestPlayer shoot = GetComponent<ShootClosestPlayer>();
+        ShootClosestPlayer shoot = GetComponent<ShootClosestPlayer>();  
         if (shoot == null)
         {
             aim.aimAtLoc = pursueLoc.targetLoc;
