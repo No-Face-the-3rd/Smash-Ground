@@ -16,7 +16,7 @@ public class DestroyAfterTimer : MonoBehaviour
         timer -= Time.deltaTime;
         if(timer <= 0)
         {
-            if(enmD == null)
+            if(enmD == null) // if its anything besides an enemy just destroy it
             {
                 Destroy(this.gameObject);
             }

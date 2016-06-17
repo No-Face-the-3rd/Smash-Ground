@@ -22,6 +22,7 @@ public class BossShoot : MonoBehaviour
     public bool turn;
     public float bossTurnFOV;
     public GameObject planeToUse;
+
     #endregion
 
     void Start()
@@ -35,7 +36,7 @@ public class BossShoot : MonoBehaviour
 
     void Update()
     {
-        if (gameObject.tag != "Inactive")
+        if (gameObject.tag != "Inactive")   //if I can shoot
         {
             shoot = false;
             ShootBehavior();
@@ -62,26 +63,16 @@ public class BossShoot : MonoBehaviour
             }
         }
 
-//        Wander wandBehavior = GetComponent<Wander>();
-
         if (target >= 0)
         {
-            //if (wandBehavior != null)
-            //{
-            //    wandBehavior.enabled = false;
-            //}
             CheckTurnLeft();
-            if(turn == false)
+            if(turn == false)   //if I am looking at the player
             {
                 Shoot();
             }
         }
         else
         {
-            //if (wandBehavior != null)
-            //{
-            //    wandBehavior.enabled = true;
-            //}
             turn = false;
         }
     }
@@ -96,10 +87,10 @@ public class BossShoot : MonoBehaviour
         }
     }
 
-    void DoFire()
+    void DoFire() //animation event
     {
-        int rand = Random.Range(0, attackPre.Length);
-        if (attackPre[rand].GetComponent<Bullet>() != null)
+        int rand = Random.Range(0, attackPre.Length); //chooses a random prefab
+        if (attackPre[rand].GetComponent<Bullet>() != null) //if its a bullet
         {
             float bulletSpawnOffset = attackPre[rand].GetComponent<Bullet>().spawnOffsetLength;
             Vector3 bulletYOffset = attackPre[rand].GetComponent<Bullet>().spawnOffsetHeight;
@@ -107,27 +98,30 @@ public class BossShoot : MonoBehaviour
                     Quaternion.LookRotation(tf.forward));
             tmp.layer = 11;
             tmp.GetComponent<Bullet>().owner = -1;
+            //spawn it
         }
         else
         {
+            //if it's not a bullet
             GameObject tmp = (GameObject)Instantiate(attackPre[rand], tf.position + tf.forward * attackSpawnOffset + attackYOffset,
                     Quaternion.LookRotation(tf.forward));
-            tmp.layer = 10;
-            tmp.gameObject.tag = "Spawning";
+            tmp.layer = 10; //set to enemies layer
+            tmp.gameObject.tag = "Spawning";    //set tag to spawning
             tmp.GetComponent<driveToTarget>().targetLoc = new Vector3(Random.Range(planeToUse.gameObject.transform.position.x, planeToUse.gameObject.transform.position.x + 5),
                 0.0f,
                 Random.Range(planeToUse.gameObject.transform.position.z, planeToUse.gameObject.transform.position.z + 5));
-          
+                //drive to a random point next to the center of the room
         }
     }
 
     void CheckTurnLeft()
     {
         tf.forward = new Vector3(tf.forward.x, 0, tf.forward.z);
-        directionToPlayer = new Vector3(directionToPlayer.x, 0.0f, directionToPlayer.z);
-        float angle = (Mathf.Atan2(directionToPlayer.z, directionToPlayer.x) - Mathf.Atan2(tf.forward.z, tf.forward.x)) * Mathf.Rad2Deg;
+        directionToPlayer = new Vector3(directionToPlayer.x, 0.0f, directionToPlayer.z); //zero out for calculations
+        float angle = (Mathf.Atan2(directionToPlayer.z, directionToPlayer.x) - Mathf.Atan2(tf.forward.z, tf.forward.x)) * Mathf.Rad2Deg; //angle from direction to my forward, converted to degrees
         if(angle < 0.0f)
         {
+            //fixed turning bug
             angle += 360.0f;
         }
         if (angle > bossTurnFOV * 0.5f && angle < 360.0f - bossTurnFOV * 0.5f)
@@ -149,7 +143,7 @@ public class BossShoot : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision) //used for enemy spawning in any room
     {
         if (collision.gameObject.layer == 0)
         {

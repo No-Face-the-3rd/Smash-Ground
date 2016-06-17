@@ -18,6 +18,7 @@ public class BossAnimations : MonoBehaviour
 
     void Update()
     {
+        //set stuff
         anim.SetFloat("magOfVelocity", Vector3.Magnitude(rb.velocity));
         anim.SetBool("TurnLeft", attack.turnLeft);
         anim.SetBool("turn", attack.turn);

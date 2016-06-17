@@ -22,9 +22,9 @@ public class RangedEnemyAnimations : EnemySkin
 
     public override void Update()
     {
-        base.Update();
+        base.Update();  // sets color of the base material to whatever color I select on the inspector
 
-        anim.SetFloat("magOfVelocity", Vector3.Magnitude(rb.velocity));
+        anim.SetFloat("magOfVelocity", Vector3.Magnitude(rb.velocity)); //sets animation parameters
         anim.SetBool("shoot", shoot.shoot);
         if (health != null)
         {
