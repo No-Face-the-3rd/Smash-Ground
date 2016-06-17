@@ -764,7 +764,7 @@ MonoBehaviour:
   deathParticle: {fileID: 115084, guid: 2d14a539a31cca84c98a27d08ce4e77a, type: 2}
   powerupsICanSpawn: 0000000001000000030000000400000005000000
   audioSource: {fileID: 0}
-  deathFall: {fileID: 0}
+  deathFall: {fileID: 8300000, guid: c1698feb62008ad4a93355f63d8dc357, type: 3}
 --- !u!114 &11444628
 MonoBehaviour:
   m_ObjectHideFlags: 1
