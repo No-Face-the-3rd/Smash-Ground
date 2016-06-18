@@ -272,7 +272,8 @@ public class PlayerController : MonoBehaviour
             powerupTime = 0.0f;
             if(powerup == powerUps.PROT)
             {
-                Destroy(child.transform.GetComponentInChildren<ImmuneAura>().gameObject);
+                if(child != null)
+                    Destroy(child.transform.GetComponentInChildren<ImmuneAura>().gameObject);
                 gameObject.layer = 8;
             }
             powerup = powerUps.NONE;
@@ -417,16 +418,13 @@ public class PlayerController : MonoBehaviour
     void selectCharacter()
     {
         prevInd = curInd;
-        if (curInd > 0 && charSel != 0)
+        if (charSel != 0)
         {
             curInd = (curInd + charSel) % curRoom.Count;
-        }
-        else
-        {
-            if (charSel > 0)
-                curInd = 1;
-            else if (charSel < 0)
+            if(curInd < 0)
+            { 
                 curInd = curRoom.Count - 1;
+            }
         }
 
         if (prevInd != curInd)
