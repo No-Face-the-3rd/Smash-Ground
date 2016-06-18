@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &138224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 446266}
+  - 33: {fileID: 3350542}
+  - 23: {fileID: 2347754}
+  - 95: {fileID: 9542566}
+  - 114: {fileID: 11496388}
+  - 135: {fileID: 13509406}
+  m_Layer: 0
+  m_Name: char_mannequin_manny
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &446266
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138224}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!23 &2347754
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138224}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 2ecb476397ffb8046a7e0cbbf0e38f62, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &3350542
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138224}
+  m_Mesh: {fileID: 4300000, guid: 3f9f7dae3e2f7e7479f7195e38db07b6, type: 3}
+--- !u!95 &9542566
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138224}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 3f9f7dae3e2f7e7479f7195e38db07b6, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11496388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4a2e8a23e8ec646a9fa92ff230a92f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  speed: 3
+  primaryDelay: 1
+  secondaryDelay: 1
+  dodgeDelay: 1
+  globalDelay: 0.5
+  dodgeSpd: 15
+  dodgeTime: 0.25
+  primaryPref: {fileID: 156362, guid: c8f827669a5c75b48a6b256efd2e0288, type: 2}
+  secondaryPref: {fileID: 177712, guid: 2c8e575634629b14ab5ae7297580783d, type: 2}
+  auraPref: {fileID: 145030, guid: 8e2f4591247016340a3c47f4218bee8e, type: 2}
+  camTarget: {x: 0, y: 3.5, z: 0}
+  arrayIndex: 1
+  owner: 0
+  rescueScore: 20
+  immuneAura: {r: 0, g: 0, b: 0, a: 0}
+  deathPref: {fileID: 187502, guid: 2a45fc26e3f03004fa99d9a978d22c9f, type: 2}
+--- !u!135 &13509406
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138224}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: primaryPref
+      value: 
+      objectReference: {fileID: 156362, guid: c8f827669a5c75b48a6b256efd2e0288, type: 2}
+    - target: {fileID: 0}
+      propertyPath: auraPref
+      value: 
+      objectReference: {fileID: 145030, guid: 8e2f4591247016340a3c47f4218bee8e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: secondaryPref
+      value: 
+      objectReference: {fileID: 177712, guid: 2c8e575634629b14ab5ae7297580783d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: secondaryDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: globalDelay
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: deathPref
+      value: 
+      objectReference: {fileID: 187502, guid: 2a45fc26e3f03004fa99d9a978d22c9f, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 138224}
+  m_IsPrefabParent: 1

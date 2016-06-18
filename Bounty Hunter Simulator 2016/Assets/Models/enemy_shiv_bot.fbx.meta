@@ -1,0 +1,421 @@
+fileFormatVersion: 2
+guid: d2b152e3eb3c7cf42accf2ba9575b1e9
+timeCreated: 1464733214
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: shiv_bot
+    100004: shiv_cog
+    100006: shiv_l_clavicle
+    100008: shiv_l_elbow
+    100010: shiv_l_foot
+    100012: shiv_l_hip
+    100014: shiv_l_knee
+    100016: shiv_l_shoulder
+    100018: shiv_l_toe
+    100020: shiv_pelvis
+    100022: shiv_r_clavicle
+    100024: shiv_r_elbow
+    100026: shiv_r_foot
+    100028: shiv_r_hip
+    100030: shiv_r_knee
+    100032: shiv_r_shoulder
+    100034: shiv_r_toe
+    100036: shiv_spine1
+    100038: shiv_spine2
+    100040: skel_grp
+    400000: //RootNode
+    400002: shiv_bot
+    400004: shiv_cog
+    400006: shiv_l_clavicle
+    400008: shiv_l_elbow
+    400010: shiv_l_foot
+    400012: shiv_l_hip
+    400014: shiv_l_knee
+    400016: shiv_l_shoulder
+    400018: shiv_l_toe
+    400020: shiv_pelvis
+    400022: shiv_r_clavicle
+    400024: shiv_r_elbow
+    400026: shiv_r_foot
+    400028: shiv_r_hip
+    400030: shiv_r_knee
+    400032: shiv_r_shoulder
+    400034: shiv_r_toe
+    400036: shiv_spine1
+    400038: shiv_spine2
+    400040: skel_grp
+    4300000: shiv_bot
+    7400000: idle
+    7400002: walking
+    7400004: attack
+    7400006: death
+    9500000: //RootNode
+    13700000: shiv_bot
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: shiv_bot
+        weight: 1
+      - path: skel_grp
+        weight: 1
+      - path: skel_grp/shiv_cog
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip/shiv_l_knee
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip/shiv_l_knee/shiv_l_foot
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip/shiv_l_knee/shiv_l_foot/shiv_l_toe
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip/shiv_r_knee
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip/shiv_r_knee/shiv_r_foot
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip/shiv_r_knee/shiv_r_foot/shiv_r_toe
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_l_clavicle
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_l_clavicle/shiv_l_shoulder
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_l_clavicle/shiv_l_shoulder/shiv_l_elbow
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_r_clavicle
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_r_clavicle/shiv_r_shoulder
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_r_clavicle/shiv_r_shoulder/shiv_r_elbow
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: walking
+      takeName: Take 001
+      firstFrame: 20
+      lastFrame: 39
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: shiv_bot
+        weight: 1
+      - path: skel_grp
+        weight: 1
+      - path: skel_grp/shiv_cog
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip/shiv_l_knee
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip/shiv_l_knee/shiv_l_foot
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip/shiv_l_knee/shiv_l_foot/shiv_l_toe
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip/shiv_r_knee
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip/shiv_r_knee/shiv_r_foot
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip/shiv_r_knee/shiv_r_foot/shiv_r_toe
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_l_clavicle
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_l_clavicle/shiv_l_shoulder
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_l_clavicle/shiv_l_shoulder/shiv_l_elbow
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_r_clavicle
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_r_clavicle/shiv_r_shoulder
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_r_clavicle/shiv_r_shoulder/shiv_r_elbow
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: attack
+      takeName: Take 001
+      firstFrame: 46
+      lastFrame: 58
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.43753052
+        functionName: Fire
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: shiv_bot
+        weight: 1
+      - path: skel_grp
+        weight: 1
+      - path: skel_grp/shiv_cog
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip/shiv_l_knee
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip/shiv_l_knee/shiv_l_foot
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip/shiv_l_knee/shiv_l_foot/shiv_l_toe
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip/shiv_r_knee
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip/shiv_r_knee/shiv_r_foot
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip/shiv_r_knee/shiv_r_foot/shiv_r_toe
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_l_clavicle
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_l_clavicle/shiv_l_shoulder
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_l_clavicle/shiv_l_shoulder/shiv_l_elbow
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_r_clavicle
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_r_clavicle/shiv_r_shoulder
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_r_clavicle/shiv_r_shoulder/shiv_r_elbow
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: death
+      takeName: Take 001
+      firstFrame: 60
+      lastFrame: 95
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.9141543
+        functionName: DoDestroy
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+        functionName: SetInactive
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: shiv_bot
+        weight: 1
+      - path: skel_grp
+        weight: 1
+      - path: skel_grp/shiv_cog
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip/shiv_l_knee
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip/shiv_l_knee/shiv_l_foot
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_l_hip/shiv_l_knee/shiv_l_foot/shiv_l_toe
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip/shiv_r_knee
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip/shiv_r_knee/shiv_r_foot
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_pelvis/shiv_r_hip/shiv_r_knee/shiv_r_foot/shiv_r_toe
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_l_clavicle
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_l_clavicle/shiv_l_shoulder
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_l_clavicle/shiv_l_shoulder/shiv_l_elbow
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_r_clavicle
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_r_clavicle/shiv_r_shoulder
+        weight: 1
+      - path: skel_grp/shiv_cog/shiv_spine1/shiv_spine2/shiv_r_clavicle/shiv_r_shoulder/shiv_r_elbow
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
