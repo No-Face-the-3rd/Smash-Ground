@@ -361,6 +361,7 @@ public class PlayerController : MonoBehaviour
     {
         playerNum = id;
         createCam();
+        gameObject.name = "Player " + playerNum;
     }
 
     void createCam()
@@ -541,8 +542,15 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < toKill.Length; i++)
         {
             if (toKill[i].GetComponent<EnemyHealth>() != null)
+            {
                 toKill[i].GetComponent<EnemyHealth>().lastHitBy = -1;
-            toKill[i].GetComponent<EnemyDeath>().DoDestroy();
+            }
+
+            if (toKill[i].GetComponent<BossStateMachine>() == null)
+            {
+                toKill[i].GetComponent<EnemyDeath>().DoDestroy();
+
+            }
         }
 
     }
