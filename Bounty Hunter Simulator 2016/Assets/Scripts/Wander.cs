@@ -30,7 +30,9 @@ public class Wander : MonoBehaviour
             wanderLoc.targetLoc.x = startLoc.x + (Random.insideUnitCircle.x * 5); // select a point based on my previous position
             wanderLoc.targetLoc.z = startLoc.z + (Random.insideUnitCircle.y * 5);
         }
-
-        aim.aimAtLoc = wanderLoc.targetLoc; //Aim at my current traveling location
+        if (aim != null)
+        {
+            aim.aimAtLoc = wanderLoc.targetLoc; //Aim at my current traveling location
+        }
     }
 }
