@@ -34,6 +34,8 @@ public class ScoreManager : MonoBehaviour
             {
                 if (locator.players[i].GetComponent<PlayerController>().powerup == PlayerController.powerUps.HOTDOG)
                     score += score;
+                if (locator.players[i].GetComponent<PlayerController>().child.arrayIndex == 1)
+                    score += score / 2;
                 break;
             }
         }
