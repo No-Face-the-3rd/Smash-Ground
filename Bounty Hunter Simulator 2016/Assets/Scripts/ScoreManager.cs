@@ -31,8 +31,10 @@ public class ScoreManager : MonoBehaviour
             {
                 pointLossTimer = 0.0f;
                 PlayerController player = locator.players[i].GetComponent<PlayerController>();
-                if (player.child != null || player.nextRoom.Count > 0 || (player.curRoom.Count > 0 && locator.hasSpawned[i])
+                if (player.child != null || player.nextRoom.Count > 0 || (player.curRoom.Count > 0 && locator.hasSpawned[i]))
+                {
                     scores[idTmp] -= pointLossPerInterval;
+                }
                 if (scores[idTmp] < 0)
                 {
                     scores[idTmp] = 0;
