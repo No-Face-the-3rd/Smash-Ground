@@ -197,7 +197,7 @@ public class PlayerController : MonoBehaviour
 
     private ScoreManager scorer;
     private GameObject main;
-    private AudioSource audio;
+    public AudioSource audio;
 
     void Start()
     {
