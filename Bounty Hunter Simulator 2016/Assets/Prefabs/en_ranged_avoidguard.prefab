@@ -565,7 +565,7 @@ MonoBehaviour:
   attackPre: {fileID: 114280, guid: 542ac30955190ee4b8d4fe8377ee9a48, type: 2}
   attackYOffset: {x: 0, y: 1, z: 0}
   attackSpawnOffset: 0.5
-  maxRadiusForAim: 5.9
+  maxRadiusForAim: 7
   fireDelay: 1
   attackRange: 15
   shoot: 0
@@ -642,7 +642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerLocator: {fileID: 0}
   avoidTimer: 2
-  maxRadiusAvoid: 5
+  maxRadiusAvoid: 7
   playerFieldOfViewAngle: 45
 --- !u!114 &11461740
 MonoBehaviour:
@@ -750,11 +750,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxRadiusAvoid
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxRadiusForAim
-      value: 5.9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: attackRange
