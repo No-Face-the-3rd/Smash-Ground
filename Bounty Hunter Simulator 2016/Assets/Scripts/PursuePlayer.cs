@@ -75,7 +75,7 @@ public class PursuePlayer : MonoBehaviour
         pursueLoc.targetLoc = playerLocator.targetable[_target].transform.position + directionToPlayer.normalized * attackRange;    //pursue to where I can reach the player
 
         ShootClosestPlayer shoot = GetComponent<ShootClosestPlayer>();  
-        if (shoot == null)
+        if (shoot == null && aim != null)
         {
             aim.aimAtLoc = pursueLoc.targetLoc;
         }
