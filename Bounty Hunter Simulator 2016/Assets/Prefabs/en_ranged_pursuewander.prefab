@@ -551,7 +551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePursueRadiusWithSelf: 1
   playerLocator: {fileID: 0}
-  maxRadiusPursue: 5
+  maxRadiusPursue: 7
   attackRange: 6
 --- !u!114 &11414904
 MonoBehaviour:
@@ -784,6 +784,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: powerupsIcanSpawn.Array.data[4]
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxRadiusPursue
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
