@@ -721,7 +721,7 @@ MonoBehaviour:
   attackPre: {fileID: 150400, guid: a36d885ee49278542a5a0dcf2311362f, type: 2}
   attackYOffset: {x: 0, y: 1, z: 0}
   attackSpawnOffset: 0.5
-  maxRadiusForAim: 6
+  maxRadiusForAim: 8
   fireDelay: 0.5
   attackRange: 3
   shoot: 1
@@ -805,7 +805,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePursueRadiusWithSelf: 1
   playerLocator: {fileID: 0}
-  maxRadiusPursue: 6
+  maxRadiusPursue: 8
   attackRange: 2.5
 --- !u!114 &11498354
 MonoBehaviour:
@@ -943,6 +943,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: powerupsIcanSpawn.Array.data[4]
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxRadiusForAim
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxRadiusPursue
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
