@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 4
-  powerTime: 3
+  powerTime: 2
 --- !u!114 &11454828
 MonoBehaviour:
   m_ObjectHideFlags: 1

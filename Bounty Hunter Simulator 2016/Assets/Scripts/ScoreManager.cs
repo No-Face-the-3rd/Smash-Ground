@@ -7,11 +7,15 @@ public class ScoreManager : MonoBehaviour
     public Text[] scoreTexts;
     private PlayerLocator locator;
     private int[] scores;
+    private float pointLossTimer;
+    public float pointLossInterval;
+    public int pointLossPerInterval;
 
 	void Start ()
     {
         locator = FindObjectOfType<PlayerLocator>();
         scores = new int[2];
+        pointLossTimer = 0.0f;
 	}
 	
 	void Update ()
@@ -24,6 +28,19 @@ public class ScoreManager : MonoBehaviour
                 scoreTexts[idTmp].text = "Hotdogs: " + scores[idTmp];
             }
         }
+        pointLossTimer += Time.deltaTime;
+        if(pointLossTimer >= pointLossInterval)
+        {
+            pointLossTimer = 0.0f;
+            for(int i = 0;i < scores.Length;i++)
+            {
+                scores[i] -= pointLossPerInterval;
+                if(scores[i] < 0)
+                {
+                    scores[i] = 0;
+                }
+            }
+        }
     }
 
     public void addScore(int player,int score)
@@ -34,6 +51,8 @@ public class ScoreManager : MonoBehaviour
             {
                 if (locator.players[i].GetComponent<PlayerController>().powerup == PlayerController.powerUps.HOTDOG)
                     score += score;
+                if (locator.players[i].GetComponent<PlayerController>().child != null && locator.players[i].GetComponent<PlayerController>().child.arrayIndex == 1)
+                    score += score / 2;
                 break;
             }
         }
