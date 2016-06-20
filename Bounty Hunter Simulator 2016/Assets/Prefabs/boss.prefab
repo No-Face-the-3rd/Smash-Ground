@@ -126,6 +126,7 @@ GameObject:
   - 114: {fileID: 11486016}
   - 114: {fileID: 11407428}
   - 82: {fileID: 8250238}
+  - 114: {fileID: 11465528}
   m_Layer: 10
   m_Name: boss
   m_TagString: Spawning
@@ -1447,6 +1448,18 @@ MonoBehaviour:
   targetLoc: {x: 0, y: 0, z: 0}
   directionToTarget: {x: 0, y: 0, z: 0}
   moveSpeed: 3
+--- !u!114 &11465528
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c38247bb7630d174ca2469e092af4743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossMusic: {fileID: 8300000, guid: 86ae827951835b94e95df1b2baef5bfc, type: 3}
 --- !u!114 &11474704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2421,6 +2434,10 @@ Prefab:
       propertyPath: health
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: bossMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 86ae827951835b94e95df1b2baef5bfc, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 109734}

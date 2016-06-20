@@ -1,19 +1,62 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerLocator : MonoBehaviour
 {
-    public GameObject [] players;
-    public GameObject [] targetable;
-	void Update ()
+    public GameObject[] players;
+    public GameObject[] targetable;
+    private bool[] hasSpawned;
+    private bool shouldRestart;
+    private RoomChangeManager manager;
+
+    void Start()
     {
+        shouldRestart = false;
+        manager = RoomChangeManager.FindObjectOfType<RoomChangeManager>();
+        hasSpawned = new bool[0];
+    }
+    void Update()
+    {
+
         players = GameObject.FindGameObjectsWithTag("Player");
         int targetableToCount = 0;
         int[] ids = new int[players.Length];
-        for (int i = 0;i < players.Length;i++)
+        if (hasSpawned.Length < players.Length)
         {
-            if(players[i].transform.childCount > 0 
-                && players[i].GetComponent<PlayerController>().powerup != PlayerController.powerUps.INVIS 
+            bool[] tmp = new bool[players.Length];
+            for (int i = 0; i < hasSpawned.Length; i++)
+            {
+                tmp[i] = hasSpawned[i];
+            }
+            hasSpawned = tmp;
+
+        }
+        for (int i = 0; i < players.Length; i++)
+        {
+            int childCount = players[i].transform.childCount;
+            if (childCount > 0 && hasSpawned[i] == false)
+            {
+                hasSpawned[i] = true;
+                shouldRestart = false;
+            }
+            else
+            {
+                PlayerController player = players[i].GetComponent<PlayerController>();
+                if (player.curRoom.Count <= 0 && player.nextRoom.Count <= 0)
+                {
+                    shouldRestart = true;
+                }
+                else
+                {
+                    if (player.curRoom.Count <= 0)
+                        shouldRestart = true;
+                    else
+                        shouldRestart = false;
+                }
+            }
+            if (childCount > 0
+                && players[i].GetComponent<PlayerController>().powerup != PlayerController.powerUps.INVIS
                 && players[i].layer != 15)
             {
                 targetableToCount++;
@@ -26,13 +69,22 @@ public class PlayerLocator : MonoBehaviour
         }
         int temp = 0;
         targetable = new GameObject[targetableToCount];
-        for(int i = 0;i <ids.Length;i++)
+        for (int i = 0; i < ids.Length; i++)
         {
-            if(ids[i] >= 0)
+            if (ids[i] >= 0)
             {
                 targetable[temp] = players[ids[i]];
                 temp++;
             }
         }
+
+
+
+
+        if (shouldRestart)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Active
   - Inactive
   - Spawning
+  - Music
   layers:
   - Default
   - TransparentFX
