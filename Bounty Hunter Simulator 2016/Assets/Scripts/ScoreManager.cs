@@ -17,8 +17,8 @@ public class ScoreManager : MonoBehaviour
         scores = new int[2];
         pointLossTimer = 0.0f;
 	}
-	
-	void Update ()
+
+    void Update()
     {
         for (int i = 0; i < locator.players.Length; i++)
         {
@@ -27,20 +27,20 @@ public class ScoreManager : MonoBehaviour
             {
                 scoreTexts[idTmp].text = "Hotdogs: " + scores[idTmp];
             }
-        }
-        pointLossTimer += Time.deltaTime;
-        if(pointLossTimer >= pointLossInterval)
-        {
-            pointLossTimer = 0.0f;
-            for(int i = 0;i < scores.Length;i++)
+            if (pointLossTimer >= pointLossInterval)
             {
-                scores[i] -= pointLossPerInterval;
-                if(scores[i] < 0)
+                pointLossTimer = 0.0f;
+                PlayerController player = locator.players[i].GetComponent<PlayerController>();
+                //if (player.child != null || player.nextRoom.Count > 0 || (player.curRoom.Count > 0 && locator.hasSpawned[i])
+                    scores[idTmp] -= pointLossPerInterval;
+                if (scores[idTmp] < 0)
                 {
-                    scores[i] = 0;
+                    scores[idTmp] = 0;
                 }
             }
         }
+    
+        pointLossTimer += Time.deltaTime;
     }
 
     public void addScore(int player,int score)
