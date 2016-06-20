@@ -54,7 +54,7 @@ public class PlayerLocator : MonoBehaviour
             else
             {
                 PlayerController player = players[i].GetComponent<PlayerController>();
-                if (hasSpawned[i] != false)
+                if (hasSpawned[i] != false && shouldRestart == true)
                 {
                     if (player.curRoom.Count <= 0 && player.nextRoom.Count <= 0)
                     {
