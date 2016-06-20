@@ -3,11 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
-public class enemyToSpawn
+public class toSpawn
 {
     public int ind;
     public float spawnTime;
     public Vector3 relSpawnPos;
+}
+[System.Serializable]
+public class enemyToSpawn : toSpawn
+{
     public Vector3 rotation;
     public Vector3 startDriveTo;
 }
@@ -15,8 +19,10 @@ public class enemyToSpawn
 public class RoomSpawn : MonoBehaviour
 {
     public List<enemyToSpawn> enemiesToSpawn;
+    public List<toSpawn> charToRescue;
     public GameObject[] doors;
     private EnemyDB enemyData;
+    private CharacterDB charData;
 
     private float startTime;
 
@@ -25,34 +31,47 @@ public class RoomSpawn : MonoBehaviour
 	void Start ()
     {
         enemyData = FindObjectOfType<EnemyDB>();
+        charData = FindObjectOfType<CharacterDB>();
         startTime = Time.time;
 	}
 	
 	void Update ()
     {
-        List<int> indToDel = new List<int>();
-	    for(int i = 0;i < enemiesToSpawn.Count;i++)
+
+        for(int i = enemiesToSpawn.Count - 1;i >= 0;i--)
         {
-            if (Time.time - startTime >= enemiesToSpawn[i].spawnTime)
+            if(Time.time - startTime >= enemiesToSpawn[i].spawnTime)
             {
-                if (enemiesToSpawn[i].ind < enemyData.enemyDB.Length)
+                if(enemiesToSpawn[i].ind < enemyData.enemyDB.Length)
                 {
                     GameObject tmp = (GameObject)Instantiate(enemyData.enemyDB[enemiesToSpawn[i].ind], transform.position + enemiesToSpawn[i].relSpawnPos, Quaternion.Euler(enemiesToSpawn[i].rotation));
-                    if (tmp.gameObject.layer != 10)
+                    if(tmp.gameObject.layer != 10)
                         tmp.gameObject.layer = 10;
                     tmp.tag = "Spawning";
-                    if(tmp.GetComponent<driveToTarget>() != null)
+                    if (tmp.GetComponent<driveToTarget>() != null)
                         tmp.GetComponent<driveToTarget>().targetLoc = transform.position + enemiesToSpawn[i].startDriveTo;
-                    if(tmp.GetComponent<AimAt>() != null)
-                       tmp.GetComponent<AimAt>().aimAtLoc = transform.position + enemiesToSpawn[i].relSpawnPos + Quaternion.Euler(enemiesToSpawn[i].rotation) * Vector3.forward * 2.0f;
-                    indToDel.Add(i);
+                    if (tmp.GetComponent<AimAt>() != null)
+                        tmp.GetComponent<AimAt>().aimAtLoc = transform.position + enemiesToSpawn[i].startDriveTo + Quaternion.Euler(enemiesToSpawn[i].rotation) * Vector3.forward * 5.0f;
+                    enemiesToSpawn.RemoveAt(i);
                 }
             }
         }
-        for(int i = indToDel.Count - 1;i >= 0;i--)
+        for (int i = charToRescue.Count - 1; i >= 0; i--)
         {
-            enemiesToSpawn.RemoveAt(indToDel[i]);
+            if(Time.time - startTime >= charToRescue[i].spawnTime)
+            {
+                if(charToRescue[i].ind < charData.charDB.Length)
+                {
+                    GameObject tmp = (GameObject)Instantiate(charData.charDB[charToRescue[i].ind], transform.position + charToRescue[i].relSpawnPos, Quaternion.Euler(Vector3.zero));
+                    tmp.GetComponent<character>().owner = -i;
+                    tmp.GetComponent<character>().health = 0;
+                    tmp.transform.parent = transform;
+                    charToRescue.RemoveAt(i);
+                }
+            }
         }
+    
+
         GameObject[] testActive = GameObject.FindGameObjectsWithTag("Active");
         GameObject[] testSpawning = GameObject.FindGameObjectsWithTag("Spawning");
 
