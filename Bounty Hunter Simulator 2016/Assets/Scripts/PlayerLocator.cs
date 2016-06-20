@@ -18,7 +18,7 @@ public class PlayerLocator : MonoBehaviour
     }
     void Update()
     {
-
+        shouldRestart = true;
         players = GameObject.FindGameObjectsWithTag("Player");
         int targetableToCount = 0;
         int[] ids = new int[players.Length];
@@ -43,7 +43,7 @@ public class PlayerLocator : MonoBehaviour
             else
             {
                 PlayerController player = players[i].GetComponent<PlayerController>();
-                if (shouldRestart != false)
+                if (hasSpawned[i] != false)
                 {
                     if (player.curRoom.Count <= 0 && player.nextRoom.Count <= 0)
                     {
