@@ -9,16 +9,20 @@ public class PlayerLocator : MonoBehaviour
     public bool[] hasSpawned;
     public bool shouldRestart;
     private RoomChangeManager manager;
+    private bool checkRestart;
 
     void Start()
     {
-        shouldRestart = false;
+        shouldRestart = checkRestart = false;
         manager = RoomChangeManager.FindObjectOfType<RoomChangeManager>();
         hasSpawned = new bool[0];
     }
     void Update()
     {
-        shouldRestart = true;
+        if(checkRestart)
+        {
+            shouldRestart = true;
+        }
         players = GameObject.FindGameObjectsWithTag("Player");
         int targetableToCount = 0;
         int[] ids = new int[players.Length];
@@ -35,9 +39,16 @@ public class PlayerLocator : MonoBehaviour
         for (int i = 0; i < players.Length; i++)
         {
             int childCount = players[i].transform.childCount;
-            if (childCount > 0 && hasSpawned[i] == false)
+            if (childCount > 0)
             {
-                hasSpawned[i] = true;
+                if (hasSpawned[i] == false)
+                {
+                    hasSpawned[i] = true;
+                    if (checkRestart == false)
+                    {
+                        checkRestart = true;
+                    }
+                }
                 shouldRestart = false;
             }
             else
@@ -84,7 +95,7 @@ public class PlayerLocator : MonoBehaviour
 
 
 
-        if (shouldRestart)
+        if (shouldRestart && checkRestart)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
