@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour
     private float camDist;
 
     public GameObject charDB;
-    [SerializeField]
+
     public List<int> nextRoom, curRoom;
     public int curInd;
     private int prevInd;
