@@ -6,8 +6,8 @@ public class PlayerLocator : MonoBehaviour
 {
     public GameObject[] players;
     public GameObject[] targetable;
-    private bool[] hasSpawned;
-    private bool shouldRestart;
+    public bool[] hasSpawned;
+    public bool shouldRestart;
     private RoomChangeManager manager;
 
     void Start()
