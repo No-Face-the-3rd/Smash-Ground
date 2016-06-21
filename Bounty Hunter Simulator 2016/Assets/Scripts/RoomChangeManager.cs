@@ -50,7 +50,8 @@ public class RoomChangeManager : MonoBehaviour
                     player.nextRoom.Sort();
                     player.curRoom = player.nextRoom;
                     player.curInd = 0;
-                    player.cycleChar(player.curInd);
+                    if(player.curRoom.Count > 0)
+                        player.cycleChar(player.curInd);
                     player.nextRoom = new List<int>();
                 }
             }
