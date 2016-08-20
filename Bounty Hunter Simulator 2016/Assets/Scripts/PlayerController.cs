@@ -179,7 +179,6 @@ public class PlayerController : MonoBehaviour
     public Camera cs;
     private float camDist;
 
-    public GameObject charDB;
 
     public List<int> nextRoom, curRoom;
     public int curInd;
@@ -195,7 +194,6 @@ public class PlayerController : MonoBehaviour
     public powerUps powerup;
     public float powerupTime;
 
-    private ScoreManager scorer;
     private GameObject main;
     public AudioSource audio;
 
@@ -203,10 +201,8 @@ public class PlayerController : MonoBehaviour
     {
         audio = GetComponent<AudioSource>();
         main = GameObject.FindObjectOfType<MainCameraController>().gameObject;
-        scorer = FindObjectOfType<ScoreManager>();
         powerup = powerUps.NONE;
         powerupTime = 0.0f;
-        charDB = FindObjectOfType<CharacterDB>().gameObject;
         charSelUsed = false;
         curInd = 0;
         charChoose = false;
@@ -218,7 +214,7 @@ public class PlayerController : MonoBehaviour
         curRoom.Add(2);
         curRoom.Add(3);
         curRoom.Add(4);
-        curChar = (GameObject)Instantiate(charDB.GetComponent<CharacterDB>().charDB[curRoom[curInd]], Vector3.zero, Quaternion.LookRotation(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f)));
+        curChar = (GameObject)Instantiate(CharacterDB.charData.getCharacter(curRoom[curInd]), Vector3.zero, Quaternion.LookRotation(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f)));
         curChar.layer = 11 + playerNum;
         for (int i = 0; i < curChar.transform.childCount; i++)
         {
@@ -443,7 +439,7 @@ public class PlayerController : MonoBehaviour
                 cs.GetComponent<Transform>().rotation = Quaternion.Euler(new Vector3(0.0f, 180.0f, 0.0f));
                 cs.GetComponent<Transform>().position = csTarg + -(camDist * cs.GetComponent<Transform>().forward);
             }
-            nextChar = (GameObject)Instantiate(charDB.GetComponent<CharacterDB>().charDB[curRoom[targetIndex]], new Vector3(-6.2f, 0.0f, 0.0f), Quaternion.LookRotation(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f)));
+            nextChar = (GameObject)Instantiate(CharacterDB.charData.getCharacter(curRoom[targetIndex]), new Vector3(-6.2f, 0.0f, 0.0f), Quaternion.LookRotation(new Vector3(0.0f, 0.0f, 1.0f), new Vector3(0.0f, 1.0f, 0.0f)));
             nextChar.layer = 11 + playerNum;
             for(int i = 0;i < nextChar.transform.childCount;i++)
             {
@@ -466,7 +462,7 @@ public class PlayerController : MonoBehaviour
 
     void createChar()
     {
-        GameObject tmp = (GameObject)Instantiate(charDB.GetComponent<CharacterDB>().charDB[curRoom[curInd]], transform.position, transform.rotation);
+        GameObject tmp = (GameObject)Instantiate(CharacterDB.charData.getCharacter(curRoom[curInd]), transform.position, transform.rotation);
         tmp.transform.SetParent(transform);
         tmp.GetComponent<character>().owner = playerNum;
         child = tmp.GetComponent<character>();
@@ -483,7 +479,7 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.layer == 16)
         {
             nextRoom.Add(collision.gameObject.GetComponent<character>().arrayIndex);
-            scorer.addScore(playerNum, collision.gameObject.GetComponent<character>().rescueScore);
+            ScoreManager.scorer.addScore(playerNum, collision.gameObject.GetComponent<character>().rescueScore);
             Destroy(collision.gameObject);
         }
         if(collision.gameObject.layer == 11)

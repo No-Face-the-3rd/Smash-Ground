@@ -3,7 +3,23 @@ using System.Collections;
 
 public class PowerupDB : MonoBehaviour
 {
-    public GameObject[] powerups;
+    public static PowerupDB powerUpData;
+
+    [SerializeField]
+    private GameObject[] powerups;
+
+    void Awake()
+    {
+        if(powerUpData == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            powerUpData = this;
+        }
+        else if(powerUpData != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
 	void Start ()
     {
@@ -15,4 +31,14 @@ public class PowerupDB : MonoBehaviour
     {
 	
 	}
+
+    public GameObject getPowerUp(int index)
+    {
+        return powerups[index];
+    }
+
+    public int getNumPowerUps()
+    {
+        return powerups.Length;
+    }
 }

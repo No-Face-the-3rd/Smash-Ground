@@ -21,8 +21,6 @@ public class RoomSpawn : MonoBehaviour
     public List<enemyToSpawn> enemiesToSpawn;
     public List<toSpawn> charToRescue;
     public GameObject[] doors;
-    private EnemyDB enemyData;
-    private CharacterDB charData;
 
     private float startTime;
 
@@ -30,8 +28,6 @@ public class RoomSpawn : MonoBehaviour
 
 	void Start ()
     {
-        enemyData = FindObjectOfType<EnemyDB>();
-        charData = FindObjectOfType<CharacterDB>();
         startTime = Time.time;
 	}
 	
@@ -42,9 +38,9 @@ public class RoomSpawn : MonoBehaviour
         {
             if(Time.time - startTime >= enemiesToSpawn[i].spawnTime)
             {
-                if(enemiesToSpawn[i].ind < enemyData.enemyDB.Length)
+                if(enemiesToSpawn[i].ind < EnemyDB.enemyData.getNumEnemies())
                 {
-                    GameObject tmp = (GameObject)Instantiate(enemyData.enemyDB[enemiesToSpawn[i].ind], transform.position + enemiesToSpawn[i].relSpawnPos, Quaternion.Euler(enemiesToSpawn[i].rotation));
+                    GameObject tmp = (GameObject)Instantiate(EnemyDB.enemyData.getEnemy(enemiesToSpawn[i].ind), transform.position + enemiesToSpawn[i].relSpawnPos, Quaternion.Euler(enemiesToSpawn[i].rotation));
                     if(tmp.gameObject.layer != 10)
                         tmp.gameObject.layer = 10;
                     tmp.tag = "Spawning";
@@ -60,9 +56,9 @@ public class RoomSpawn : MonoBehaviour
         {
             if(Time.time - startTime >= charToRescue[i].spawnTime)
             {
-                if(charToRescue[i].ind < charData.charDB.Length)
+                if(charToRescue[i].ind < CharacterDB.charData.getNumCharacters())
                 {
-                    GameObject tmp = (GameObject)Instantiate(charData.charDB[charToRescue[i].ind], transform.position + charToRescue[i].relSpawnPos, Quaternion.Euler(Vector3.zero));
+                    GameObject tmp = (GameObject)Instantiate(CharacterDB.charData.getCharacter(charToRescue[i].ind), transform.position + charToRescue[i].relSpawnPos, Quaternion.Euler(Vector3.zero));
                     tmp.GetComponent<character>().owner = -i;
                     tmp.GetComponent<character>().health = 0;
                     tmp.transform.parent = transform;

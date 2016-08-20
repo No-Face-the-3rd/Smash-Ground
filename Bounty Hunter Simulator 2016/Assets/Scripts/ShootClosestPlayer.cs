@@ -6,7 +6,6 @@ public class ShootClosestPlayer : MonoBehaviour
     #region Agent Info
 
     private Transform tf;
-    public PlayerLocator playerLocator;
     private AimAt aim;
     public GameObject attackPre;
     public Vector3 attackYOffset;
@@ -24,7 +23,6 @@ public class ShootClosestPlayer : MonoBehaviour
     {
         tf = GetComponent<Transform>();
         originalTimer = fireDelay;
-        playerLocator = GameObject.FindObjectOfType<PlayerLocator>();
 
         aim = GetComponent<AimAt>();
         attackSpawnOffset = attackPre.GetComponent<Bullet>().spawnOffsetLength;
@@ -46,9 +44,9 @@ public class ShootClosestPlayer : MonoBehaviour
         float minDist = float.MaxValue; //used to see which player is closer
         int target = -1;                //start out without a target
 
-        for (int i = 0; i < playerLocator.targetable.Length; ++i)
+        for (int i = 0; i < PlayerLocator.locator.targetable.Length; ++i)
         {
-            directionToPlayer = (playerLocator.targetable[i].transform.position - tf.position); //find the direction to the current player
+            directionToPlayer = (PlayerLocator.locator.targetable[i].transform.position - tf.position); //find the direction to the current player
             float tmpDist = directionToPlayer.magnitude;                    ////distance between me and the player
 
             if (tmpDist < maxRadiusForAim)//if within distance of radius
@@ -93,7 +91,7 @@ public class ShootClosestPlayer : MonoBehaviour
 
     void Aim(int _target)   //organization
     {
-        aim.aimAtLoc = playerLocator.targetable[_target].transform.position;    //aim at the current player's position
+        aim.aimAtLoc = PlayerLocator.locator.targetable[_target].transform.position;    //aim at the current player's position
         tf.forward = new Vector3(tf.forward.x, 0, tf.forward.z);    //0 out the Y so they don't tilt
         fireDelay -= Time.deltaTime;            
         if (fireDelay <= 0 && directionToPlayer.magnitude <= attackRange)   //if I can shoot

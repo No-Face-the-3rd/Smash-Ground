@@ -4,17 +4,30 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLocator : MonoBehaviour
 {
+    public static PlayerLocator locator;
+
     public GameObject[] players;
     public GameObject[] targetable;
     public bool[] hasSpawned;
     public bool shouldRestart;
-    private RoomChangeManager manager;
     private bool checkRestart;
+
+    void Awake()
+    {
+        if(locator == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            locator = this;
+        }
+        else if(locator != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
         shouldRestart = checkRestart = false;
-        manager = RoomChangeManager.FindObjectOfType<RoomChangeManager>();
         hasSpawned = new bool[0];
     }
     void Update()

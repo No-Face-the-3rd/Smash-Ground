@@ -7,14 +7,12 @@ public class EnemyHealth : MonoBehaviour
     public int health;
     public int lastHitBy;
     public int scoreValue;
-    public ScoreManager score;
     public AudioSource audioSource;
     public AudioClip enemyHit;
 
     void Start()
     {
         lastHitBy = -1;
-        score = FindObjectOfType<ScoreManager>();
         audioSource = GetComponent<AudioSource>();
     }
 

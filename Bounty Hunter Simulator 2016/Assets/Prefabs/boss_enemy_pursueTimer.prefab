@@ -624,7 +624,8 @@ AudioSource:
   m_GameObject: {fileID: 191500}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24320862, guid: f182c1c7e9ee41645a4c5fc084f28f85,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.5
@@ -745,7 +746,6 @@ MonoBehaviour:
   health: 1
   lastHitBy: -1
   scoreValue: 10
-  score: {fileID: 0}
   audioSource: {fileID: 0}
   enemyHit: {fileID: 8300000, guid: ed8ef6da48332104ea3d57edb7a4bf31, type: 3}
 --- !u!114 &11421086
@@ -776,7 +776,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6822642fffe05514f8f19f1acd2ab03f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLocator: {fileID: 0}
   attackPre: {fileID: 150400, guid: a36d885ee49278542a5a0dcf2311362f, type: 2}
   attackYOffset: {x: 0, y: 1, z: 0}
   attackSpawnOffset: 0.5
@@ -808,7 +807,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movePursueRadiusWithSelf: 1
-  playerLocator: {fileID: 0}
   maxRadiusPursue: 6
   attackRange: 2.5
 --- !u!114 &11473580

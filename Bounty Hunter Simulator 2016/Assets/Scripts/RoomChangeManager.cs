@@ -4,17 +4,27 @@ using System.Collections.Generic;
 
 public class RoomChangeManager : MonoBehaviour
 {
+    public static RoomChangeManager roomChanger;
 
-    private ScoreManager scorer;
-    private PlayerLocator locator;
     private MainCameraController mainCam;
     public GameObject nextRoom;
     public bool switchRoom;
 
+    void Awake ()
+    {
+        if(roomChanger == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            roomChanger = this;
+        }
+        else if(roomChanger != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
 	void Start ()
     {
-        scorer = ScoreManager.FindObjectOfType<ScoreManager>();
-        locator = PlayerLocator.FindObjectOfType<PlayerLocator>();
         mainCam = MainCameraController.FindObjectOfType<MainCameraController>();
         nextRoom = null;
         switchRoom = false;
@@ -33,13 +43,13 @@ public class RoomChangeManager : MonoBehaviour
                 mainCam.target = nextRoom;
                 nextRoom.GetComponent<RoomSpawn>().enabled = true;
                 nextRoom = null;
-                for(int i = 0;i < locator.players.Length;i++)
+                for(int i = 0;i < PlayerLocator.locator.players.Length;i++)
                 {
-                    PlayerController player = locator.players[i].GetComponent<PlayerController>();
+                    PlayerController player = PlayerLocator.locator.players[i].GetComponent<PlayerController>();
                     if (player.child != null)
                     {
                         player.nextRoom.Add(player.child.arrayIndex);
-                        scorer.addScore(player.playerNum, player.child.rescueScore * 2);
+                        ScoreManager.scorer.addScore(player.playerNum, player.child.rescueScore * 2);
                         Destroy(player.child.gameObject);
                     }
                     for(int j = 0;j < player.curRoom.Count;j++)

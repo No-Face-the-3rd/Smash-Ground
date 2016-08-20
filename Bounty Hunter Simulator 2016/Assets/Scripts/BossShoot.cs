@@ -7,7 +7,6 @@ public class BossShoot : MonoBehaviour
     #region Agent Info
 
     private Transform tf;
-    public PlayerLocator playerLocator;
     public GameObject [] attackPre;
     public Vector3 attackYOffset;
     public float attackSpawnOffset;
@@ -29,7 +28,6 @@ public class BossShoot : MonoBehaviour
     {
         tf = GetComponent<Transform>();
         originalTimer = fireDelay;
-        playerLocator = GameObject.FindObjectOfType<PlayerLocator>();
         shoot = false;
         
     }
@@ -48,9 +46,9 @@ public class BossShoot : MonoBehaviour
         float minDist = float.MaxValue;
         int target = -1;
 
-        for (int i = 0; i < playerLocator.targetable.Length; ++i)
+        for (int i = 0; i < PlayerLocator.locator.targetable.Length; ++i)
         {
-            directionToPlayer = (playerLocator.targetable[i].transform.position - tf.position);
+            directionToPlayer = (PlayerLocator.locator.targetable[i].transform.position - tf.position);
             float tmpDist = directionToPlayer.magnitude;
 
             if (tmpDist < maxRadiusForAim)

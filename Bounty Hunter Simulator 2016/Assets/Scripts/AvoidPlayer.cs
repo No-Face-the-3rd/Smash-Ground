@@ -6,7 +6,6 @@ public class AvoidPlayer : MonoBehaviour
 {
     #region Agent Info
 
-    public PlayerLocator playerLocator;
     private Transform tf;
     public float avoidTimer;
     private float originalTimer;
@@ -20,7 +19,6 @@ public class AvoidPlayer : MonoBehaviour
     {
         travelLoc = GetComponent<driveToTarget>();
         tf = GetComponent<Transform>();
-        playerLocator = GameObject.FindObjectOfType<PlayerLocator>();
         originalTimer = avoidTimer;
     }
 	void Update ()
@@ -28,9 +26,9 @@ public class AvoidPlayer : MonoBehaviour
         float minDist = float.MaxValue; //used to see which player is closer
         int target = -1;                //start out without a target
 
-        for (int i = 0; i < playerLocator.targetable.Length; ++i)
+        for (int i = 0; i < PlayerLocator.locator.targetable.Length; ++i)
         {
-            directionToPlayer = playerLocator.targetable[i].transform.position - transform.position; //find the direction to the current player
+            directionToPlayer = PlayerLocator.locator.targetable[i].transform.position - transform.position; //find the direction to the current player
             float tmpDist = directionToPlayer.magnitude;    //distance between me and the player
             if (tmpDist < maxRadiusAvoid) //if within distance of radius
             {
@@ -65,8 +63,8 @@ public class AvoidPlayer : MonoBehaviour
 	}
     void AvoidPlayerDirection(int _target)  //used just to organize code more
     {
-        playerDirection = (tf.position - playerLocator.targetable[_target].transform.position); //find the direction the player needs to be facing to be looking at me
-        float angle = Vector3.Angle(playerDirection, playerLocator.targetable[_target].transform.forward);  //get the angle from the players forward and the desired direction
+        playerDirection = (tf.position - PlayerLocator.locator.targetable[_target].transform.position); //find the direction the player needs to be facing to be looking at me
+        float angle = Vector3.Angle(playerDirection, PlayerLocator.locator.targetable[_target].transform.forward);  //get the angle from the players forward and the desired direction
 
         if(angle < playerFieldOfViewAngle * 0.5f)   // if I am withing the desired directions threshold
         {

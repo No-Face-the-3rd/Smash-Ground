@@ -9,7 +9,6 @@ public class PursuePlayer : MonoBehaviour
     private AimAt aim;
     private Vector3 directionToPlayer, checkLoc;
     public bool movePursueRadiusWithSelf;
-    public PlayerLocator playerLocator;
     public float maxRadiusPursue;
     public float attackRange;
     private driveToTarget pursueLoc;
@@ -23,7 +22,6 @@ public class PursuePlayer : MonoBehaviour
             checkLoc = transform.position;
         }
         pursueLoc = GetComponent<driveToTarget>();
-        playerLocator = FindObjectOfType<PlayerLocator>();
         aim = GetComponent<AimAt>();
 	}
 	void Update ()
@@ -36,9 +34,9 @@ public class PursuePlayer : MonoBehaviour
         float minDist = float.MaxValue; //used to see which player is closer
         int target = -1;                //start out without a target
 
-        for (int i = 0; i < playerLocator.targetable.Length; ++i)
+        for (int i = 0; i < PlayerLocator.locator.targetable.Length; ++i)
         {
-            directionToPlayer = playerLocator.targetable[i].transform.position - checkLoc; //find the direction to the current player
+            directionToPlayer = PlayerLocator.locator.targetable[i].transform.position - checkLoc; //find the direction to the current player
             float tmpDist = directionToPlayer.magnitude;        //distance between check location and the player
             if (tmpDist < maxRadiusPursue) //if within distance of radius
             {
@@ -72,7 +70,7 @@ public class PursuePlayer : MonoBehaviour
     }
     void Pursue(int _target) //used just to organize code more
     {
-        pursueLoc.targetLoc = playerLocator.targetable[_target].transform.position + directionToPlayer.normalized * attackRange;    //pursue to where I can reach the player
+        pursueLoc.targetLoc = PlayerLocator.locator.targetable[_target].transform.position + directionToPlayer.normalized * attackRange;    //pursue to where I can reach the player
 
         ShootClosestPlayer shoot = GetComponent<ShootClosestPlayer>();  
         if (shoot == null && aim != null)

@@ -3,8 +3,23 @@ using System.Collections;
 
 public class CharacterDB : MonoBehaviour {
 
+    public static CharacterDB charData;
 
-    public GameObject[] charDB;
+    [SerializeField]
+    private GameObject[] charDB;
+
+    void Awake()
+    {
+        if(charData == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            charData = this;
+        }
+        else if(charData != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -12,5 +27,15 @@ public class CharacterDB : MonoBehaviour {
         {
             charDB[i].GetComponent<character>().arrayIndex = i;
         }
+    }
+
+    public GameObject getCharacter(int index)
+    {
+        return charDB[index];
+    }
+
+    public int getNumCharacters()
+    {
+        return charDB.Length;
     }
 }

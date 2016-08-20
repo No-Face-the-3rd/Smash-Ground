@@ -4,25 +4,38 @@ using System.Collections;
 
 public class ScoreManager : MonoBehaviour
 {
+    public static ScoreManager scorer;
+
     public Text[] scoreTexts;
-    private PlayerLocator locator;
     private int[] scores;
     private float pointLossTimer;
     public float pointLossInterval;
     public int pointLossPerInterval;
 
+    void Awake()
+    {
+        if (scorer == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            scorer = this;
+        }
+        else if(scorer != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
 	void Start ()
     {
-        locator = FindObjectOfType<PlayerLocator>();
         scores = new int[2];
         pointLossTimer = 0.0f;
 	}
 
     void Update()
     {
-        for (int i = 0; i < locator.players.Length; i++)
+        for (int i = 0; i < PlayerLocator.locator.players.Length; i++)
         {
-            int idTmp = locator.players[i].GetComponent<PlayerController>().playerNum - 1;
+            int idTmp = PlayerLocator.locator.players[i].GetComponent<PlayerController>().playerNum - 1;
             if (idTmp < scoreTexts.Length)
             {
                 scoreTexts[idTmp].text = "Hotdogs: " + scores[idTmp];
@@ -30,8 +43,8 @@ public class ScoreManager : MonoBehaviour
             if (pointLossTimer >= pointLossInterval)
             {
                 pointLossTimer = 0.0f;
-                PlayerController player = locator.players[i].GetComponent<PlayerController>();
-                if (player.child != null || player.nextRoom.Count > 0 || (player.curRoom.Count > 0 && locator.hasSpawned[i]))
+                PlayerController player = PlayerLocator.locator.players[i].GetComponent<PlayerController>();
+                if (player.child != null || player.nextRoom.Count > 0 || (player.curRoom.Count > 0 && PlayerLocator.locator.hasSpawned[i]))
                 {
                     scores[idTmp] -= pointLossPerInterval;
                 }
@@ -47,13 +60,13 @@ public class ScoreManager : MonoBehaviour
 
     public void addScore(int player,int score)
     {
-        for(int i = 0;i < locator.players.Length;i++)
+        for(int i = 0;i < PlayerLocator.locator.players.Length;i++)
         {
-            if(locator.players[i].GetComponent<PlayerController>().playerNum == player)
+            if(PlayerLocator.locator.players[i].GetComponent<PlayerController>().playerNum == player)
             {
-                if (locator.players[i].GetComponent<PlayerController>().powerup == PlayerController.powerUps.HOTDOG)
+                if (PlayerLocator.locator.players[i].GetComponent<PlayerController>().powerup == PlayerController.powerUps.HOTDOG)
                     score += score;
-                if (locator.players[i].GetComponent<PlayerController>().child != null && locator.players[i].GetComponent<PlayerController>().child.arrayIndex == 1)
+                if (PlayerLocator.locator.players[i].GetComponent<PlayerController>().child != null && PlayerLocator.locator.players[i].GetComponent<PlayerController>().child.arrayIndex == 1)
                     score += score / 2;
                 break;
             }
