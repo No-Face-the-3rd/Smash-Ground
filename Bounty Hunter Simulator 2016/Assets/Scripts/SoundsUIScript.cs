@@ -52,6 +52,7 @@ public class SoundsUIScript : MonoBehaviour {
     public void enterPauseMenu()
     {
         PauseMenuManager.pauseManager.getPauseCanvas().SetActive(true);
+        PauseMenuManager.pauseManager.getPauseCanvas().GetComponent<PauseUIScript>().getButton(PauseMenuManager.pauseManager.getPauseCanvas().GetComponent<PauseUIScript>().getNumButtons() - 1).Select();
         PauseMenuManager.pauseManager.getPauseCanvas().GetComponent<PauseUIScript>().getButton(0).Select();
         gameObject.SetActive(false);
     }
