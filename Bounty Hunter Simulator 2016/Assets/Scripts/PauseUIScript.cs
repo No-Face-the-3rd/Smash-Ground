@@ -34,7 +34,7 @@ public class PauseUIScript : MonoBehaviour {
     {
         AudioMixManager.audioMixMan.getSoundsCanvas().SetActive(true);
         AudioMixManager.audioMixMan.getSoundsCanvas().GetComponent<SoundsUIScript>().setSliders();
-        AudioMixManager.audioMixMan.getSoundsCanvas().GetComponent<SoundsUIScript>().getSlider(AudioMixManager.audioMixMan.getSoundsCanvas().GetComponent<SoundsUIScript>().getNumSliders() - 1);
+        AudioMixManager.audioMixMan.getSoundsCanvas().GetComponent<SoundsUIScript>().getSlider(AudioMixManager.audioMixMan.getSoundsCanvas().GetComponent<SoundsUIScript>().getNumSliders() - 1).Select();
         AudioMixManager.audioMixMan.getSoundsCanvas().GetComponent<SoundsUIScript>().getSlider(0).Select();
         gameObject.SetActive(false);
      }

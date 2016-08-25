@@ -68,10 +68,17 @@ public class PauseMenuManager : MonoBehaviour {
         else
         {
             Time.timeScale = 1.0f;
-            if (pauseCanvas != null)
+            if (getPauseCanvas() != null)
             {
-                pauseCanvas.SetActive(false);
+                getPauseCanvas().SetActive(false);
+            }
+            if (AudioMixManager.audioMixMan.getSoundsCanvas() != null)
+            {
                 AudioMixManager.audioMixMan.getSoundsCanvas().SetActive(false);
+            }
+            if (GraphicsMenuManager.graphicsManager.getGraphicsCanvas() != null)
+            {
+                GraphicsMenuManager.graphicsManager.getGraphicsCanvas().SetActive(false);
             }
         } 
 
